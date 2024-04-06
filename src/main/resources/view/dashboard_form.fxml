@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootNode" prefHeight="622.0" prefWidth="805.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.ResetPasswordController">
+   <children>
+      <ImageView fitHeight="632.0" fitWidth="815.0">
+         <image>
+            <Image url="@../image/HD-wallpaper-fish-aquarium-swimming-glass-best.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="5.0" layoutY="6.0" prefHeight="620.0" prefWidth="208.0" style="-fx-background-color: #487eb0; -fx-background-radius: 10 10 10 10;">
+         <children>
+            <JFXButton cache="true" layoutX="7.0" layoutY="63.0" prefHeight="47.0" prefWidth="190.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Dashboard">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <Line endX="100.0" layoutX="-85.0" layoutY="99.0" startX="100.0" startY="-28.0" strokeWidth="2.0" />
+            <Label layoutX="37.0" layoutY="11.0" prefHeight="36.0" prefWidth="135.0" text="DashBoard">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Label>
+            <JFXButton cache="true" layoutX="8.0" layoutY="121.0" prefHeight="47.0" prefWidth="190.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Customer">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton cache="true" layoutX="7.0" layoutY="180.0" prefHeight="47.0" prefWidth="190.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="FIsh">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton cache="true" layoutX="8.0" layoutY="238.0" prefHeight="47.0" prefWidth="190.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Accessories">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton cache="true" layoutX="8.0" layoutY="296.0" prefHeight="47.0" prefWidth="190.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Orders">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton cache="true" layoutX="8.0" layoutY="354.0" prefHeight="47.0" prefWidth="190.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Employee">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton cache="true" layoutX="8.0" layoutY="412.0" prefHeight="47.0" prefWidth="190.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Supplier">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton cache="true" layoutX="8.0" layoutY="472.0" prefHeight="47.0" prefWidth="190.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Payment">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton cache="true" layoutX="7.0" layoutY="531.0" prefHeight="47.0" prefWidth="190.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Report">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="223.0" layoutY="11.0" opacity="0.98" prefHeight="610.0" prefWidth="583.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;">
+         <children>
+            <AnchorPane layoutX="14.0" layoutY="61.0" prefHeight="157.0" prefWidth="175.0" style="-fx-background-radius: 11 11 11 11; -fx-background-color: #1abc9c;">
+               <children>
+                  <Label layoutX="28.0" layoutY="14.0" text="Today sales">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="63.0" layoutY="64.0" text="10" textFill="#ebed00">
+                     <font>
+                        <Font size="39.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="204.0" layoutY="59.0" prefHeight="157.0" prefWidth="175.0" style="-fx-background-radius: 11 11 11 11; -fx-background-color: #1abc9c;">
+               <children>
+                  <Label layoutX="26.0" layoutY="14.0" text="Popular fish">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="60.0" layoutY="37.0" text="Weekly">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="31.0" layoutY="72.0" text="Gold fish" textFill="#ebed00">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="394.0" layoutY="59.0" prefHeight="157.0" prefWidth="175.0" style="-fx-background-radius: 11 11 11 11; -fx-background-color: #1abc9c;">
+               <children>
+                  <Label layoutX="6.0" layoutY="14.0" text="Employee count">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="69.0" layoutY="68.0" text="8" textFill="#ebed00">
+                     <font>
+                        <Font size="39.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="58.0" layoutY="37.0" text="Today">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <Label layoutX="467.0" layoutY="14.0" text="2024/04/07" textFill="#0075d9">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

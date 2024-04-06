@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="622.0" prefWidth="805.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.OtpFormController">
+   <children>
+      <ImageView fitHeight="622.0" fitWidth="805.0">
+         <image>
+            <Image url="@../image/HD-wallpaper-fish-aquarium-swimming-glass-best.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="71.0" layoutY="92.0" opacity="0.87" prefHeight="459.0" prefWidth="663.0" style="-fx-background-color: #ecf0f1;">
+         <children>
+            <Label layoutX="207.0" layoutY="70.0" prefHeight="68.0" prefWidth="303.0" text="Verify your email">
+               <font>
+                  <Font name="System Bold" size="27.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="btnVerify" layoutX="133.0" layoutY="284.0" onAction="#btnVerifyOnAction" prefHeight="41.0" prefWidth="420.0" style="-fx-background-color: #95afc0#95afc#535c680;" text="Verify now">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="217.0" layoutY="124.0" text="Please enter the 4 digit code ">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnGoBack" layoutX="306.0" layoutY="341.0" mnemonicParsing="false" onAction="#btnGoBackOnAction" style="-fx-background-color: #bdc3c7;" text="Go Back" />
+            <TextField layoutX="207.0" layoutY="175.0" prefHeight="41.0" prefWidth="48.0" />
+            <TextField layoutX="281.0" layoutY="175.0" prefHeight="41.0" prefWidth="48.0" />
+            <TextField layoutX="353.0" layoutY="175.0" prefHeight="41.0" prefWidth="48.0" />
+            <TextField layoutX="429.0" layoutY="175.0" prefHeight="41.0" prefWidth="48.0" />
+            <Line endX="-77.0" layoutX="319.0" layoutY="210.0" startX="-100.0" />
+            <Line endX="-77.0" layoutX="393.0" layoutY="210.0" startX="-100.0" />
+            <Line endX="-77.0" layoutX="465.0" layoutY="210.0" startX="-100.0" />
+            <Line endX="-77.0" layoutX="541.0" layoutY="210.0" startX="-100.0" />
+            <ImageView layoutX="312.0" layoutY="25.0">
+               <image>
+                  <Image url="@../image/icons8-email-64.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btnResend" layoutX="287.0" layoutY="245.0" mnemonicParsing="false" onAction="#btnResendOnAction" style="-fx-background-color: #ecf0f1;" text="Resend">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="22.0">
+                     <image>
+                        <Image url="@../image/icons8-resend-32.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
