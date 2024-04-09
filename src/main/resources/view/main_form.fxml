@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootNode" prefHeight="761.0" prefWidth="1163.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.mainFormController">
+   <children>
+      <ImageView fitHeight="752.0" fitWidth="1173.0" layoutY="-1.0">
+         <image>
+            <Image url="@../image/HD-wallpaper-fish-aquarium-swimming-glass-best.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="5.0" layoutY="6.0" opacity="0.89" prefHeight="740.0" prefWidth="224.0" style="-fx-background-color: #487eb0; -fx-background-radius: 10 10 10 10;">
+         <children>
+            <JFXButton buttonType="RAISED" cache="true" layoutX="8.0" layoutY="82.0" prefHeight="47.0" prefWidth="207.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Dashboard">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" cache="true" layoutX="9.0" layoutY="147.0" prefHeight="47.0" prefWidth="207.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Customer">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" cache="true" layoutX="9.0" layoutY="212.0" prefHeight="47.0" prefWidth="207.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="FIsh">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" cache="true" layoutX="9.0" layoutY="277.0" prefHeight="47.0" prefWidth="207.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Accessories">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" cache="true" layoutX="9.0" layoutY="339.0" prefHeight="47.0" prefWidth="207.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Orders">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" cache="true" layoutX="9.0" layoutY="405.0" prefHeight="47.0" prefWidth="207.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Employee">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" cache="true" layoutX="9.0" layoutY="469.0" prefHeight="47.0" prefWidth="207.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Supplier">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" cache="true" layoutX="8.0" layoutY="531.0" prefHeight="47.0" prefWidth="207.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Payment">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" cache="true" layoutX="8.0" layoutY="596.0" prefHeight="47.0" prefWidth="207.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Report">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="46.0" layoutY="669.0" prefHeight="38.0" prefWidth="123.0" style="-fx-background-color: #e74c3c;" text="Log Out">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="28.0" fitWidth="30.0">
+                     <image>
+                        <Image url="@../image/icons8-log-out-50.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <ImageView fitHeight="38.0" fitWidth="32.0" layoutX="21.0" layoutY="474.0">
+               <image>
+                  <Image url="@../image/icons8-supplier-64.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="21.0" layoutY="410.0">
+               <image>
+                  <Image url="@../image/icons8-employee-80.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="18.0" layoutY="280.0">
+               <image>
+                  <Image url="@../image/icons8-accessories-50.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="18.0" layoutY="217.0">
+               <image>
+                  <Image url="@../image/icons8-fish-50.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="17.0" layoutY="151.0">
+               <image>
+                  <Image url="@../image/icons8-customer-50.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="47.0" fitWidth="38.0" layoutX="14.0" layoutY="82.0">
+               <image>
+                  <Image url="@../image/icons8-dashboard-50.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="47.0" fitWidth="38.0" layoutX="21.0" layoutY="339.0">
+               <image>
+                  <Image url="@../image/icons8-box-64.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="38.0" fitWidth="32.0" layoutX="20.0" layoutY="536.0">
+               <image>
+                  <Image url="@../image/icons8-payment-50.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="38.0" fitWidth="32.0" layoutX="17.0" layoutY="601.0">
+               <image>
+                  <Image url="@../image/icons8-report-50.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

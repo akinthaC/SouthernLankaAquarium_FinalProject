@@ -3,10 +3,17 @@ package lk.ijse.Controller;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 
 public class CustomerFormController {
+
+    @FXML
+    private TableColumn<?, ?> ColCusName;
+
+    @FXML
+    private TableColumn<?, ?> ColNIC;
 
     @FXML
     private JFXButton btnClear;
@@ -21,7 +28,19 @@ public class CustomerFormController {
     private JFXButton btnUpdate;
 
     @FXML
-    private AnchorPane rootNode;
+    private TableColumn<?, ?> colAddress;
+
+    @FXML
+    private TableColumn<?, ?> colContact;
+
+    @FXML
+    private TableColumn<?, ?> colCusId;
+
+    @FXML
+    private TableColumn<?, ?> colType;
+
+    @FXML
+    private TableView<?> tblCustomer;
 
     @FXML
     private TextField txtAddress;

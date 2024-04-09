@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -14,7 +13,7 @@
 
 <AnchorPane opacity="0.94" prefHeight="733.0" prefWidth="918.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10; -fx-border-radius: 10 10 10 10;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextField fx:id="txtId" layoutX="44.0" layoutY="81.0" prefHeight="30.0" prefWidth="317.0" promptText="Id" />
+      <TextField fx:id="txtSupId" layoutX="44.0" layoutY="81.0" prefHeight="30.0" prefWidth="317.0" promptText="Supplier Id" />
       <Label layoutX="29.0" layoutY="63.0" prefHeight="16.0" prefWidth="94.0" text="Id:">
          <font>
             <Font size="14.0" />
@@ -32,31 +31,25 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <TextField fx:id="txtName" layoutX="494.0" layoutY="77.0" prefHeight="30.0" prefWidth="317.0" promptText="Name" />
+      <TextField fx:id="txtSupName" layoutX="494.0" layoutY="77.0" prefHeight="30.0" prefWidth="317.0" promptText="Supplier Name" />
       <Label layoutX="474.0" layoutY="58.0" prefHeight="16.0" prefWidth="94.0" text="Name:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtContact" layoutX="44.0" layoutY="146.0" prefHeight="30.0" prefWidth="317.0" promptText="Contact" />
+      <TextField fx:id="txtSupContact" layoutX="44.0" layoutY="146.0" prefHeight="30.0" prefWidth="317.0" promptText="Contact" />
       <Label layoutX="29.0" layoutY="128.0" prefHeight="16.0" prefWidth="94.0" text="Contact:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtNIC" layoutX="494.0" layoutY="143.0" prefHeight="30.0" prefWidth="317.0" promptText="NIC" />
+      <TextField fx:id="txtSupNIC" layoutX="494.0" layoutY="143.0" prefHeight="30.0" prefWidth="317.0" promptText="NIC" />
       <Label layoutX="474.0" layoutY="124.0" prefHeight="16.0" prefWidth="94.0" text="NIC:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtType" layoutX="494.0" layoutY="220.0" prefHeight="30.0" prefWidth="317.0" promptText="Whole sale or Normal" />
-      <Label layoutX="474.0" layoutY="198.0" prefHeight="16.0" prefWidth="94.0" text="Type:">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <TextField fx:id="txtAddress" layoutX="47.0" layoutY="220.0" prefHeight="30.0" prefWidth="317.0" promptText="Address" />
+      <TextField fx:id="txtSupAddress" layoutX="47.0" layoutY="220.0" prefHeight="30.0" prefWidth="317.0" promptText="Address" />
       <Label layoutX="29.0" layoutY="199.0" prefHeight="16.0" prefWidth="94.0" text="Address:">
          <font>
             <Font size="14.0" />
@@ -98,16 +91,14 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <ChoiceBox accessibleText="cu" layoutX="721.0" layoutY="187.0" prefWidth="150.0" />
-      <TableView fx:id="tblCustomer" layoutX="29.0" layoutY="330.0" prefHeight="362.0" prefWidth="863.0">
-        <columns>
-          <TableColumn fx:id="colCusId" prefWidth="121.0" text="Customer Id" />
-          <TableColumn fx:id="ColCusName" prefWidth="144.0" text="Customer Name" />
-            <TableColumn fx:id="colContact" prefWidth="166.0" text="Contact" />
-            <TableColumn fx:id="ColNIC" prefWidth="131.0" text="NIC" />
-            <TableColumn fx:id="colAddress" prefWidth="160.0" text="Address" />
-            <TableColumn fx:id="colType" prefWidth="140.0" text="Type" />
-        </columns>
+      <TableView fx:id="tblSupplier" layoutX="69.0" layoutY="332.0" prefHeight="362.0" prefWidth="784.0">
+         <columns>
+            <TableColumn fx:id="colSupId" prefWidth="142.0" text="Supplier Id" />
+            <TableColumn fx:id="ColSupName" prefWidth="182.0" text="Supplier Name" />
+            <TableColumn fx:id="colSUpContact" prefWidth="145.0" text="Contact" />
+            <TableColumn fx:id="ColSupNIC" prefWidth="164.0" text="NIC" />
+            <TableColumn fx:id="colSupAddress" prefWidth="150.0" text="Address" />
+         </columns>
       </TableView>
       <AnchorPane prefHeight="46.0" prefWidth="928.0" style="-fx-background-color: #1e272e;" />
       <Label layoutX="820.0" layoutY="4.0" text="2024/04/07" textFill="WHITE">
@@ -120,7 +111,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="369.0" layoutY="-11.0" prefHeight="68.0" prefWidth="251.0" text="Customer FORM" textFill="WHITE">
+      <Label layoutX="369.0" layoutY="-11.0" prefHeight="68.0" prefWidth="251.0" text="Supplier FORM" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
