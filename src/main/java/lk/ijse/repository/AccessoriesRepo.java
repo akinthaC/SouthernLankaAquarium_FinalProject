@@ -3,6 +3,7 @@ package lk.ijse.repository;
 import lk.ijse.Db.DbConnection;
 import lk.ijse.model.Accessories;
 import lk.ijse.model.Fish;
+import lk.ijse.model.OrderDetail;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -139,5 +140,27 @@ public class AccessoriesRepo {
             idList.add(id);
         }
         return idList;
+    }
+
+  /*  public static boolean update1(List<OrderDetail> odlist) throws SQLException {
+        for (OrderDetail od : odlist) {
+            boolean isUpdateQty = updateQty(od.getAccId(), od.getQty());
+            if(!isUpdateQty) {
+                return false;
+            }
+        }
+        return true;
+    }*/
+
+    static boolean updateQty(String accId, int qty) throws SQLException {
+        String sql = "UPDATE accessories SET qtyOnHand = qtyOnHand - ? WHERE accId = ?";
+
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
+
+        pstm.setInt(1, qty);
+        pstm.setString(2, accId);
+
+        return pstm.executeUpdate() > 0;
     }
 }

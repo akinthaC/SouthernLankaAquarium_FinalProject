@@ -13,11 +13,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Duration;
 import lk.ijse.model.Fish;
-import lk.ijse.model.Supplier;
 import lk.ijse.model.tm.FishTm;
-import lk.ijse.model.tm.SupplierTm;
 import lk.ijse.repository.FishRepo;
-import lk.ijse.repository.SupplierRepo;
 
 import java.io.IOException;
 import java.sql.SQLException;

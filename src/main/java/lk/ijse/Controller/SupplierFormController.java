@@ -11,13 +11,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Duration;
-import lk.ijse.model.Customer;
-import lk.ijse.model.Employee;
 import lk.ijse.model.Supplier;
-import lk.ijse.model.tm.EmployeeTm;
-import lk.ijse.model.tm.SupplierTm;
-import lk.ijse.repository.CustomerRepo;
-import lk.ijse.repository.EmployeeRepo;
+import lk.ijse.model.SupplierTm;
 import lk.ijse.repository.SupplierRepo;
 
 import java.io.IOException;

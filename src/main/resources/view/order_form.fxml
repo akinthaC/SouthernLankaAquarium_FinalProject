@@ -63,14 +63,15 @@
       </JFXButton>
       <TableView fx:id="tblPlaceOrder" layoutX="8.0" layoutY="437.0" prefHeight="185.0" prefWidth="911.0">
          <columns>
-            <TableColumn fx:id="colOrderId" prefWidth="88.0" text="Order Id" />
-            <TableColumn fx:id="colDate" prefWidth="105.0" text="Date" />
-            <TableColumn fx:id="colHandOverDate" prefWidth="137.0" text="HandOverDate" />
-            <TableColumn fx:id="colQty" prefWidth="56.0" text="Qty" />
-            <TableColumn fx:id="colStatus" prefWidth="107.0" text="Status" />
-            <TableColumn fx:id="colUnitPrice" prefWidth="141.0" text="Unit Price" />
-            <TableColumn fx:id="colDescription" prefWidth="133.0" text="Description" />
-            <TableColumn fx:id="colActive" prefWidth="144.0" text="Active" />
+            <TableColumn fx:id="colId" prefWidth="68.0" text=" Id" />
+            <TableColumn fx:id="colDate" prefWidth="94.0" text="Date" />
+            <TableColumn fx:id="colHandOverDate" prefWidth="125.0" text="HandOverDate" />
+            <TableColumn fx:id="colQty" prefWidth="84.0" text="Qty" />
+            <TableColumn fx:id="colUnitPrice" prefWidth="103.0" text="Unit Price" />
+            <TableColumn fx:id="colTotal" prefWidth="95.0" text="Total" />
+            <TableColumn fx:id="colDescription" prefWidth="130.0" text="Description" />
+            <TableColumn fx:id="colStatus" prefWidth="103.0" text="Status" />
+            <TableColumn fx:id="colActive" prefWidth="108.0" text="Active" />
          </columns>
       </TableView>
       <AnchorPane prefHeight="46.0" prefWidth="928.0" style="-fx-background-color: #1e272e;" />
@@ -106,12 +107,12 @@
          </font>
       </Label>
       <JFXComboBox fx:id="cmbCusId" layoutX="494.0" layoutY="217.0" onAction="#cmbCusIdOnAction" prefHeight="24.0" prefWidth="150.0" />
-      <Label layoutX="687.0" layoutY="199.0" prefHeight="18.0" prefWidth="127.0" text="Customer Name:">
+      <Label layoutX="679.0" layoutY="199.0" prefHeight="18.0" prefWidth="127.0" text="Customer Name:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lblCustomerName" layoutX="699.0" layoutY="227.0" prefHeight="16.0" prefWidth="102.0">
+      <Label fx:id="lblCustomerName" layoutX="692.0" layoutY="227.0" prefHeight="16.0" prefWidth="102.0">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Label>
@@ -120,7 +121,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="294.0" layoutY="286.0" prefHeight="18.0" prefWidth="58.0" text="Name">
+      <Label layoutX="284.0" layoutY="286.0" prefHeight="18.0" prefWidth="81.0" text="Description">
          <font>
             <Font size="14.0" />
          </font>
@@ -183,16 +184,26 @@
          </font>
       </Label>
       <JFXComboBox fx:id="cmbEmployeeId" layoutX="493.0" layoutY="149.0" onAction="#cmbEmployeeIdOnAction" prefHeight="24.0" prefWidth="150.0" />
-      <Label layoutX="688.0" layoutY="128.0" prefHeight="18.0" prefWidth="127.0" text="Employee Name:">
+      <Label layoutX="677.0" layoutY="128.0" prefHeight="18.0" prefWidth="127.0" text="Employee Name:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lblEmpName" layoutX="701.0" layoutY="153.0" prefHeight="16.0" prefWidth="102.0">
+      <Label fx:id="lblEmpName" layoutX="688.0" layoutY="153.0" prefHeight="16.0" prefWidth="102.0">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <JFXComboBox fx:id="cmbStatuss" layoutX="48.0" layoutY="218.0" prefHeight="24.0" prefWidth="317.0" />
+      <JFXComboBox fx:id="cmbStatus" layoutX="48.0" layoutY="218.0" onAction="#cmbStatusOnAction" prefHeight="24.0" prefWidth="317.0" />
+      <Label layoutX="826.0" layoutY="199.0" prefHeight="18.0" prefWidth="81.0" text="Type:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblType" layoutX="816.0" layoutY="227.0" prefHeight="16.0" prefWidth="102.0">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

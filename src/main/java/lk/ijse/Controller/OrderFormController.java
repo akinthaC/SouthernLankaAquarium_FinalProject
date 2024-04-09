@@ -9,19 +9,24 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.Cursor;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Duration;
 import lk.ijse.model.*;
+
+import lk.ijse.model.tm.cartTm;
 import lk.ijse.repository.*;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 
 public class OrderFormController {
 
@@ -44,7 +49,7 @@ public class OrderFormController {
     private JFXComboBox<String> cmbFishId;
 
     @FXML
-    private JFXComboBox<?> cmbStatuss;
+    private JFXComboBox<String> cmbStatus;
 
     @FXML
     private TableColumn<?, ?> colActive;
@@ -56,13 +61,15 @@ public class OrderFormController {
     private TableColumn<?, ?> colHandOverDate;
 
     @FXML
-    private TableColumn<?, ?> colOrderId;
+    private TableColumn<?, ?> colId;
 
     @FXML
     private TableColumn<?, ?> colQty;
 
     @FXML
     private TableColumn<?, ?> colStatus;
+    @FXML
+    private TableColumn<?, ?> colTotal;
 
     @FXML
     private TableColumn<?, ?> colUnitPrice;
@@ -90,12 +97,14 @@ public class OrderFormController {
 
     @FXML
     private Label lblTime;
+    @FXML
+    private Label lblType;
 
     @FXML
     private Label lblWholeSalePrice;
 
     @FXML
-    private TableView<?> tblPlaceOrder;
+    private TableView<cartTm> tblPlaceOrder;
 
     @FXML
     private TextField txtDate;
@@ -109,6 +118,8 @@ public class OrderFormController {
     @FXML
     private TextField txtQty;
 
+    private ObservableList<cartTm> obList = FXCollections.observableArrayList();
+
     public void initialize() {
         setDate();
         setTime();
@@ -117,7 +128,36 @@ public class OrderFormController {
         getEmployeeId();
         getFishId();
         getAccessoriesId();
-        //setCellValueFactory();
+        getStatus();
+        setCellValueFactory();
+    }
+    private void setCellValueFactory() {
+        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+        colHandOverDate.setCellValueFactory(new PropertyValueFactory<>("handOver"));
+        colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
+        colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+        colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
+        colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
+        colActive.setCellValueFactory(new PropertyValueFactory<>("btnRemove"));
+
+    }
+
+    private void getStatus() {
+
+        ObservableList<String> obList = FXCollections.observableArrayList();
+
+
+        List<String> idList = OrderRepo.getStatus();
+
+        for(String value : idList) {
+            obList.add(value);
+        }
+
+        cmbStatus.setItems(obList);
+
+
     }
 
     private void getAccessoriesId() {
@@ -214,17 +254,160 @@ public class OrderFormController {
     private void setDate() {
         LocalDate now = LocalDate.now();
         lblDate.setText(String.valueOf(now));
+        txtDate.setText(String.valueOf(now));
     }
 
     @FXML
     void brnAddTOCartOnAction(ActionEvent event) {
+        String code = txtId.getText();
+        Date date = Date.valueOf(txtDate.getText());
+        Date handOverDate = Date.valueOf(txtHandOverDate.getText());
+        int qty = Integer.parseInt(txtQty.getText());
+        String status = cmbStatus.getValue();
+        String description=lblName.getText();
+        double price;
+        String id;
+
+        if (lblType.getText().equals("normal")) {
+             price = Double.parseDouble(lblNormalPrice.getText());
+            System.out.println("price = " + price);
+
+        }else {
+             price = Double.parseDouble(lblWholeSalePrice.getText());
+            System.out.println("price = " + price);
+        }
+
+        if ( cmbAccessorieId.getValue()== null) {
+            id = cmbFishId.getValue();
+        }else {
+            id= cmbAccessorieId.getValue();
+        }
+
+        double total = qty * price;
+
+        JFXButton btnRemove = new JFXButton("remove");
+        btnRemove.setCursor(Cursor.HAND);
+
+        btnRemove.setOnAction((e) -> {
+            ButtonType yes = new ButtonType("yes", ButtonBar.ButtonData.OK_DONE);
+            ButtonType no = new ButtonType("no", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+            Optional<ButtonType> type = new Alert(Alert.AlertType.INFORMATION, "Are you sure to remove?", yes, no).showAndWait();
+
+            if(type.orElse(no) == yes) {
+                int selectedIndex = tblPlaceOrder.getSelectionModel().getSelectedIndex();
+                obList.remove(selectedIndex);
+
+                tblPlaceOrder.refresh();
+               // calculateNetTotal();
+            }
+        });
+
+        for (int i = 0; i < tblPlaceOrder.getItems().size(); i++) {
+            if(code.equals(colId.getCellData(i))) {
+
+                cartTm tm = obList.get(i);
+                qty += tm.getQty();
+                total = qty * price;
+
+                tm.setQty(qty);
+                tm.setTotal(total);
+
+                tblPlaceOrder.refresh();
+
+                //calculateNetTotal();
+                return;
+            }
+        }
+
+        cartTm cartTm = new cartTm(code, date, handOverDate, description, qty, price, total, status,id, btnRemove);
+        obList.add(cartTm);
+
+        tblPlaceOrder.setItems(obList);
+
+
 
     }
 
     @FXML
     void btnPlaceOrderOnAction(ActionEvent event) {
+        String orderId = txtId.getText();
+        Date date = Date.valueOf(txtDate.getText());
+        Date handOverDate = Date.valueOf(txtHandOverDate.getText());
+        int qty = (int) Double.parseDouble(txtQty.getText());
+        String status = cmbStatus.getValue();
+        String cusId = cmbCusId.getValue();
+        String description = lblName.getText();
+        String empId = cmbEmployeeId.getValue();
+        String fishId = null;
+        String accessoriesId= null;
+        char s1='F';
+
+
+        Order order = new Order(orderId, date, handOverDate, qty, cusId);
+        List<OrderDetail> odList = new ArrayList<>();
+
+        for (int i = 0; i < tblPlaceOrder.getItems().size(); i++) {
+            cartTm tm = obList.get(i);
+
+            boolean isEquals= checkEquals(tm.getId(),s1);
+
+            if (isEquals) {
+                fishId=tm.getId();
+                accessoriesId=null;
+
+
+            }else{
+                accessoriesId=tm.getId();
+                fishId=null;
+
+            }
+
+
+            OrderDetail od = new OrderDetail(
+                    orderId,
+                    empId,
+                    fishId,
+                    accessoriesId,
+                    tm.getQty(),
+                    tm.getStatus(),
+                    tm.getDescription()
+
+            );
+
+            odList.add(od);
+            System.out.println("od = " + od);
+        }
+        PlaceOrder pl= new PlaceOrder(order,odList);
+
+        try {
+            boolean isPlaced = PlaceOrderRepo.orders(pl);
+            txtQty.setText("");
+            if (isPlaced) {
+
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
 
     }
+
+    private boolean checkEquals(String id, char s1) {
+        for (int i = 0; i < id.length(); i++) {
+            char ch = id.charAt(i);
+            if (s1 == (ch)) {
+                System.out.println("ch = " + ch);
+                return true;
+
+            }else{
+                System.out.println("fuck = " + ch);
+                return false;
+            }
+        }
+        return false;
+    }
+
 
     @FXML
     void cmbAccessorieIdOnAction(ActionEvent event) {
@@ -254,6 +437,7 @@ public class OrderFormController {
             Customer customer = CustomerRepo.searchById(id);
 
             lblCustomerName.setText(customer.getName());
+            lblType.setText(customer.getType());
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -317,5 +501,12 @@ public class OrderFormController {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @FXML
+    void cmbStatusOnAction(ActionEvent event) {
+
+
+
     }
 }

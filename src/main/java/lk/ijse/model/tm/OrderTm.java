@@ -1,9 +1,12 @@
 package lk.ijse.model.tm;
 
+import com.jfoenix.controls.JFXButton;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+
+import java.sql.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -11,8 +14,10 @@ import lombok.ToString;
 @ToString
 public class OrderTm {
     private String id;
-    private String date ;
-    private String handOverDate;
-    private String Qty;
+    private Date date ;
+    private Date handOverDate;
+    private int Qty;
     private String Status;
+    private String Description;
+    private String CusId;
 }
