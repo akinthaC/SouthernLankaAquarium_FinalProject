@@ -127,7 +127,7 @@ public class AccessoriesRepo {
     }
 
     public static List<String> getIds() throws SQLException {
-        String sql = "SELECT id FROM supplier";
+        String sql = "SELECT accId  FROM accessories";
         PreparedStatement pstm = DbConnection.getInstance().getConnection()
                 .prepareStatement(sql);
 

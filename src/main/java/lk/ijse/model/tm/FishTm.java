@@ -13,7 +13,7 @@ public class FishTm {
     private String id;
     private String name ;
     private String Qty;
-    private String normalPrice;
-    private String wholesaleprice;
+    private double normalPrice;
+    private double wholesaleprice;
 
 }

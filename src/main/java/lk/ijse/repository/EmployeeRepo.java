@@ -55,7 +55,7 @@ public class EmployeeRepo {
             String contact=resultSet.getString(3);
             String NIC = resultSet.getString(4);
             String address = resultSet.getString(5);
-           ;
+
             Employee employee = new Employee(empid,name,contact,NIC,address);
 
 
@@ -115,4 +115,18 @@ public class EmployeeRepo {
         return null;
     }
 
+    public static List<String> getIds() throws SQLException {
+        String sql = "SELECT empId FROM employee";
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
+
+        List<String> idList = new ArrayList<>();
+
+        ResultSet resultSet = pstm.executeQuery();
+        while (resultSet.next()) {
+            String id = resultSet.getString(1);
+            idList.add(id);
+        }
+        return idList;
+    }
 }

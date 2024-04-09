@@ -54,7 +54,9 @@ public class mainFormController {
     private AnchorPane rootNode;
 
 
-
+    public void initialize() throws IOException {
+        loadDashboardForm();
+    }
 
     private void loadDashboardForm() throws IOException {
         AnchorPane dashboardPane = FXMLLoader.load(this.getClass().getResource("/view/dashboard_form.fxml"));
@@ -64,7 +66,10 @@ public class mainFormController {
     }
 
     @FXML
-    void btnAccessoriesOnAction(ActionEvent event) {
+    void btnAccessoriesOnAction(ActionEvent event) throws IOException {AnchorPane dashboardPane = FXMLLoader.load(this.getClass().getResource("/view/accessories_form.fxml"));
+
+        mainPane.getChildren().clear();
+        mainPane.getChildren().add(dashboardPane);
 
     }
 
@@ -96,7 +101,11 @@ public class mainFormController {
     }
 
     @FXML
-    void btnFishOnAction(ActionEvent event) {
+    void btnFishOnAction(ActionEvent event) throws IOException {
+        AnchorPane dashboardPane = FXMLLoader.load(this.getClass().getResource("/view/fish_form.fxml"));
+
+        mainPane.getChildren().clear();
+        mainPane.getChildren().add(dashboardPane);
 
     }
 
@@ -112,12 +121,20 @@ public class mainFormController {
     }
 
     @FXML
-    void btnOrdersOnAction(ActionEvent event) {
+    void btnOrdersOnAction(ActionEvent event) throws IOException {
+        AnchorPane dashboardPane = FXMLLoader.load(this.getClass().getResource("/view/order_form.fxml"));
+
+        mainPane.getChildren().clear();
+        mainPane.getChildren().add(dashboardPane);
 
     }
 
     @FXML
-    void btnPaymentOnAction(ActionEvent event) {
+    void btnPaymentOnAction(ActionEvent event) throws IOException {
+        AnchorPane dashboardPane = FXMLLoader.load(this.getClass().getResource("/view/payment_form.fxml"));
+
+        mainPane.getChildren().clear();
+        mainPane.getChildren().add(dashboardPane);
 
     }
 

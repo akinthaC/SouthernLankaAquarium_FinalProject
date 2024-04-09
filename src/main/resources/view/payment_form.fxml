@@ -12,15 +12,15 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane opacity="0.94" prefHeight="733.0" prefWidth="918.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10; -fx-border-radius: 10 10 10 10;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.AccessoriesFormController">
+<AnchorPane opacity="0.94" prefHeight="733.0" prefWidth="918.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10; -fx-border-radius: 10 10 10 10;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.PaymentFormController">
    <children>
-      <TextField fx:id="txtAccessorieId" layoutX="44.0" layoutY="81.0" onAction="#txtSearchOnAction" prefHeight="30.0" prefWidth="317.0" promptText="Accessories Id" />
+      <TextField fx:id="txtPaymentId" layoutX="44.0" layoutY="81.0" onAction="#txtSearchOnAction" prefHeight="30.0" prefWidth="317.0" promptText="Payment Id" />
       <Label layoutX="29.0" layoutY="63.0" prefHeight="16.0" prefWidth="94.0" text="Id:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btnSave" buttonType="RAISED" layoutX="345.0" layoutY="283.0" onAction="#btnSaveOnAction" prefHeight="30.0" prefWidth="94.0" style="-fx-background-color: #27ae60;" text="Save">
+      <JFXButton fx:id="btnSave" buttonType="RAISED" layoutX="364.0" layoutY="287.0" onAction="#btnSaveOnAction" prefHeight="30.0" prefWidth="94.0" style="-fx-background-color: #27ae60;" text="Save">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -32,31 +32,31 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <TextField fx:id="txtAccessoriesName" layoutX="494.0" layoutY="77.0" prefHeight="30.0" prefWidth="317.0" promptText="Fish Name" />
-      <Label layoutX="474.0" layoutY="58.0" prefHeight="16.0" prefWidth="94.0" text="Name:">
+      <TextField fx:id="txtDate" layoutX="484.0" layoutY="77.0" prefHeight="30.0" prefWidth="317.0" promptText="Date" />
+      <Label layoutX="464.0" layoutY="58.0" prefHeight="16.0" prefWidth="94.0" text="Date">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtQtyOnHand" layoutX="44.0" layoutY="146.0" prefHeight="30.0" prefWidth="317.0" promptText="QTY OnHand" />
-      <Label layoutX="29.0" layoutY="128.0" prefHeight="18.0" prefWidth="112.0" text="Qty OnHand:">
+      <TextField fx:id="txtTotal" layoutX="44.0" layoutY="146.0" prefHeight="30.0" prefWidth="317.0" promptText="Total Amount" />
+      <Label layoutX="29.0" layoutY="128.0" prefHeight="18.0" prefWidth="112.0" text="Total Amount:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtNormalPrice" layoutX="494.0" layoutY="143.0" prefHeight="30.0" prefWidth="317.0" promptText="Normal Price" />
-      <Label layoutX="474.0" layoutY="124.0" prefHeight="18.0" prefWidth="112.0" text="Normal price:">
+      <TextField fx:id="txtAdvance" layoutX="484.0" layoutY="143.0" prefHeight="30.0" prefWidth="317.0" promptText="Advance" />
+      <Label layoutX="464.0" layoutY="124.0" prefHeight="18.0" prefWidth="112.0" text="Advance:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtWholeSalePrice" layoutX="47.0" layoutY="220.0" prefHeight="30.0" prefWidth="317.0" promptText="WholeSale Price" />
-      <Label layoutX="29.0" layoutY="199.0" prefHeight="18.0" prefWidth="120.0" text="Wholesale Price:">
+      <TextField fx:id="txtType" layoutX="47.0" layoutY="220.0" prefHeight="30.0" prefWidth="317.0" promptText="Type" />
+      <Label layoutX="29.0" layoutY="199.0" prefHeight="18.0" prefWidth="120.0" text="type:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btnClear" buttonType="RAISED" layoutX="721.0" layoutY="283.0" onAction="#btnClearOnAction" prefHeight="20.0" prefWidth="94.0" style="-fx-background-color: #3498db;" text="Clear">
+      <JFXButton fx:id="btnClear" buttonType="RAISED" layoutX="740.0" layoutY="287.0" onAction="#btnClearOnAction" prefHeight="20.0" prefWidth="94.0" style="-fx-background-color: #3498db;" text="Clear">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -68,7 +68,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="btnUpdate" buttonType="RAISED" layoutX="465.0" layoutY="283.0" onAction="#btnUpdateOnAction" prefHeight="28.0" prefWidth="102.0" style="-fx-background-color: #7f8c8d;" text="Update">
+      <JFXButton fx:id="btnUpdate" buttonType="RAISED" layoutX="484.0" layoutY="287.0" onAction="#btnUpdateOnAction" prefHeight="28.0" prefWidth="102.0" style="-fx-background-color: #7f8c8d;" text="Update">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -80,7 +80,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="btnDelete" buttonType="RAISED" layoutX="599.0" layoutY="283.0" onAction="#btnDeleteOnAction" prefHeight="20.0" prefWidth="94.0" style="-fx-background-color: #e74c3c;" text="Delete">
+      <JFXButton fx:id="btnDelete" buttonType="RAISED" layoutX="618.0" layoutY="287.0" onAction="#btnDeleteOnAction" prefHeight="20.0" prefWidth="94.0" style="-fx-background-color: #e74c3c;" text="Delete">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -92,14 +92,14 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <TableView fx:id="tblAccessories" layoutX="11.0" layoutY="339.0" prefHeight="362.0" prefWidth="908.0">
+      <TableView fx:id="tblPayment" layoutX="9.0" layoutY="345.0" prefHeight="356.0" prefWidth="910.0">
          <columns>
-            <TableColumn fx:id="colAccessoriesId" prefWidth="142.0" text="Accessories Id" />
-            <TableColumn fx:id="colAccessoriesName" prefWidth="182.0" text="Accessories Name" />
-            <TableColumn fx:id="colQtyOnHand" prefWidth="145.0" text="Qty OnHand" />
-            <TableColumn fx:id="colNoramalPrice" prefWidth="164.0" text="Normal Price" />
-            <TableColumn fx:id="colWholeSalePrice" prefWidth="150.0" text="WholeSale Price" />
-            <TableColumn fx:id="colSupId" prefWidth="123.0" text="Supplier Id" />
+            <TableColumn fx:id="colPaymentId" prefWidth="142.0" text="Payment Id" />
+            <TableColumn fx:id="colDate" prefWidth="182.0" text="Date" />
+            <TableColumn fx:id="colTotal" prefWidth="145.0" text="Total" />
+            <TableColumn fx:id="colAdvance" prefWidth="164.0" text="Advance" />
+            <TableColumn fx:id="colType" prefWidth="150.0" text="type" />
+            <TableColumn fx:id="colOrdId" prefWidth="123.0" text="Order Id" />
          </columns>
       </TableView>
       <AnchorPane prefHeight="46.0" prefWidth="928.0" style="-fx-background-color: #1e272e;">
@@ -126,23 +126,27 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="322.0" layoutY="-11.0" prefHeight="68.0" prefWidth="251.0" text="Accessories  FORM" textFill="WHITE">
+      <Label layoutX="322.0" layoutY="-11.0" prefHeight="68.0" prefWidth="251.0" text="Payment  FORM" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
       </Label>
       <Line endX="264.7625732421875" endY="-1.0" layoutX="661.0" layoutY="47.0" startX="-661.0" startY="-1.0" stroke="#d71111" strokeWidth="1.75" />
-      <Label layoutX="473.0" layoutY="204.0" prefHeight="16.0" prefWidth="94.0" text="Supliier Id:">
+      <Label layoutX="468.0" layoutY="208.0" prefHeight="16.0" prefWidth="94.0" text="Order Id:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <JFXComboBox fx:id="cmbSupplier" layoutX="487.0" layoutY="221.0" onAction="#cmbSupplierOnAction" prefHeight="24.0" prefWidth="147.0" />
-      <Label layoutX="689.0" layoutY="204.0" prefHeight="18.0" prefWidth="112.0" text="Supliier Name:">
+      <JFXComboBox fx:id="cmpOrderId" layoutX="482.0" layoutY="225.0" onAction="#cmpOrderIdOnAction" prefHeight="24.0" prefWidth="147.0" />
+      <Label layoutX="684.0" layoutY="208.0" prefHeight="18.0" prefWidth="112.0" text="Discription">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lblSupName" layoutX="709.0" layoutY="225.0" prefHeight="24.0" prefWidth="102.0" />
+      <Label fx:id="lblDiscription" layoutX="704.0" layoutY="229.0" prefHeight="24.0" prefWidth="102.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

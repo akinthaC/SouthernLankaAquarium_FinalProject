@@ -50,23 +50,25 @@ public class FishRepo {
 
             Connection connection = DbConnection.getInstance().getConnection();
             PreparedStatement pstm = connection.prepareStatement(sql);
+
             pstm.setObject(1, id);
 
             ResultSet resultSet = pstm.executeQuery();
             if (resultSet.next()) {
-                String fishid = resultSet.getString(1);
+                String fishId = resultSet.getString(1);
                 String name = resultSet.getString(2);
                 String qty=resultSet.getString(3);
-                String normalprice = resultSet.getString(4);
-                String wholesaleprice = resultSet.getString(5);
-                ;
-               Fish fish = new Fish(fishid,name,qty,normalprice,wholesaleprice);
+                double normalPrice = Double.parseDouble(resultSet.getString(4));
+                double WholeSalePrice = Double.parseDouble(resultSet.getString(5));
+
+                Fish fish = new Fish(fishId, name, qty, normalPrice, WholeSalePrice);
 
 
                 return fish;
             }
 
             return null;
+
         }
 
         public static boolean delete(String id) throws SQLException {
@@ -93,8 +95,8 @@ public class FishRepo {
                 String fishid = resultSet.getString(1);
                 String name = resultSet.getString(2);
                 String qty = resultSet.getString(3);
-                String normalprice = resultSet.getString(4);
-                String wholesaleprice = resultSet.getString(5);
+                double normalprice = Double.parseDouble(resultSet.getString(4));
+                double wholesaleprice = Double.parseDouble(resultSet.getString(5));
 
 
                 Fish fish = new Fish(fishid,name,qty,normalprice,wholesaleprice);
@@ -120,5 +122,18 @@ public class FishRepo {
         }
 
 
+    public static List<String> getIds() throws SQLException {
+        String sql = "SELECT fishId FROM fish";
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
 
+        List<String> idList = new ArrayList<>();
+
+        ResultSet resultSet = pstm.executeQuery();
+        while (resultSet.next()) {
+            String id = resultSet.getString(1);
+            idList.add(id);
+        }
+        return idList;
+    }
 }

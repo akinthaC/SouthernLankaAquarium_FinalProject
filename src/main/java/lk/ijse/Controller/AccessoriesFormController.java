@@ -13,6 +13,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Duration;
 import lk.ijse.model.Accessories;
+import lk.ijse.model.Supplier;
 import lk.ijse.model.tm.AccessoriesTm;
 import lk.ijse.repository.AccessoriesRepo;
 import lk.ijse.repository.SupplierRepo;
@@ -64,6 +65,9 @@ public class AccessoriesFormController {
 
     @FXML
     private Label lblTime;
+
+    @FXML
+    private Label lblSupName;
 
     @FXML
     private TableView<AccessoriesTm> tblAccessories;
@@ -286,6 +290,15 @@ public class AccessoriesFormController {
 
     @FXML
     void cmbSupplierOnAction(ActionEvent event) {
+        String id = cmbSupplier.getValue();
+        try {
+            Supplier supplier = SupplierRepo.searchById(id);
+
+            lblSupName.setText(supplier.getName());
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

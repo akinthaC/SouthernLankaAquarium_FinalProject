@@ -180,8 +180,8 @@ public class FishFormController {
         String id=txtFishId.getText();
         String name = txtFishName.getText();
         String qty = txtQtyOnHand.getText();
-        String normalPrice = txtNormalPrice.getText();
-        String wholeSalePrice = txtWholeSalePrice.getText();
+        double normalPrice = Double.parseDouble(txtNormalPrice.getText());
+        double wholeSalePrice = Double.parseDouble(txtWholeSalePrice.getText());
 
 
         Fish fish = new Fish(id, name, qty,normalPrice,wholeSalePrice);
@@ -214,8 +214,8 @@ public class FishFormController {
         String id=txtFishId.getText();
         String name = txtFishName.getText();
         String qty = txtQtyOnHand.getText();
-        String normalPrice = txtNormalPrice.getText();
-        String wholeSalePrice = txtWholeSalePrice.getText();
+        double normalPrice = Double.parseDouble(txtNormalPrice.getText());
+        double wholeSalePrice = Double.parseDouble(txtWholeSalePrice.getText());
 
 
         Fish fish = new Fish(id, name, qty,normalPrice,wholeSalePrice);
@@ -242,8 +242,8 @@ public class FishFormController {
             txtFishId.setText(fish.getId());
             txtFishName.setText(fish.getName());
             txtQtyOnHand.setText(fish.getQty());
-            txtNormalPrice.setText(fish.getNormalPrice());
-            txtWholeSalePrice.setText(fish.getWholesaleprice());
+            txtNormalPrice.setText(String.valueOf(fish.getNormalPrice()));
+            txtWholeSalePrice.setText(String.valueOf(fish.getWholesaleprice()));
 
         } else {
             new Alert(Alert.AlertType.INFORMATION, "Supplier not found!").show();
