@@ -6,61 +6,61 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootNode" prefHeight="761.0" prefWidth="1163.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.mainFormController">
+<AnchorPane fx:id="rootNode" prefHeight="748.0" prefWidth="1173.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.mainFormController">
    <children>
-      <ImageView fitHeight="752.0" fitWidth="1173.0" layoutY="-1.0">
+      <ImageView fitHeight="751.0" fitWidth="1173.0" layoutY="-1.0">
          <image>
             <Image url="@../image/HD-wallpaper-fish-aquarium-swimming-glass-best.jpg" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="5.0" layoutY="6.0" opacity="0.89" prefHeight="740.0" prefWidth="224.0" style="-fx-background-color: #487eb0; -fx-background-radius: 10 10 10 10;">
+      <AnchorPane layoutX="5.0" layoutY="6.0" opacity="0.89" prefHeight="733.0" prefWidth="224.0" style="-fx-background-color: #487eb0; -fx-background-radius: 10 10 10 10;">
          <children>
-            <JFXButton buttonType="RAISED" cache="true" layoutX="8.0" layoutY="82.0" prefHeight="47.0" prefWidth="207.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Dashboard">
+            <JFXButton fx:id="btnDashboard" buttonType="RAISED" cache="true" layoutX="8.0" layoutY="82.0" onAction="#btnDashboardOnAction" prefHeight="47.0" prefWidth="207.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Dashboard">
                <font>
                   <Font size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" cache="true" layoutX="9.0" layoutY="147.0" prefHeight="47.0" prefWidth="207.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Customer">
+            <JFXButton fx:id="btnCustomer" buttonType="RAISED" cache="true" layoutX="9.0" layoutY="147.0" onAction="#btnCustomerOnAction" prefHeight="47.0" prefWidth="207.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Customer">
                <font>
                   <Font size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" cache="true" layoutX="9.0" layoutY="212.0" prefHeight="47.0" prefWidth="207.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="FIsh">
+            <JFXButton fx:id="btnFish" buttonType="RAISED" cache="true" layoutX="9.0" layoutY="212.0" onAction="#btnFishOnAction" prefHeight="47.0" prefWidth="207.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="FIsh">
                <font>
                   <Font size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" cache="true" layoutX="9.0" layoutY="277.0" prefHeight="47.0" prefWidth="207.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Accessories">
+            <JFXButton fx:id="btnAccessories" buttonType="RAISED" cache="true" layoutX="9.0" layoutY="277.0" onAction="#btnAccessoriesOnAction" prefHeight="47.0" prefWidth="207.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Accessories">
                <font>
                   <Font size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" cache="true" layoutX="9.0" layoutY="339.0" prefHeight="47.0" prefWidth="207.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Orders">
+            <JFXButton fx:id="btnOrders" buttonType="RAISED" cache="true" layoutX="9.0" layoutY="339.0" onAction="#btnOrdersOnAction" prefHeight="47.0" prefWidth="207.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Orders">
                <font>
                   <Font size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" cache="true" layoutX="9.0" layoutY="405.0" prefHeight="47.0" prefWidth="207.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Employee">
+            <JFXButton fx:id="btnEmployee" buttonType="RAISED" cache="true" layoutX="9.0" layoutY="405.0" onAction="#btnEmployeeOnAction" prefHeight="47.0" prefWidth="207.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Employee">
                <font>
                   <Font size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" cache="true" layoutX="9.0" layoutY="469.0" prefHeight="47.0" prefWidth="207.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Supplier">
+            <JFXButton fx:id="btnSupplier" buttonType="RAISED" cache="true" layoutX="9.0" layoutY="469.0" onAction="#btnSupplierOnAction" prefHeight="47.0" prefWidth="207.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Supplier">
                <font>
                   <Font size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" cache="true" layoutX="8.0" layoutY="531.0" prefHeight="47.0" prefWidth="207.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Payment">
+            <JFXButton fx:id="btnPayment" buttonType="RAISED" cache="true" layoutX="8.0" layoutY="531.0" onAction="#btnPaymentOnAction" prefHeight="47.0" prefWidth="207.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Payment">
                <font>
                   <Font size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" cache="true" layoutX="8.0" layoutY="596.0" prefHeight="47.0" prefWidth="207.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Report">
+            <JFXButton fx:id="btnReport" buttonType="RAISED" cache="true" layoutX="8.0" layoutY="596.0" onAction="#btnReportOnAction" prefHeight="47.0" prefWidth="207.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Report">
                <font>
                   <Font size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="46.0" layoutY="669.0" prefHeight="38.0" prefWidth="123.0" style="-fx-background-color: #e74c3c;" text="Log Out">
+            <JFXButton fx:id="btnLogOut" buttonType="RAISED" layoutX="46.0" layoutY="669.0" onAction="#btnLogOutOnAction" prefHeight="38.0" prefWidth="123.0" style="-fx-background-color: #e74c3c;" text="Log Out">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -119,5 +119,6 @@
             </ImageView>
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="mainPane" layoutX="238.0" layoutY="9.0" opacity="0.94" prefHeight="733.0" prefWidth="928.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10; -fx-border-radius: 10 10 10 10;" />
    </children>
 </AnchorPane>

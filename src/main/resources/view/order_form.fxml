@@ -2,82 +2,130 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootNode" prefHeight="622.0" prefWidth="805.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.ResetPasswordController">
+<AnchorPane opacity="0.94" prefHeight="733.0" prefWidth="918.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10; -fx-border-radius: 10 10 10 10;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.OrderFormController">
    <children>
-      <ImageView fitHeight="632.0" fitWidth="815.0">
-         <image>
-            <Image url="@../image/HD-wallpaper-fish-aquarium-swimming-glass-best.jpg" />
-         </image>
-      </ImageView>
-      <AnchorPane layoutX="5.0" layoutY="6.0" prefHeight="620.0" prefWidth="208.0" style="-fx-background-color: #487eb0; -fx-background-radius: 10 10 10 10;">
-         <children>
-            <JFXButton cache="true" layoutX="7.0" layoutY="63.0" prefHeight="47.0" prefWidth="190.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Dashboard">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </JFXButton>
-            <Label layoutX="37.0" layoutY="11.0" prefHeight="36.0" prefWidth="135.0" text="DashBoard">
-               <font>
-                  <Font name="System Bold" size="19.0" />
-               </font>
-            </Label>
-            <JFXButton cache="true" layoutX="8.0" layoutY="121.0" prefHeight="47.0" prefWidth="190.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Customer">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </JFXButton>
-            <JFXButton cache="true" layoutX="7.0" layoutY="180.0" prefHeight="47.0" prefWidth="190.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="FIsh">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </JFXButton>
-            <JFXButton cache="true" layoutX="8.0" layoutY="238.0" prefHeight="47.0" prefWidth="190.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Accessories">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </JFXButton>
-            <JFXButton cache="true" layoutX="8.0" layoutY="296.0" prefHeight="47.0" prefWidth="190.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Orders">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </JFXButton>
-            <JFXButton cache="true" layoutX="8.0" layoutY="354.0" prefHeight="47.0" prefWidth="190.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Employee">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </JFXButton>
-            <JFXButton cache="true" layoutX="8.0" layoutY="412.0" prefHeight="47.0" prefWidth="190.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Supplier">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </JFXButton>
-            <JFXButton cache="true" layoutX="8.0" layoutY="472.0" prefHeight="47.0" prefWidth="190.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Payment">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </JFXButton>
-            <JFXButton cache="true" layoutX="7.0" layoutY="531.0" prefHeight="47.0" prefWidth="190.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" text="Report">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </JFXButton>
-            <Line endX="100.0" layoutX="-86.0" layoutY="334.0" startX="100.0" startY="-28.0" strokeWidth="2.0" />
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="223.0" layoutY="11.0" opacity="0.98" prefHeight="610.0" prefWidth="583.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;">
-         <children>
-            <Label layoutX="467.0" layoutY="14.0" text="2024/04/07" textFill="#0075d9">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
+      <TextField fx:id="txtId" layoutX="44.0" layoutY="81.0" onAction="#searchBy" prefHeight="30.0" prefWidth="317.0" promptText="Order Id" />
+      <Label layoutX="29.0" layoutY="63.0" prefHeight="16.0" prefWidth="94.0" text="Id:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnSave" buttonType="RAISED" layoutX="345.0" layoutY="283.0" onAction="#btnSaveOnAction" prefHeight="30.0" prefWidth="94.0" style="-fx-background-color: #27ae60;" text="Save">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="17.0" fitWidth="24.0">
+               <image>
+                  <Image url="@../image/icons8-save-32.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <TextField fx:id="txtDate" layoutX="494.0" layoutY="77.0" prefHeight="30.0" prefWidth="317.0" promptText="Date" />
+      <Label layoutX="474.0" layoutY="58.0" prefHeight="16.0" prefWidth="94.0" text="Date:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtHandOverDate" layoutX="44.0" layoutY="146.0" prefHeight="30.0" prefWidth="317.0" promptText="HandOverDate" />
+      <Label layoutX="29.0" layoutY="128.0" prefHeight="18.0" prefWidth="117.0" text="HandOverDate:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtQty" layoutX="494.0" layoutY="143.0" prefHeight="30.0" prefWidth="317.0" promptText="Qty" />
+      <Label layoutX="474.0" layoutY="124.0" prefHeight="16.0" prefWidth="94.0" text="Qty:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtStatus" layoutX="47.0" layoutY="220.0" prefHeight="30.0" prefWidth="317.0" promptText="Status" />
+      <Label layoutX="29.0" layoutY="199.0" prefHeight="16.0" prefWidth="94.0" text="Status:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnClear" buttonType="RAISED" layoutX="721.0" layoutY="283.0" onAction="#btnClearOnAction" prefHeight="20.0" prefWidth="94.0" style="-fx-background-color: #3498db;" text="Clear">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="17.0" fitWidth="21.0">
+               <image>
+                  <Image url="@../image/icons8-clear-50.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="btnUpdate" buttonType="RAISED" layoutX="465.0" layoutY="283.0" onAction="#btnUpdateOnAction" prefHeight="28.0" prefWidth="102.0" style="-fx-background-color: #7f8c8d;" text="Update">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="17.0" fitWidth="21.0">
+               <image>
+                  <Image url="@../image/icons8-update-64.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="btnDelete" buttonType="RAISED" layoutX="593.0" layoutY="283.0" onAction="#btnDeleteOnAction" prefHeight="20.0" prefWidth="94.0" style="-fx-background-color: #e74c3c;" text="Delete">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="19.0" fitWidth="16.0">
+               <image>
+                  <Image url="@../image/icons8-delete-24.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <TableView fx:id="tblCustomer" layoutX="90.0" layoutY="332.0" prefHeight="362.0" prefWidth="768.0">
+         <columns>
+            <TableColumn fx:id="colOrderId" prefWidth="138.0" text="Order Id" />
+            <TableColumn fx:id="colDate" prefWidth="173.0" text="Date" />
+            <TableColumn fx:id="colHandOverDate" prefWidth="168.0" text="HandOverDate" />
+            <TableColumn fx:id="colQty" prefWidth="124.0" text="Qty" />
+            <TableColumn fx:id="colStatus" prefWidth="163.0" text="Status" />
+         </columns>
+      </TableView>
+      <AnchorPane prefHeight="46.0" prefWidth="928.0" style="-fx-background-color: #1e272e;" />
+      <Label layoutX="373.0" layoutY="-11.0" prefHeight="68.0" prefWidth="251.0" text="Order FORM" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Line endX="264.7625732421875" endY="-1.0" layoutX="661.0" layoutY="47.0" startX="-661.0" startY="-1.0" stroke="#d71111" strokeWidth="1.75" />
+      <Label fx:id="lblTime" layoutX="815.0" layoutY="23.0" text="4.50" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="771.0" layoutY="23.0" prefHeight="18.0" prefWidth="46.0" text="Time:" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblDate" layoutX="815.0" layoutY="4.0" text="2024/04/07" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="771.0" layoutY="4.0" prefHeight="18.0" prefWidth="46.0" text="Date:" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

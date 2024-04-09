@@ -1,3 +1,4 @@
+
 package lk.ijse.Controller;
 
 import com.jfoenix.controls.JFXButton;
@@ -11,13 +12,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Duration;
-import lk.ijse.model.Customer;
-import lk.ijse.model.Employee;
+import lk.ijse.model.Fish;
 import lk.ijse.model.Supplier;
-import lk.ijse.model.tm.EmployeeTm;
+import lk.ijse.model.tm.FishTm;
 import lk.ijse.model.tm.SupplierTm;
-import lk.ijse.repository.CustomerRepo;
-import lk.ijse.repository.EmployeeRepo;
+import lk.ijse.repository.FishRepo;
 import lk.ijse.repository.SupplierRepo;
 
 import java.io.IOException;
@@ -27,74 +26,57 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-public class SupplierFormController {
+public class FishFormController {
 
-    @FXML
-    private Label lblDate;
-    
-    @FXML   
-    private Label lblTime;
-
-    @FXML
-    private TableColumn<?, ?> ColSupNIC;
-
-    @FXML
-    private TableColumn<?, ?> ColSupName;
+    @FXML private TableColumn<?, ?> ColFishName;
 
     @FXML
     private JFXButton btnClear;
-
     @FXML
     private JFXButton btnDelete;
-
     @FXML
     private JFXButton btnSave;
-
     @FXML
     private JFXButton btnUpdate;
-
     @FXML
-    private TableColumn<?, ?> colSUpContact;
-
+    private TableColumn<?, ?> colFishId;
     @FXML
-    private TableColumn<?, ?> colSupAddress;
-
+    private TableColumn<?, ?> colNoramalPrice;
     @FXML
-    private TableColumn<?, ?> colSupId;
-
+    private TableColumn<?, ?> colQtyOnHand;
     @FXML
-    private TableView<SupplierTm> tblSupplier;
-
+    private TableColumn<?, ?> colWholeSalePrice;
     @FXML
-    private TextField txtSupAddress;
-
+    private Label lblDate;
     @FXML
-    private TextField txtSupContact;
-
+    private Label lblTime;
     @FXML
-    private TextField txtSupId;
-
+    private TableView<FishTm> tblFish;
     @FXML
-    private TextField txtSupNIC;
-
+    private TextField txtFishId;
     @FXML
-    private TextField txtSupName;
+    private TextField txtFishName;
+    @FXML
+    private TextField txtQtyOnHand;
+    @FXML
+    private TextField txtNormalPrice;
+    @FXML
+    private TextField txtWholeSalePrice;
 
     public void initialize() throws IOException {
-       setDate();
-       setTime();
-       setCellValueFactory();
-       loadAllCustomers();
-       getCurrentOrderId();
+        setDate();
+        setTime();
+        setCellValueFactory();
+        loadAllCustomers();
+        getCurrentOrderId();
 
     }
-
     private void getCurrentOrderId() {
         try {
-            String currentId = SupplierRepo.getCurrentId();
+            String currentId = FishRepo.getCurrentId();
 
             String nextOrderId = generateNextOrderId(currentId);
-            txtSupId.setText(nextOrderId);
+            txtFishId.setText(nextOrderId);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -105,29 +87,29 @@ public class SupplierFormController {
         if(currentId != null) {
             String[] split = currentId.split("0");  //" ", "2"
             int idNum = Integer.parseInt(split[1]);
-            return "S0" + ++idNum;
+            return "F0" + ++idNum;
         }
-        return "S01";
+        return "F01";
     }
 
     private void loadAllCustomers() {
-        ObservableList<SupplierTm> obList = FXCollections.observableArrayList();
+        ObservableList<FishTm> obList = FXCollections.observableArrayList();
 
         try {
-            List<Supplier> supplierList = SupplierRepo.getAll();
-            for (Supplier supplier : supplierList) {
-                SupplierTm tm = new SupplierTm(
-                        supplier.getId(),
-                        supplier.getName(),
-                        supplier.getContact(),
-                        supplier.getNIC(),
-                        supplier.getAddress()
+            List<Fish> fishList = FishRepo.getAll();
+            for (Fish fish : fishList) {
+                FishTm tm = new FishTm(
+                       fish.getId(),
+                       fish.getName(),
+                       fish.getQty(),
+                       fish.getNormalPrice(),
+                       fish.getWholesaleprice()
                 );
 
                 obList.add(tm);
             }
 
-            tblSupplier.setItems(obList);
+            tblFish.setItems(obList);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -135,11 +117,11 @@ public class SupplierFormController {
     }
 
     private void setCellValueFactory() {
-        colSupId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        ColSupName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        colSUpContact.setCellValueFactory(new PropertyValueFactory<>("contact"));
-        ColSupNIC.setCellValueFactory(new PropertyValueFactory<>("NIC"));
-        colSupAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        colFishId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        ColFishName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colQtyOnHand.setCellValueFactory(new PropertyValueFactory<>("Qty"));
+        colNoramalPrice.setCellValueFactory(new PropertyValueFactory<>("normalPrice"));
+        colWholeSalePrice.setCellValueFactory(new PropertyValueFactory<>("wholesaleprice"));
 
 
     }
@@ -167,13 +149,22 @@ public class SupplierFormController {
     }
 
     @FXML
+    void btnClearOnAction(ActionEvent event) {
+        txtFishId.setText("");
+        txtFishName.setText("");
+        txtQtyOnHand.setText("");
+        txtNormalPrice.setText("");
+        txtWholeSalePrice.setText("");
+    }
+
+    @FXML
     void btnDeleteOnAction(ActionEvent event) {
-        String id = txtSupId.getText();
+        String id = txtFishId.getText();
 
         try {
-            boolean isDeleted = SupplierRepo.delete(id);
+            boolean isDeleted = FishRepo.delete(id);
             if(isDeleted) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Supplier deleted!").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "Fish deleted!").show();
                 clearFields();
                 setCellValueFactory();
                 loadAllCustomers();
@@ -182,23 +173,22 @@ public class SupplierFormController {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
-
     }
 
     @FXML
     void btnSaveOnAction(ActionEvent event) {
-        String id=txtSupId.getText();
-        String name = txtSupName.getText();
-        String contact = txtSupContact.getText();
-        String NIC = txtSupNIC.getText();
-        String address = txtSupAddress.getText();
+        String id=txtFishId.getText();
+        String name = txtFishName.getText();
+        String qty = txtQtyOnHand.getText();
+        String normalPrice = txtNormalPrice.getText();
+        String wholeSalePrice = txtWholeSalePrice.getText();
 
 
-        Supplier supplier = new Supplier(id, name, contact, NIC, address);
+        Fish fish = new Fish(id, name, qty,normalPrice,wholeSalePrice);
 
 
         try {
-            boolean isSaved = SupplierRepo.save(supplier);
+            boolean isSaved = FishRepo.save(fish);
             if (isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "supplier saved!!!.").show();
                 clearFields();
@@ -209,34 +199,31 @@ public class SupplierFormController {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
-
     }
 
     private void clearFields() {
-        txtSupId.setText("");
-        txtSupName.setText("");
-        txtSupContact.setText("");
-        txtSupNIC.setText("");
-        txtSupAddress.setText("");
-
+        txtFishId.setText("");
+        txtFishName.setText("");
+        txtQtyOnHand.setText("");
+        txtNormalPrice.setText("");
+        txtWholeSalePrice.setText("");
     }
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
+        String id=txtFishId.getText();
+        String name = txtFishName.getText();
+        String qty = txtQtyOnHand.getText();
+        String normalPrice = txtNormalPrice.getText();
+        String wholeSalePrice = txtWholeSalePrice.getText();
 
-        String id=txtSupId.getText();
-        String name = txtSupName.getText();
-        String contact = txtSupContact.getText();
-        String NIC = txtSupNIC.getText();
-        String address = txtSupAddress.getText();
 
-
-        Supplier supplier = new Supplier(id, name, contact, NIC, address );
+        Fish fish = new Fish(id, name, qty,normalPrice,wholeSalePrice);
 
         try {
-            boolean isUpdated = SupplierRepo.update(supplier);
+            boolean isUpdated = FishRepo.update(fish);
             if(isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Supplier updated!").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "Fish updated!").show();
                 clearFields();
                 setCellValueFactory();
                 loadAllCustomers();
@@ -244,37 +231,25 @@ public class SupplierFormController {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
-
-
     }
 
     @FXML
     void txtSearchOnAction(ActionEvent event) throws SQLException {
-        String id = txtSupId.getText();
+        String id = txtFishId.getText();
 
-        Supplier supplier = SupplierRepo.searchById(id);
-        if (supplier != null) {
-            txtSupId.setText(supplier.getId());
-            txtSupName.setText(supplier.getName());
-            txtSupContact.setText(supplier.getContact());
-            txtSupNIC.setText(supplier.getNIC());
-            txtSupAddress.setText(supplier.getAddress());
+      Fish fish = FishRepo.searchById(id);
+        if (fish != null) {
+            txtFishId.setText(fish.getId());
+            txtFishName.setText(fish.getName());
+            txtQtyOnHand.setText(fish.getQty());
+            txtNormalPrice.setText(fish.getNormalPrice());
+            txtWholeSalePrice.setText(fish.getWholesaleprice());
 
         } else {
             new Alert(Alert.AlertType.INFORMATION, "Supplier not found!").show();
         }
     }
 
-
-    @FXML
-    void btnClearOnAction(ActionEvent event) {
-        txtSupId.setText("");
-        txtSupName.setText("");
-        txtSupContact.setText("");
-        txtSupNIC.setText("");
-        txtSupAddress.setText("");
-
-    }
 
 
 }

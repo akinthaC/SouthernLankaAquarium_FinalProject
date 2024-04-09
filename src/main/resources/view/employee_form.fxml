@@ -11,9 +11,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane opacity="0.94" prefHeight="733.0" prefWidth="918.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10; -fx-border-radius: 10 10 10 10;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane opacity="0.94" prefHeight="733.0" prefWidth="918.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10; -fx-border-radius: 10 10 10 10;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.EmployeeFormController">
    <children>
-      <TextField fx:id="txtEmpId" layoutX="44.0" layoutY="81.0" prefHeight="30.0" prefWidth="317.0" promptText="Employee Id" />
+      <TextField fx:id="txtEmpId" layoutX="44.0" layoutY="81.0" onAction="#txtSearchOnAction" prefHeight="30.0" prefWidth="317.0" promptText="Employee Id" />
       <Label layoutX="29.0" layoutY="63.0" prefHeight="16.0" prefWidth="94.0" text="Id:">
          <font>
             <Font size="14.0" />
@@ -55,7 +55,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btnClear" buttonType="RAISED" layoutX="721.0" layoutY="283.0" onAction="#btnDeleteOnAction" prefHeight="20.0" prefWidth="94.0" style="-fx-background-color: #3498db;" text="Clear">
+      <JFXButton fx:id="btnClear" buttonType="RAISED" layoutX="721.0" layoutY="283.0" onAction="#btnClearOnAction" prefHeight="20.0" prefWidth="94.0" style="-fx-background-color: #3498db;" text="Clear">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -91,7 +91,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <TableView fx:id="tblSupplier" layoutX="69.0" layoutY="332.0" prefHeight="362.0" prefWidth="784.0">
+      <TableView fx:id="tblEmployee" layoutX="69.0" layoutY="332.0" prefHeight="362.0" prefWidth="784.0">
          <columns>
             <TableColumn fx:id="colEmpId" prefWidth="142.0" text="Employee Id" />
             <TableColumn fx:id="ColEmpName" prefWidth="182.0" text="Employee Name" />
@@ -100,17 +100,29 @@
             <TableColumn fx:id="colEmpAddress" prefWidth="150.0" text="Address" />
          </columns>
       </TableView>
-      <AnchorPane prefHeight="46.0" prefWidth="928.0" style="-fx-background-color: #1e272e;" />
-      <Label layoutX="820.0" layoutY="4.0" text="2024/04/07" textFill="WHITE">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label layoutX="761.0" layoutY="4.0" prefHeight="18.0" prefWidth="46.0" text="Date:" textFill="WHITE">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
+      <AnchorPane prefHeight="46.0" prefWidth="928.0" style="-fx-background-color: #1e272e;">
+         <children>
+            <Label fx:id="lblTime" layoutX="814.0" layoutY="22.0" text="4.50" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="770.0" layoutY="22.0" prefHeight="18.0" prefWidth="46.0" text="Time:" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblDate" layoutX="814.0" layoutY="3.0" text="2024/04/07" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="770.0" layoutY="3.0" prefHeight="18.0" prefWidth="46.0" text="Date:" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
       <Label layoutX="369.0" layoutY="-11.0" prefHeight="68.0" prefWidth="251.0" text="Employee FORM" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />

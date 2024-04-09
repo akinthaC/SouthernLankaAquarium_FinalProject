@@ -47,7 +47,7 @@
                   <Font name="System Bold" size="19.0" />
                </font>
             </JFXButton>
-            <Hyperlink layoutX="265.0" layoutY="332.0" onAction="#hyperlinkFrogetPasswordOnAction" prefHeight="27.0" prefWidth="172.0" text="Froget Password?">
+            <Hyperlink layoutX="265.0" layoutY="332.0" onAction="#hyperlinkFrogetPasswordOnAction" prefHeight="27.0" prefWidth="172.0" text="Frogot Password?">
                <font>
                   <Font size="15.0" />
                </font>

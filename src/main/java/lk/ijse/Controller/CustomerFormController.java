@@ -1,14 +1,44 @@
 package lk.ijse.Controller;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Duration;
+import lk.ijse.model.Customer;
+import lk.ijse.model.tm.CustomerTm;
+import lk.ijse.repository.CustomerRepo;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 public class CustomerFormController {
 
+
+    @FXML
+    private ToggleGroup Customer;
+
+    @FXML
+    private RadioButton NormalCustomer;
+
+    @FXML
+    private RadioButton WholesaleCustomer;
+
+    @FXML
+    private Label lblDate;
+
+    @FXML
+    private Label lblTime;
     @FXML
     private TableColumn<?, ?> ColCusName;
 
@@ -40,7 +70,7 @@ public class CustomerFormController {
     private TableColumn<?, ?> colType;
 
     @FXML
-    private TableView<?> tblCustomer;
+    private TableView<CustomerTm> tblCustomer;
 
     @FXML
     private TextField txtAddress;
@@ -60,19 +90,198 @@ public class CustomerFormController {
     @FXML
     private TextField txtType;
 
+    public void initialize() throws IOException {
+        setDate();
+        setTime();
+        setCellValueFactory();
+        loadAllCustomers();
+        getCurrentOrderId();
+
+
+    }
+
+    private void getCurrentOrderId() {
+        try {
+            String currentId = CustomerRepo.getCurrentId();
+
+            String nextOrderId = generateNextOrderId(currentId);
+            txtId.setText(nextOrderId);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private String generateNextOrderId(String currentId) {
+        if(currentId != null) {
+            String[] split = currentId.split("0");  //" ", "2"
+            int idNum = Integer.parseInt(split[1]);
+            return "C0" + ++idNum;
+        }
+        return "O1";
+    }
+
+    private void loadAllCustomers() {
+        ObservableList<CustomerTm> obList = FXCollections.observableArrayList();
+
+        try {
+            List<Customer> customerList = CustomerRepo.getAll();
+            for (Customer customer : customerList) {
+                CustomerTm tm = new CustomerTm(
+                        customer.getId(),
+                        customer.getName(),
+                        customer.getContact(),
+                        customer.getNIC(),
+                        customer.getAddress(),
+                        customer.getType()
+                );
+
+                obList.add(tm);
+            }
+
+            tblCustomer.setItems(obList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void setCellValueFactory() {
+        colCusId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        ColCusName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colContact.setCellValueFactory(new PropertyValueFactory<>("address"));
+        ColNIC.setCellValueFactory(new PropertyValueFactory<>("contact"));
+        colAddress.setCellValueFactory(new PropertyValueFactory<>("NIC"));
+        colType.setCellValueFactory(new PropertyValueFactory<>("type"));
+
+    }
+
+    private void setTime() {
+        Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
+
+            LocalTime currentTime = LocalTime.now();
+
+            DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
+            String formattedTime = currentTime.format(timeFormatter);
+
+            lblTime.setText(formattedTime);
+        }), new KeyFrame(Duration.seconds(1)));
+
+        clock.setCycleCount(Animation.INDEFINITE);
+
+        clock.play();
+    }
+
+    private void setDate() {
+        LocalDate now = LocalDate.now();
+        lblDate.setText(String.valueOf(now));
+
+    }
+
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
+        String id = txtId.getText();
+
+        try {
+            boolean isDeleted = CustomerRepo.delete(id);
+            if(isDeleted) {
+                new Alert(Alert.AlertType.CONFIRMATION, "customer deleted!").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
 
     }
 
     @FXML
     void btnSaveOnAction(ActionEvent event) {
+        String id=txtId.getText();
+        String name = txtName.getText();
+        String contact = txtContact.getText();
+        String NIC = txtNIC.getText();
+        String address = txtAddress.getText();
+        String type = txtType.getText();
 
+        Customer customer = new Customer(id, name, contact, NIC, address, type);
+
+
+        try {
+            boolean isSaved = CustomerRepo.save(customer);
+            if (isSaved) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Coustomer saved!!!.").show();
+                clearFields();
+            }
+        } catch (SQLException e) {
+           new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
+        String id=txtId.getText();
+        String name = txtName.getText();
+        String contact = txtContact.getText();
+        String NIC = txtNIC.getText();
+        String address = txtAddress.getText();
+        String type = txtType.getText();
+
+        Customer customer = new Customer(id, name, contact, NIC, address, type);
+
+        try {
+            boolean isUpdated = CustomerRepo.update(customer);
+            if(isUpdated) {
+                new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
+                clearFields();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
 
     }
+
+    @FXML
+    void btnClearOnAction(ActionEvent event) {
+        txtId.setText("");
+        txtName.setText("");
+        txtAddress.setText("");
+        txtContact.setText("");
+        txtNIC.setText("");
+        txtType.setText("");
+
+    }
+
+
+    @FXML
+    void searchBy(ActionEvent event) throws SQLException {
+        String id = txtId.getText();
+
+        Customer customer = CustomerRepo.searchById(id);
+        if (customer != null) {
+            txtId.setText(customer.getId());
+            txtName.setText(customer.getName());
+            txtContact.setText(customer.getContact());
+            txtNIC.setText(customer.getNIC());
+            txtAddress.setText(customer.getAddress());
+            txtType.setText(customer.getType());
+
+        } else {
+            new Alert(Alert.AlertType.INFORMATION, "customer not found!").show();
+        }
+    }
+
+
+
+    private void clearFields() {
+        txtId.setText("");
+        txtName.setText("");
+        txtAddress.setText("");
+        txtContact.setText("");
+        txtNIC.setText("");
+        txtType.setText("");
+    }
+
+
+
+
+
 
 }

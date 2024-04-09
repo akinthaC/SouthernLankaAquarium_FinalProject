@@ -1,21 +1,27 @@
-package lk.ijse.model;
+package lk.ijse.model.tm;
 
-public class customer {
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
+public class CustomerTm {
+
     private String id;
     private String name;
-    private String address;
     private String contact;
     private String NIC;
+    private String address;
     private String Type;
 
-    public customer() {
-    }
-    public customer(String id, String name, String address, String contact, String NIC, String type) {
+
+    public CustomerTm(String id, String name, String contact, String NIC, String address, String type) {
         this.id = id;
         this.name = name;
-        this.address = address;
         this.contact = contact;
         this.NIC = NIC;
+        this.address = address;
         Type = type;
     }
 
@@ -35,14 +41,6 @@ public class customer {
         this.name = name;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public String getContact() {
         return contact;
     }
@@ -59,6 +57,14 @@ public class customer {
         this.NIC = NIC;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public String getType() {
         return Type;
     }
@@ -69,12 +75,12 @@ public class customer {
 
     @Override
     public String toString() {
-        return "customer{" +
+        return "CustomerTm{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
                 ", contact='" + contact + '\'' +
                 ", NIC='" + NIC + '\'' +
+                ", address='" + address + '\'' +
                 ", Type='" + Type + '\'' +
                 '}';
     }
