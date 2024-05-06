@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootNode" prefHeight="622.0" prefWidth="805.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.NewLoginFormController">
+   <children>
+      <ImageView fitHeight="713.0" fitWidth="1020.0">
+         <image>
+            <Image url="@../image/Blue-colour-betta-fish_Jeravano_shutterstock.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="466.0" opacity="0.82" prefHeight="713.0" prefWidth="539.0" style="-fx-background-color: #ecf0f1;">
+         <children>
+            <Label layoutX="203.0" layoutY="510.0" text="|" />
+            <Label layoutX="366.0" layoutY="509.0" text="|" />
+            <TextField fx:id="txtUserName" layoutX="112.0" layoutY="193.0" prefHeight="48.0" prefWidth="353.0" promptText="UserName">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <Label fx:id="labaleLogin" layoutX="101.0" layoutY="48.0" prefHeight="68.0" prefWidth="453.0">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="84.0" layoutY="163.0" prefHeight="16.0" prefWidth="94.0" text="UserName:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="84.0" layoutY="258.0" prefHeight="16.0" prefWidth="94.0" text="Password:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="btnLogin" layoutX="201.0" layoutY="370.0" onAction="#btnLoginOnAction" prefHeight="41.0" prefWidth="152.0" style="-fx-background-color: #7f8c8d;" text="LOGIN">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </JFXButton>
+            <Hyperlink layoutX="214.0" layoutY="506.0" onAction="#hyperlinkFrogetPasswordOnAction" prefHeight="27.0" prefWidth="143.0" text="Frogot Password?">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Hyperlink>
+            <Line endX="75.0" layoutX="478.0" layoutY="519.0" opacity="0.77" startX="-108.0" strokeWidth="0.5" />
+            <Line endX="239.0" layoutX="-40.0" layoutY="519.0" opacity="0.77" startX="44.0" strokeWidth="0.5" />
+            <PasswordField fx:id="txtPassword" layoutX="112.0" layoutY="278.0" prefHeight="48.0" prefWidth="353.0" promptText="Password">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </PasswordField>
+         </children>
+      </AnchorPane>
+      <Label fx:id="SS" layoutX="17.0" layoutY="273.0" prefHeight="56.0" prefWidth="45.0" text="S" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="39.0" />
+         </font>
+      </Label>
+      <Label fx:id="SE" layoutX="249.0" layoutY="273.0" prefHeight="56.0" prefWidth="27.0" text="E" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="39.0" />
+         </font>
+      </Label>
+      <Label fx:id="SO" layoutX="62.0" layoutY="273.0" prefHeight="56.0" prefWidth="76.0" text="O" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="39.0" />
+         </font>
+      </Label>
+      <Label fx:id="SU" layoutX="110.0" layoutY="273.0" prefHeight="56.0" prefWidth="39.0" text="U" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="39.0" />
+         </font>
+      </Label>
+      <Label fx:id="ST" layoutX="156.0" layoutY="273.0" prefHeight="56.0" prefWidth="27.0" text="T" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="39.0" />
+         </font>
+      </Label>
+      <Label fx:id="SH" layoutX="202.0" layoutY="277.0" prefHeight="48.0" prefWidth="39.0" text="H" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="39.0" />
+         </font>
+      </Label>
+      <Label fx:id="SR" layoutX="291.0" layoutY="273.0" prefHeight="56.0" prefWidth="27.0" text="R" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="39.0" />
+         </font>
+      </Label>
+      <Label fx:id="SN" layoutX="340.0" layoutY="273.0" prefHeight="56.0" prefWidth="27.0" text="N" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="39.0" />
+         </font>
+      </Label>
+      <Label fx:id="LL" layoutX="71.0" layoutY="325.0" prefHeight="56.0" prefWidth="39.0" text="L" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="39.0" />
+         </font>
+      </Label>
+      <Label fx:id="LAA" layoutX="110.0" layoutY="325.0" prefHeight="56.0" prefWidth="39.0" text="A" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="39.0" />
+         </font>
+      </Label>
+      <Label fx:id="LN" layoutX="155.0" layoutY="325.0" prefHeight="56.0" prefWidth="39.0" text="N" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="39.0" />
+         </font>
+      </Label>
+      <Label fx:id="LK" layoutX="202.0" layoutY="325.0" prefHeight="56.0" prefWidth="39.0" text="k" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="39.0" />
+         </font>
+      </Label>
+      <Label fx:id="LA" layoutX="250.0" layoutY="325.0" prefHeight="56.0" prefWidth="39.0" text="A" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="39.0" />
+         </font>
+      </Label>
+      <Label fx:id="AA" layoutX="71.0" layoutY="384.0" prefHeight="56.0" prefWidth="39.0" text="A" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="39.0" />
+         </font>
+      </Label>
+      <Label fx:id="AQ" layoutX="119.0" layoutY="384.0" prefHeight="56.0" prefWidth="39.0" text="Q" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="39.0" />
+         </font>
+      </Label>
+      <Label fx:id="AU" layoutX="164.0" layoutY="384.0" prefHeight="56.0" prefWidth="39.0" text="U" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="39.0" />
+         </font>
+      </Label>
+      <Label fx:id="AAA" layoutX="211.0" layoutY="384.0" prefHeight="56.0" prefWidth="39.0" text="A" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="39.0" />
+         </font>
+      </Label>
+      <Label fx:id="AR" layoutX="255.0" layoutY="384.0" prefHeight="56.0" prefWidth="39.0" text="R" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="39.0" />
+         </font>
+      </Label>
+      <Label fx:id="AI" layoutX="301.0" layoutY="384.0" prefHeight="56.0" prefWidth="39.0" text="I" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="39.0" />
+         </font>
+      </Label>
+      <Label fx:id="AUU" layoutX="340.0" layoutY="384.0" prefHeight="56.0" prefWidth="39.0" text="U" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="39.0" />
+         </font>
+      </Label>
+      <Label fx:id="AM" layoutX="385.0" layoutY="384.0" prefHeight="56.0" prefWidth="39.0" text="M" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="39.0" />
+         </font>
+      </Label>
+      <Line endX="100.0" endY="544.0" layoutX="338.0" layoutY="168.0" startX="100.0" startY="-168.0" stroke="WHITE" strokeWidth="2.0" />
+      <Line endX="100.0" endY="544.0" layoutX="353.0" layoutY="168.0" startX="100.0" startY="-168.0" stroke="WHITE" strokeWidth="2.0" />
+   </children>
+</AnchorPane>
