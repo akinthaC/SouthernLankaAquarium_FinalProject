@@ -130,4 +130,18 @@ public class SupplierRepo {
         return idList;
         }
 
+    public static String getId(String value) throws SQLException {
+        String sql = "SELECT supId FROM supplier WHERE supId = ?";
+
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
+        pstm.setObject(1, value);
+
+        ResultSet resultSet = pstm.executeQuery();
+        if (resultSet.next()) {
+            String supID = resultSet.getString(1);
+            return supID;
+        }
+        return null;
+    }
 }

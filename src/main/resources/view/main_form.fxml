@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -8,9 +9,9 @@
 
 <AnchorPane fx:id="rootNode" prefHeight="748.0" prefWidth="1173.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.mainFormController">
    <children>
-      <ImageView fitHeight="751.0" fitWidth="1173.0" layoutY="-1.0">
+      <ImageView fitHeight="748.0" fitWidth="1173.0">
          <image>
-            <Image url="@../image/HD-wallpaper-fish-aquarium-swimming-glass-best.jpg" />
+            <Image url="@../image/Blue-colour-betta-fish_Jeravano_shutterstock.jpg" />
          </image>
       </ImageView>
       <AnchorPane layoutX="5.0" layoutY="6.0" opacity="0.89" prefHeight="733.0" prefWidth="224.0" style="-fx-background-color: #487eb0; -fx-background-radius: 10 10 10 10;">
@@ -119,6 +120,18 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="mainPane" layoutX="238.0" layoutY="9.0" opacity="0.94" prefHeight="733.0" prefWidth="928.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10; -fx-border-radius: 10 10 10 10;" />
+      <AnchorPane fx:id="mainPane" layoutX="238.0" layoutY="8.0" opacity="0.87" prefHeight="733.0" prefWidth="928.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10; -fx-border-radius: 10 10 10 10;">
+         <children>
+            <Label fx:id="lblWelcome" layoutX="202.0" layoutY="28.0" prefHeight="157.0" prefWidth="508.0">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblWelcome1" layoutX="190.0" layoutY="113.0" prefHeight="68.0" prefWidth="671.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
    </children>
 </AnchorPane>

@@ -34,10 +34,10 @@ public class PlaceOrderRepo {
                     for (OrderDetail od : pl.getOdlist()){
                         if (od.getFishId() == null) {
 
-                            isSave =accessoriesOrderRepo.save(od.getOrdId(),od.getAccId(),od.getStatus(),od.getQty(),od.getDescription());
+                            isSave =accessoriesOrderRepo.save(od.getOrdId(),od.getAccId(),od.getStatus(),od.getQty(),od.getDescription(),od.getDate());
 
                         } else {
-                            isSave =fishOrderRepo.save(od.getOrdId(),od.getFishId(),od.getStatus(),od.getQty(),od.getDescription());
+                            isSave =fishOrderRepo.save(od.getOrdId(),od.getFishId(),od.getStatus(),od.getQty(),od.getDescription(),od.getDate());
                         }
                     }
                     if (isSave ) {

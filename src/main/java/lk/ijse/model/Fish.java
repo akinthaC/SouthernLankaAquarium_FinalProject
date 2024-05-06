@@ -16,4 +16,5 @@ public class Fish {
     private double normalPrice;
     private double wholesaleprice;
 
+
 }

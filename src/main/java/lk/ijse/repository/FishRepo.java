@@ -1,9 +1,7 @@
 package lk.ijse.repository;
 
 import lk.ijse.Db.DbConnection;
-import lk.ijse.model.Employee;
 import lk.ijse.model.Fish;
-import lk.ijse.model.OrderDetail;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -61,6 +59,7 @@ public class FishRepo {
                 String qty=resultSet.getString(3);
                 double normalPrice = Double.parseDouble(resultSet.getString(4));
                 double WholeSalePrice = Double.parseDouble(resultSet.getString(5));
+
 
                 Fish fish = new Fish(fishId, name, qty, normalPrice, WholeSalePrice);
 
@@ -158,5 +157,20 @@ public class FishRepo {
         pstm.setString(2, fishId);
 
         return pstm.executeUpdate() > 0;
+    }
+
+    public static boolean updateSupFish(int qty, String id) throws SQLException {
+
+        String sql = "UPDATE fish SET qtyOnHand = qtyOnHand + ? WHERE fishId = ?";
+
+        Connection connection = DbConnection.getInstance().getConnection();
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        pstm.setInt(1, qty);
+        pstm.setString(2, id);
+
+        return pstm.executeUpdate() > 0;
+
+
     }
 }

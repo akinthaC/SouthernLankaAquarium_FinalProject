@@ -98,15 +98,15 @@ public class PaymentFormController {
         setCellValueFactory();
         loadAllCustomers();
         getCurrentOrderId();
-        //getSupplierIds();
+        getOrderIds();
 
     }
 
-   /* private void getSupplierIds() {
+    private void getOrderIds() {
         ObservableList<String> obList = FXCollections.observableArrayList();
 
         try {
-            List<String> idList = SupplierRepo.getIds();
+            List<String> idList = OrderRepo.getIds();
 
             for(String id : idList) {
                 obList.add(id);
@@ -117,7 +117,7 @@ public class PaymentFormController {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }*/
+    }
 
     private void getCurrentOrderId() {
         try {

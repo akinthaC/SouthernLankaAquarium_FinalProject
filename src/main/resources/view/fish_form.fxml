@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane opacity="0.94" prefHeight="733.0" prefWidth="918.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10; -fx-border-radius: 10 10 10 10;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.FishFormController">
+<AnchorPane fx:id="rootNode" opacity="0.94" prefHeight="733.0" prefWidth="918.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10; -fx-border-radius: 10 10 10 10;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.FishFormController">
    <children>
       <TextField fx:id="txtFishId" layoutX="44.0" layoutY="81.0" onAction="#txtSearchOnAction" prefHeight="30.0" prefWidth="317.0" promptText="Fish Id" />
       <Label layoutX="29.0" layoutY="63.0" prefHeight="16.0" prefWidth="94.0" text="Id:">
@@ -19,7 +20,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btnSave" buttonType="RAISED" layoutX="345.0" layoutY="283.0" onAction="#btnSaveOnAction" prefHeight="30.0" prefWidth="94.0" style="-fx-background-color: #27ae60;" text="Save">
+      <JFXButton fx:id="btnSave" buttonType="RAISED" layoutX="345.0" layoutY="334.0" onAction="#btnSaveOnAction" prefHeight="30.0" prefWidth="94.0" style="-fx-background-color: #27ae60;" text="Save">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -55,7 +56,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btnClear" buttonType="RAISED" layoutX="721.0" layoutY="283.0" onAction="#btnClearOnAction" prefHeight="20.0" prefWidth="94.0" style="-fx-background-color: #3498db;" text="Clear">
+      <JFXButton fx:id="btnClear" buttonType="RAISED" layoutX="721.0" layoutY="334.0" onAction="#btnClearOnAction" prefHeight="20.0" prefWidth="94.0" style="-fx-background-color: #3498db;" text="Clear">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -67,7 +68,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="btnUpdate" buttonType="RAISED" layoutX="465.0" layoutY="283.0" onAction="#btnUpdateOnAction" prefHeight="28.0" prefWidth="102.0" style="-fx-background-color: #7f8c8d;" text="Update">
+      <JFXButton fx:id="btnUpdate" buttonType="RAISED" layoutX="465.0" layoutY="334.0" onAction="#btnUpdateOnAction" prefHeight="28.0" prefWidth="102.0" style="-fx-background-color: #7f8c8d;" text="Update">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -79,7 +80,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="btnDelete" buttonType="RAISED" layoutX="599.0" layoutY="283.0" onAction="#btnDeleteOnAction" prefHeight="20.0" prefWidth="94.0" style="-fx-background-color: #e74c3c;" text="Delete">
+      <JFXButton fx:id="btnDelete" buttonType="RAISED" layoutX="599.0" layoutY="334.0" onAction="#btnDeleteOnAction" prefHeight="20.0" prefWidth="94.0" style="-fx-background-color: #e74c3c;" text="Delete">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -91,13 +92,13 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <TableView fx:id="tblFish" layoutX="69.0" layoutY="332.0" prefHeight="362.0" prefWidth="784.0">
+      <TableView fx:id="tblFish" layoutX="22.0" layoutY="395.0" prefHeight="299.0" prefWidth="583.0">
          <columns>
-            <TableColumn fx:id="colFishId" prefWidth="142.0" text="Fish Id" />
-            <TableColumn fx:id="ColFishName" prefWidth="182.0" text="Fish Name" />
-            <TableColumn fx:id="colQtyOnHand" prefWidth="145.0" text="Qty OnHand" />
-            <TableColumn fx:id="colNoramalPrice" prefWidth="164.0" text="Normal Price" />
-            <TableColumn fx:id="colWholeSalePrice" prefWidth="150.0" text="WholeSale Price" />
+            <TableColumn fx:id="colFishId" prefWidth="87.0" text="Fish Id" />
+            <TableColumn fx:id="ColFishName" prefWidth="115.0" text="Fish Name" />
+            <TableColumn fx:id="colQtyOnHand" prefWidth="117.0" text="Qty OnHand" />
+            <TableColumn fx:id="colNoramalPrice" prefWidth="122.0" text="Normal Price" />
+            <TableColumn fx:id="colWholeSalePrice" minWidth="0.0" prefWidth="140.0" text="WholeSale Price" />
          </columns>
       </TableView>
       <AnchorPane prefHeight="46.0" prefWidth="928.0" style="-fx-background-color: #1e272e;">
@@ -130,5 +131,38 @@
          </font>
       </Label>
       <Line endX="264.7625732421875" endY="-1.0" layoutX="661.0" layoutY="47.0" startX="-661.0" startY="-1.0" stroke="#d71111" strokeWidth="1.75" />
+      <JFXComboBox fx:id="cmbSup" layoutX="497.0" layoutY="211.0" onAction="#cmbSupOnAction" prefHeight="24.0" prefWidth="81.0" />
+      <Label layoutX="474.0" layoutY="190.0" prefHeight="18.0" prefWidth="120.0" text="Supplier Id:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="607.0" layoutY="190.0" prefHeight="18.0" prefWidth="120.0" text="Supplier Name:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblSup" layoutX="611.0" layoutY="215.0" prefHeight="24.0" prefWidth="102.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tblAccSupFIsh" layoutX="634.0" layoutY="394.0" prefHeight="299.0" prefWidth="227.0">
+        <columns>
+          <TableColumn fx:id="colSupId" prefWidth="75.0" text="SupId" />
+          <TableColumn fx:id="colFishId2" prefWidth="75.0" text="FishId" />
+            <TableColumn fx:id="colQty" prefWidth="75.0" text="Qty" />
+        </columns>
+      </TableView>
+      <AnchorPane layoutX="720.0" layoutY="189.0" opacity="0.81" prefHeight="40.0" prefWidth="196.0" style="-fx-background-color: #ffeaa7;">
+         <children>
+            <Label layoutX="1.0" layoutY="26.0" prefHeight="18.0" prefWidth="195.0" text="(Click Here to add new qty)">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="btnAdd" layoutX="59.0" layoutY="2.0" onAction="#btnAddOnAction" prefHeight="24.0" prefWidth="81.0" style="-fx-background-color: #00b894;" text="Add" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

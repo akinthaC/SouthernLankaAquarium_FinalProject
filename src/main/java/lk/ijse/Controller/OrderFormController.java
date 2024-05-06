@@ -287,6 +287,9 @@ public class OrderFormController {
 
         JFXButton btnRemove = new JFXButton("remove");
         btnRemove.setCursor(Cursor.HAND);
+        btnRemove.setStyle("-fx-background-color: #e32323; -fx-text-fill: white; " +
+                "-fx-background-radius: 30; -fx-shape: 'M 0 20 Q 0 0 20 0 L 80 0 Q 100 0 100 20 L 100 80 Q 100 100 80 100 L 20 100 Q 0 100 0 80 L 0 20 Z'; " +
+                "-fx-border-color: black; -fx-border-width: 2;");
 
         btnRemove.setOnAction((e) -> {
             ButtonType yes = new ButtonType("yes", ButtonBar.ButtonData.OK_DONE);
@@ -371,7 +374,8 @@ public class OrderFormController {
                     accessoriesId,
                     tm.getQty(),
                     tm.getStatus(),
-                    tm.getDescription()
+                    tm.getDescription(),
+                    date
 
             );
 

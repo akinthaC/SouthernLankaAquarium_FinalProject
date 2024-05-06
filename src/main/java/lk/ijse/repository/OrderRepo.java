@@ -7,6 +7,7 @@ import lk.ijse.model.Order;
 import lk.ijse.model.OrderDetail;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderRepo {
@@ -51,21 +52,20 @@ public class OrderRepo {
         return obList;
     }
 
-    public static boolean save(String id, Date date, Date handOverDate, int qty, String status, String cusId, String description) throws SQLException {
-        String sql = "INSERT INTO orders VALUES(?,?,?,?,?,?,?)";
 
+    public static List<String> getIds() throws SQLException {
+        String sql = "SELECT orderId FROM orders";
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
 
-        Connection connection = DbConnection.getInstance().getConnection();
-        PreparedStatement pstm = connection.prepareStatement(sql);
+        List<String> idList = new ArrayList<>();
 
-        pstm.setObject(1,id);
-        pstm.setObject(2, date);
-        pstm.setObject(3, handOverDate);
-        pstm.setObject(4, qty);
-        pstm.setObject(5,status);
-        pstm.setObject(6,cusId );
-        pstm.setObject(7, description);
+        ResultSet resultSet = pstm.executeQuery();
+        while (resultSet.next()) {
+            String id = resultSet.getString(1);
+            idList.add(id);
+        }
+        return idList;
 
-        return pstm.executeUpdate() > 0;
     }
 }

@@ -3,12 +3,13 @@ package lk.ijse.repository;
 import lk.ijse.Db.DbConnection;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class accessoriesOrderRepo {
-    public static boolean save(String ordId, String accId, String status, int qty, String description) throws SQLException {
-        String sql = "INSERT INTO accessories_order VALUES(?,?,?,?,?)";
+    public static boolean save(String ordId, String accId, String status, int qty, String description, Date date) throws SQLException {
+        String sql = "INSERT INTO accessories_order VALUES(?,?,?,?,?,?)";
 
 
         Connection connection = DbConnection.getInstance().getConnection();
@@ -19,6 +20,7 @@ public class accessoriesOrderRepo {
         pstm.setObject(3, qty);
         pstm.setObject(4, description);
         pstm.setObject(5, status);
+        pstm.setObject(6, date);
 
 
         return pstm.executeUpdate() > 0;

@@ -16,4 +16,5 @@ public class Accessories {
     private String Qty;
     private String normalPrice;
     private String wholesaleprice;
+
 }
