@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
 import lk.ijse.model.Accessories;
 import lk.ijse.model.Order;
@@ -22,6 +23,7 @@ import lk.ijse.repository.AccessoriesRepo;
 import lk.ijse.repository.OrderRepo;
 import lk.ijse.repository.PaymentRepo;
 import lk.ijse.repository.SupplierRepo;
+import lk.ijse.utill.Regex;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -321,4 +323,19 @@ public class PaymentFormController {
 
     }
 
+    public void txtIdOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.utill.TextField.ID,txtPaymentId);
+    }
+
+    public void txtDateOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.utill.TextField.DATE,txtDate);
+    }
+
+    public void txtTotalAmountOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.utill.TextField.AMOUNT,txtTotal);
+    }
+
+    public void txtAdvanceOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.utill.TextField.AMOUNT,txtAdvance);
+    }
 }

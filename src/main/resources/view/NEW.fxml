@@ -22,7 +22,7 @@
          <children>
             <Label layoutX="203.0" layoutY="510.0" text="|" />
             <Label layoutX="366.0" layoutY="509.0" text="|" />
-            <TextField fx:id="txtUserName" layoutX="112.0" layoutY="193.0" prefHeight="48.0" prefWidth="353.0" promptText="UserName">
+            <TextField fx:id="txtUserName" layoutX="112.0" layoutY="193.0" onKeyReleased="#txtLoginUserNameOnKeyReleased" prefHeight="48.0" prefWidth="353.0" promptText="UserName">
                <font>
                   <Font size="15.0" />
                </font>
@@ -54,7 +54,7 @@
             </Hyperlink>
             <Line endX="75.0" layoutX="478.0" layoutY="519.0" opacity="0.77" startX="-108.0" strokeWidth="0.5" />
             <Line endX="239.0" layoutX="-40.0" layoutY="519.0" opacity="0.77" startX="44.0" strokeWidth="0.5" />
-            <PasswordField fx:id="txtPassword" layoutX="112.0" layoutY="278.0" prefHeight="48.0" prefWidth="353.0" promptText="Password">
+            <PasswordField fx:id="txtPassword" layoutX="112.0" layoutY="278.0" onKeyReleased="#txtLoginPasswordOnKeyReleased" prefHeight="48.0" prefWidth="353.0" promptText="Password">
                <font>
                   <Font size="15.0" />
                </font>

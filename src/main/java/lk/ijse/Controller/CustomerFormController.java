@@ -1,6 +1,7 @@
 package lk.ijse.Controller;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -10,10 +11,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
 import lk.ijse.model.Customer;
 import lk.ijse.model.tm.CustomerTm;
 import lk.ijse.repository.CustomerRepo;
+import lk.ijse.repository.OrderRepo;
+import lk.ijse.utill.Regex;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -88,7 +92,7 @@ public class CustomerFormController {
     private TextField txtName;
 
     @FXML
-    private TextField txtType;
+    private JFXComboBox<String> cmbType;
 
     public void initialize() throws IOException {
         setDate();
@@ -96,6 +100,23 @@ public class CustomerFormController {
         setCellValueFactory();
         loadAllCustomers();
         getCurrentOrderId();
+        getType();
+
+
+    }
+
+    private void getType() {
+
+        ObservableList<String> obList = FXCollections.observableArrayList();
+
+
+        List<String> idList = CustomerRepo.getStatus();
+
+        for(String value : idList) {
+            obList.add(value);
+        }
+
+        cmbType.setItems(obList);
 
 
     }
@@ -199,7 +220,7 @@ public class CustomerFormController {
         String contact = txtContact.getText();
         String NIC = txtNIC.getText();
         String address = txtAddress.getText();
-        String type = txtType.getText();
+        String type = (String) cmbType.getValue();
 
         Customer customer = new Customer(id, name, contact, NIC, address, type);
 
@@ -222,7 +243,7 @@ public class CustomerFormController {
         String contact = txtContact.getText();
         String NIC = txtNIC.getText();
         String address = txtAddress.getText();
-        String type = txtType.getText();
+        String type = (String) cmbType.getValue();
 
         Customer customer = new Customer(id, name, contact, NIC, address, type);
 
@@ -245,7 +266,7 @@ public class CustomerFormController {
         txtAddress.setText("");
         txtContact.setText("");
         txtNIC.setText("");
-        txtType.setText("");
+        cmbType.getItems().clear();
 
     }
 
@@ -261,7 +282,7 @@ public class CustomerFormController {
             txtContact.setText(customer.getContact());
             txtNIC.setText(customer.getNIC());
             txtAddress.setText(customer.getAddress());
-            txtType.setText(customer.getType());
+            cmbType.setValue(customer.getType());
 
         } else {
             new Alert(Alert.AlertType.INFORMATION, "customer not found!").show();
@@ -276,12 +297,27 @@ public class CustomerFormController {
         txtAddress.setText("");
         txtContact.setText("");
         txtNIC.setText("");
-        txtType.setText("");
+        cmbType.getItems().clear();
     }
 
 
+    public void txtIdOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.utill.TextField.ID,txtId);
+    }
 
+    public void txtnameOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.utill.TextField.NAME,txtName);
+    }
 
+    public void txtContactOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.utill.TextField.CONTACT,txtContact);
+    }
 
+    public void txtNicOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.utill.TextField.NIC,txtNIC);
+    }
 
+    public void txtAddressOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.utill.TextField.ADDRESS,txtAddress);
+    }
 }

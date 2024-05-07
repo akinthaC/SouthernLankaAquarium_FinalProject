@@ -13,7 +13,7 @@
 
 <AnchorPane opacity="0.94" prefHeight="733.0" prefWidth="918.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10; -fx-border-radius: 10 10 10 10;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.SupplierFormController">
    <children>
-      <TextField fx:id="txtSupId" layoutX="44.0" layoutY="81.0" onAction="#txtSearchOnAction" prefHeight="30.0" prefWidth="317.0" promptText="Supplier Id" />
+      <TextField fx:id="txtSupId" layoutX="44.0" layoutY="81.0" onAction="#txtSearchOnAction" onKeyReleased="#txtIdOnKeyReleased" prefHeight="30.0" prefWidth="317.0" promptText="Supplier Id" />
       <Label layoutX="29.0" layoutY="63.0" prefHeight="16.0" prefWidth="94.0" text="Id:">
          <font>
             <Font size="14.0" />
@@ -31,25 +31,25 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <TextField fx:id="txtSupName" layoutX="494.0" layoutY="77.0" prefHeight="30.0" prefWidth="317.0" promptText="Supplier Name" />
+      <TextField fx:id="txtSupName" layoutX="494.0" layoutY="81.0" onKeyReleased="#txtNameOnKeyReleased" prefHeight="30.0" prefWidth="317.0" promptText="Supplier Name" />
       <Label layoutX="474.0" layoutY="58.0" prefHeight="16.0" prefWidth="94.0" text="Name:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtSupContact" layoutX="44.0" layoutY="146.0" prefHeight="30.0" prefWidth="317.0" promptText="Contact" />
+      <TextField fx:id="txtSupContact" layoutX="44.0" layoutY="146.0" onKeyReleased="#txtContactOnKeyReleased" prefHeight="30.0" prefWidth="317.0" promptText="Contact" />
       <Label layoutX="29.0" layoutY="128.0" prefHeight="16.0" prefWidth="94.0" text="Contact:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtSupNIC" layoutX="494.0" layoutY="143.0" prefHeight="30.0" prefWidth="317.0" promptText="NIC" />
+      <TextField fx:id="txtSupNIC" layoutX="494.0" layoutY="143.0" onKeyReleased="#txtNicOnKeyReleased" prefHeight="30.0" prefWidth="317.0" promptText="NIC" />
       <Label layoutX="474.0" layoutY="124.0" prefHeight="16.0" prefWidth="94.0" text="NIC:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtSupAddress" layoutX="47.0" layoutY="220.0" prefHeight="30.0" prefWidth="317.0" promptText="Address" />
+      <TextField fx:id="txtSupAddress" layoutX="47.0" layoutY="220.0" onKeyReleased="#txtAddressOnKeyReleased" prefHeight="30.0" prefWidth="317.0" promptText="Address" />
       <Label layoutX="29.0" layoutY="199.0" prefHeight="16.0" prefWidth="94.0" text="Address:">
          <font>
             <Font size="14.0" />

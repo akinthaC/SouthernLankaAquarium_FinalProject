@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import lk.ijse.model.Fish;
@@ -20,6 +21,7 @@ import lk.ijse.model.tm.SupFishTm;
 import lk.ijse.repository.FishRepo;
 import lk.ijse.repository.SupFishRepo;
 import lk.ijse.repository.SupplierRepo;
+import lk.ijse.utill.Regex;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -52,6 +54,8 @@ public class AddNewQtyController {
 
     @FXML
     private TableColumn<?, ?> colSupId;
+    @FXML
+    private TableColumn<?, ?> colpurchasedAmount;
 
     @FXML
     private Label lblDate;
@@ -71,6 +75,9 @@ public class AddNewQtyController {
     @FXML
     private TextField txtQtyy;
 
+    @FXML
+    private TextField txtpurchasedAmount;
+
     public void initialize() throws IOException, SQLException {
         setDate();
         setTime();
@@ -85,6 +92,7 @@ public class AddNewQtyController {
         colFishId2.setCellValueFactory(new PropertyValueFactory<>("FishId"));
         colSupId.setCellValueFactory(new PropertyValueFactory<>("supId"));
         colQty.setCellValueFactory(new PropertyValueFactory<>("Qty"));
+        colpurchasedAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
 
 
 
@@ -102,7 +110,8 @@ public class AddNewQtyController {
                         supFish.getFisId(),
                         supFish.getSupId(),
                         supFish.getDate(),
-                        supFish.getQty()
+                        supFish.getQty(),
+                        supFish.getAmount()
                 );
                 obList2.add(tm1);
 
@@ -188,8 +197,9 @@ public class AddNewQtyController {
         int qty = Integer.parseInt(txtQtyy.getText());
         Date date = Date.valueOf(LocalDate.now());
         System.out.println(fishId + qty);
+        double amount= Double.parseDouble(txtpurchasedAmount.getText());
 
-        SupFish supFish = new SupFish(fishId, supId, date, qty);
+        SupFish supFish = new SupFish(fishId, supId, date, qty,amount);
 
         try {
             boolean isUpdate = FishRepo.updateSupFish(qty, fishId);
@@ -241,4 +251,7 @@ public class AddNewQtyController {
 
     }
 
+    public void QtyOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.utill.TextField.QTY,txtQtyy);
+    }
 }

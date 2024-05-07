@@ -11,12 +11,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
 import lk.ijse.model.Accessories;
 import lk.ijse.model.Supplier;
 import lk.ijse.model.tm.AccessoriesTm;
 import lk.ijse.repository.AccessoriesRepo;
 import lk.ijse.repository.SupplierRepo;
+import lk.ijse.utill.Regex;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -226,7 +228,7 @@ public class AccessoriesFormController {
 
     private void clearFields() {
         txtAccessorieId.setText("");
-        cmbSupplier.getSelectionModel().clearSelection();
+        cmbSupplier.getItems().clear();
         txtAccessoriesName.setText("");
         txtQtyOnHand.setText("");
         txtNormalPrice.setText("");
@@ -321,4 +323,23 @@ public class AccessoriesFormController {
 
     }
 
+    public void txtIdOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.utill.TextField.ID,txtAccessorieId);
+    }
+
+    public void txtNameOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.utill.TextField.NAME,txtAccessoriesName);
+    }
+
+    public void txtIQtyOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.utill.TextField.QTY,txtQtyOnHand);
+    }
+
+    public void txtNormalPriceOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.utill.TextField.AMOUNT,txtNormalPrice);
+    }
+
+    public void txtIdWholeSalePriceKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.utill.TextField.AMOUNT,txtWholeSalePrice);
+    }
 }

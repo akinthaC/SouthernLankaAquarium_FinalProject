@@ -10,7 +10,7 @@ import java.util.List;
 
 public class SupFishRepo {
     public static boolean save(SupFish supFish) throws SQLException {
-        String sql = "INSERT INTO fish_supplier VALUES(?,?,?,?) ";
+        String sql = "INSERT INTO fish_supplier VALUES(?,?,?,?,?) ";
 
         Connection connection = DbConnection.getInstance().getConnection();
         PreparedStatement pstm = connection.prepareStatement(sql);
@@ -19,6 +19,7 @@ public class SupFishRepo {
         pstm.setObject(2, supFish.getSupId());
         pstm.setObject(3, supFish.getDate());
         pstm.setObject(4, supFish.getQty());
+        pstm.setObject(5, supFish.getAmount());
 
 
         return pstm.executeUpdate() > 0;
@@ -40,10 +41,11 @@ public class SupFishRepo {
             String supid = resultSet.getString(2);
             Date date = Date.valueOf(resultSet.getString(3));
             int qty = (int) Double.parseDouble(resultSet.getString(4));
+            double amount = resultSet.getDouble(5);
 
 
 
-           SupFish supFish = new SupFish(fishid,supid,date,qty);
+           SupFish supFish = new SupFish(fishid,supid,date,qty,amount);
             fishList.add(supFish);
         }
         return fishList;

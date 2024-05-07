@@ -14,4 +14,5 @@ public class SupFishTm {
     private String supId;
     private Date date ;
     private int Qty;
+    private double amount;
 }

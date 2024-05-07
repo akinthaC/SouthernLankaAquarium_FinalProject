@@ -14,7 +14,7 @@
 
 <AnchorPane opacity="0.94" prefHeight="733.0" prefWidth="918.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10; -fx-border-radius: 10 10 10 10;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.PaymentFormController">
    <children>
-      <TextField fx:id="txtPaymentId" layoutX="44.0" layoutY="81.0" onAction="#txtSearchOnAction" prefHeight="30.0" prefWidth="317.0" promptText="Payment Id" />
+      <TextField fx:id="txtPaymentId" layoutX="44.0" layoutY="81.0" onAction="#txtSearchOnAction" onKeyReleased="#txtIdOnKeyReleased" prefHeight="30.0" prefWidth="317.0" promptText="Payment Id" />
       <Label layoutX="29.0" layoutY="63.0" prefHeight="16.0" prefWidth="94.0" text="Id:">
          <font>
             <Font size="14.0" />
@@ -32,19 +32,19 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <TextField fx:id="txtDate" layoutX="484.0" layoutY="77.0" prefHeight="30.0" prefWidth="317.0" promptText="Date" />
+      <TextField fx:id="txtDate" layoutX="483.0" layoutY="77.0" onKeyReleased="#txtDateOnKeyReleased" prefHeight="30.0" prefWidth="317.0" promptText="Date" />
       <Label layoutX="464.0" layoutY="58.0" prefHeight="16.0" prefWidth="94.0" text="Date">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtTotal" layoutX="44.0" layoutY="146.0" prefHeight="30.0" prefWidth="317.0" promptText="Total Amount" />
+      <TextField fx:id="txtTotal" layoutX="44.0" layoutY="146.0" onKeyReleased="#txtTotalAmountOnKeyReleased" prefHeight="30.0" prefWidth="317.0" promptText="Total Amount" />
       <Label layoutX="29.0" layoutY="128.0" prefHeight="18.0" prefWidth="112.0" text="Total Amount:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtAdvance" layoutX="484.0" layoutY="143.0" prefHeight="30.0" prefWidth="317.0" promptText="Advance" />
+      <TextField fx:id="txtAdvance" layoutX="484.0" layoutY="143.0" onKeyReleased="#txtAdvanceOnKeyReleased" prefHeight="30.0" prefWidth="317.0" promptText="Advance" />
       <Label layoutX="464.0" layoutY="124.0" prefHeight="18.0" prefWidth="112.0" text="Advance:">
          <font>
             <Font size="14.0" />

@@ -1,5 +1,7 @@
 package lk.ijse.repository;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import lk.ijse.Db.DbConnection;
 import lk.ijse.model.Customer;
 
@@ -127,5 +129,14 @@ public class CustomerRepo {
             idList.add(id);
         }
         return idList;
+    }
+
+    public static List<String> getStatus() {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+
+        obList.add("wholesale");
+        obList.add("normal");
+
+        return obList;
     }
 }

@@ -8,16 +8,19 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import lk.ijse.Db.DbConnection;
 import lk.ijse.Launcher;
+import lk.ijse.utill.Regex;
 
 import java.io.IOException;
 import java.net.URL;
@@ -272,7 +275,16 @@ public class NewLoginFormController implements Initializable {
 
 
     @FXML
-    void hyperlinkFrogetPasswordOnAction(ActionEvent event) {
+    void hyperlinkFrogetPasswordOnAction(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/reset_password.fxml"));
+        Parent rootNode = loader.load();
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(rootNode));
+        stage.centerOnScreen();
+        stage.setTitle("Forget Password");
+
+        stage.show();
 
     }
 
@@ -288,4 +300,12 @@ public class NewLoginFormController implements Initializable {
     }
 
 
+    public void txtLoginUserNameOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.utill.TextField.USERNAME,txtUserName);
+
+    }
+
+    public void txtLoginPasswordOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.utill.TextField.PASSWORD,txtPassword);
+    }
 }

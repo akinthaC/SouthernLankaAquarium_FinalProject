@@ -12,11 +12,13 @@ import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
 import lk.ijse.model.*;
 
 import lk.ijse.model.tm.cartTm;
 import lk.ijse.repository.*;
+import lk.ijse.utill.Regex;
 
 import java.sql.Date;
 import java.sql.SQLException;
@@ -512,5 +514,21 @@ public class OrderFormController {
 
 
 
+    }
+
+    public void txtIdOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.utill.TextField.ID,txtId);
+    }
+
+    public void txtIDateOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.utill.TextField.DATE,txtDate);
+    }
+
+    public void txtIHandOverDateOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.utill.TextField.DATE,txtHandOverDate);
+    }
+
+    public void txtIqtyOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.utill.TextField.QTY,txtQty);
     }
 }

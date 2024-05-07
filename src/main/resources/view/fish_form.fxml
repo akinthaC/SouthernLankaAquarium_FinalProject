@@ -14,13 +14,13 @@
 
 <AnchorPane fx:id="rootNode" opacity="0.94" prefHeight="733.0" prefWidth="918.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10; -fx-border-radius: 10 10 10 10;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.FishFormController">
    <children>
-      <TextField fx:id="txtFishId" layoutX="44.0" layoutY="81.0" onAction="#txtSearchOnAction" prefHeight="30.0" prefWidth="317.0" promptText="Fish Id" />
+      <TextField fx:id="txtFishId" layoutX="44.0" layoutY="81.0" onAction="#txtSearchOnAction" onKeyReleased="#txtIdOnKeyReleased" prefHeight="30.0" prefWidth="317.0" promptText="Fish Id" />
       <Label layoutX="29.0" layoutY="63.0" prefHeight="16.0" prefWidth="94.0" text="Id:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btnSave" buttonType="RAISED" layoutX="345.0" layoutY="334.0" onAction="#btnSaveOnAction" prefHeight="30.0" prefWidth="94.0" style="-fx-background-color: #27ae60;" text="Save">
+      <JFXButton fx:id="btnSave" buttonType="RAISED" layoutX="345.0" layoutY="343.0" onAction="#btnSaveOnAction" prefHeight="30.0" prefWidth="94.0" style="-fx-background-color: #27ae60;" text="Save">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -32,31 +32,31 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <TextField fx:id="txtFishName" layoutX="494.0" layoutY="77.0" prefHeight="30.0" prefWidth="317.0" promptText="Fish Name" />
+      <TextField fx:id="txtFishName" layoutX="494.0" layoutY="77.0" onKeyReleased="#txtNameOnKeyReleased" prefHeight="30.0" prefWidth="317.0" promptText="Fish Name" />
       <Label layoutX="474.0" layoutY="58.0" prefHeight="16.0" prefWidth="94.0" text="Name:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtQtyOnHand" layoutX="44.0" layoutY="146.0" prefHeight="30.0" prefWidth="317.0" promptText="QTY OnHand" />
+      <TextField fx:id="txtQtyOnHand" layoutX="44.0" layoutY="146.0" onKeyReleased="#txtIQtyOnKeyReleased" prefHeight="30.0" prefWidth="317.0" promptText="QTY OnHand" />
       <Label layoutX="29.0" layoutY="128.0" prefHeight="18.0" prefWidth="112.0" text="Qty OnHand:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtNormalPrice" layoutX="494.0" layoutY="143.0" prefHeight="30.0" prefWidth="317.0" promptText="Normal Price" />
+      <TextField fx:id="txtNormalPrice" layoutX="494.0" layoutY="143.0" onKeyReleased="#txtNormalPriceOnKeyReleased" prefHeight="30.0" prefWidth="317.0" promptText="Normal Price" />
       <Label layoutX="474.0" layoutY="124.0" prefHeight="18.0" prefWidth="112.0" text="Normal price:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtWholeSalePrice" layoutX="47.0" layoutY="220.0" prefHeight="30.0" prefWidth="317.0" promptText="WholeSale Price" />
+      <TextField fx:id="txtWholeSalePrice" layoutX="47.0" layoutY="220.0" onKeyReleased="#txtIdWholeSalePriceKeyReleased" prefHeight="30.0" prefWidth="317.0" promptText="WholeSale Price" />
       <Label layoutX="29.0" layoutY="199.0" prefHeight="18.0" prefWidth="120.0" text="Wholesale Price:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btnClear" buttonType="RAISED" layoutX="721.0" layoutY="334.0" onAction="#btnClearOnAction" prefHeight="20.0" prefWidth="94.0" style="-fx-background-color: #3498db;" text="Clear">
+      <JFXButton fx:id="btnClear" buttonType="RAISED" layoutX="721.0" layoutY="343.0" onAction="#btnClearOnAction" prefHeight="20.0" prefWidth="94.0" style="-fx-background-color: #3498db;" text="Clear">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -68,7 +68,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="btnUpdate" buttonType="RAISED" layoutX="465.0" layoutY="334.0" onAction="#btnUpdateOnAction" prefHeight="28.0" prefWidth="102.0" style="-fx-background-color: #7f8c8d;" text="Update">
+      <JFXButton fx:id="btnUpdate" buttonType="RAISED" layoutX="465.0" layoutY="343.0" onAction="#btnUpdateOnAction" prefHeight="28.0" prefWidth="102.0" style="-fx-background-color: #7f8c8d;" text="Update">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -80,7 +80,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="btnDelete" buttonType="RAISED" layoutX="599.0" layoutY="334.0" onAction="#btnDeleteOnAction" prefHeight="20.0" prefWidth="94.0" style="-fx-background-color: #e74c3c;" text="Delete">
+      <JFXButton fx:id="btnDelete" buttonType="RAISED" layoutX="599.0" layoutY="343.0" onAction="#btnDeleteOnAction" prefHeight="20.0" prefWidth="94.0" style="-fx-background-color: #e74c3c;" text="Delete">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -154,7 +154,7 @@
             <TableColumn fx:id="colQty" prefWidth="75.0" text="Qty" />
         </columns>
       </TableView>
-      <AnchorPane layoutX="720.0" layoutY="189.0" opacity="0.81" prefHeight="40.0" prefWidth="196.0" style="-fx-background-color: #ffeaa7;">
+      <AnchorPane layoutX="693.0" layoutY="264.0" opacity="0.81" prefHeight="40.0" prefWidth="196.0" style="-fx-background-color: #ffeaa7;">
          <children>
             <Label layoutX="1.0" layoutY="26.0" prefHeight="18.0" prefWidth="195.0" text="(Click Here to add new qty)">
                <font>
@@ -164,5 +164,11 @@
             <JFXButton fx:id="btnAdd" layoutX="59.0" layoutY="2.0" onAction="#btnAddOnAction" prefHeight="24.0" prefWidth="81.0" style="-fx-background-color: #00b894;" text="Add" />
          </children>
       </AnchorPane>
+      <TextField fx:id="txtpurchasedAmount" layoutX="756.0" layoutY="213.0" onKeyReleased="#txtPurchaseAmountOnKeyReleased" prefHeight="28.0" prefWidth="127.0" promptText="Amount" />
+      <Label layoutX="742.0" layoutY="190.0" prefHeight="18.0" prefWidth="156.0" text="purchase Amount :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

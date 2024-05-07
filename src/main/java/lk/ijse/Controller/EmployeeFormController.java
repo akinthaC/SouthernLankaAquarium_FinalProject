@@ -10,11 +10,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
 import lk.ijse.model.Employee;
 import lk.ijse.model.tm.EmployeeTm;
 import lk.ijse.repository.CustomerRepo;
 import lk.ijse.repository.EmployeeRepo;
+import lk.ijse.utill.Regex;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -245,6 +247,7 @@ public class EmployeeFormController {
         txtEmpNIC.setText("");
         txtEmpAddress.setText("");
 
+
     }
 
 
@@ -256,4 +259,23 @@ public class EmployeeFormController {
         txtEmpAddress.setText("");
     }
 
+    public void txtIdOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.utill.TextField.ID,txtEmpId);
+    }
+
+    public void txtNameOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.utill.TextField.NAME,txtEmpName);
+    }
+
+    public void txtContactOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.utill.TextField.CONTACT,txtEmpContact);
+    }
+
+    public void txtNicOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.utill.TextField.NIC,txtEmpNIC);
+    }
+
+    public void txtAddressOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.utill.TextField.ADDRESS,txtEmpAddress);
+    }
 }

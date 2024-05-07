@@ -14,7 +14,7 @@
 
 <AnchorPane opacity="0.94" prefHeight="733.0" prefWidth="918.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10; -fx-border-radius: 10 10 10 10;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.AccessoriesFormController">
    <children>
-      <TextField fx:id="txtAccessorieId" layoutX="44.0" layoutY="81.0" onAction="#txtSearchOnAction" prefHeight="30.0" prefWidth="317.0" promptText="Accessories Id" />
+      <TextField fx:id="txtAccessorieId" layoutX="44.0" layoutY="81.0" onAction="#txtSearchOnAction" onKeyReleased="#txtIdOnKeyReleased" prefHeight="30.0" prefWidth="317.0" promptText="Accessories Id" />
       <Label layoutX="29.0" layoutY="63.0" prefHeight="16.0" prefWidth="94.0" text="Id:">
          <font>
             <Font size="14.0" />
@@ -32,25 +32,25 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <TextField fx:id="txtAccessoriesName" layoutX="494.0" layoutY="77.0" prefHeight="30.0" prefWidth="317.0" promptText="Fish Name" />
+      <TextField fx:id="txtAccessoriesName" layoutX="494.0" layoutY="77.0" onKeyReleased="#txtNameOnKeyReleased" prefHeight="30.0" prefWidth="317.0" promptText="Accessorie Name" />
       <Label layoutX="474.0" layoutY="58.0" prefHeight="16.0" prefWidth="94.0" text="Name:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtQtyOnHand" layoutX="44.0" layoutY="146.0" prefHeight="30.0" prefWidth="317.0" promptText="QTY OnHand" />
+      <TextField fx:id="txtQtyOnHand" layoutX="44.0" layoutY="146.0" onKeyReleased="#txtIQtyOnKeyReleased" prefHeight="30.0" prefWidth="317.0" promptText="QTY OnHand" />
       <Label layoutX="29.0" layoutY="128.0" prefHeight="18.0" prefWidth="112.0" text="Qty OnHand:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtNormalPrice" layoutX="494.0" layoutY="143.0" prefHeight="30.0" prefWidth="317.0" promptText="Normal Price" />
+      <TextField fx:id="txtNormalPrice" layoutX="494.0" layoutY="143.0" onKeyReleased="#txtNormalPriceOnKeyReleased" prefHeight="30.0" prefWidth="317.0" promptText="Normal Price" />
       <Label layoutX="474.0" layoutY="124.0" prefHeight="18.0" prefWidth="112.0" text="Normal price:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtWholeSalePrice" layoutX="47.0" layoutY="220.0" prefHeight="30.0" prefWidth="317.0" promptText="WholeSale Price" />
+      <TextField fx:id="txtWholeSalePrice" layoutX="47.0" layoutY="220.0" onKeyReleased="#txtIdWholeSalePriceKeyReleased" prefHeight="30.0" prefWidth="317.0" promptText="WholeSale Price" />
       <Label layoutX="29.0" layoutY="199.0" prefHeight="18.0" prefWidth="120.0" text="Wholesale Price:">
          <font>
             <Font size="14.0" />

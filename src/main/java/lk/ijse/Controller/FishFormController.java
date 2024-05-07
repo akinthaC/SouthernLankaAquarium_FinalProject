@@ -16,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -28,6 +29,7 @@ import lk.ijse.repository.FishRepo;
 import lk.ijse.repository.OrderRepo;
 import lk.ijse.repository.SupFishRepo;
 import lk.ijse.repository.SupplierRepo;
+import lk.ijse.utill.Regex;
 
 
 import java.io.IOException;
@@ -89,6 +91,9 @@ public class FishFormController {
     @FXML
     private TextField txtWholeSalePrice;
     public AnchorPane rootNode;
+    @FXML
+    private TextField txtpurchasedAmount;
+
 
     public void initialize() throws IOException, SQLException {
         setDate();
@@ -167,7 +172,8 @@ public class FishFormController {
                             supFish.getFisId(),
                             supFish.getSupId(),
                             supFish.getDate(),
-                            supFish.getQty()
+                            supFish.getQty(),
+                           supFish.getAmount()
                     );
                    obList2.add(tm1);
 
@@ -256,8 +262,9 @@ public class FishFormController {
         System.out.println("supId = " + supId);
         int Qty= Integer.parseInt(txtQtyOnHand.getText());
         Date date = Date.valueOf(LocalDate.now());
+        double amount= Double.parseDouble(txtpurchasedAmount.getText());
 
-        SupFish supFish = new SupFish(id, supId, date, Qty);
+        SupFish supFish = new SupFish(id, supId, date, Qty,amount);
         Fish fish = new Fish(id, name, qtyOnHand,normalPrice,wholeSalePrice);
 
 
@@ -357,5 +364,29 @@ public class FishFormController {
 
         stage.show();
 
+    }
+
+    public void txtIdOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.utill.TextField.ID,txtFishId);
+    }
+
+    public void txtNameOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.utill.TextField.NAME,txtFishName);
+    }
+
+    public void txtIQtyOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.utill.TextField.QTY,txtQtyOnHand);
+    }
+
+    public void txtNormalPriceOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.utill.TextField.AMOUNT,txtNormalPrice);
+    }
+
+    public void txtIdWholeSalePriceKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.utill.TextField.AMOUNT,txtWholeSalePrice);
+    }
+
+    public void txtPurchaseAmountOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.utill.TextField.AMOUNT,txtpurchasedAmount);
     }
 }
