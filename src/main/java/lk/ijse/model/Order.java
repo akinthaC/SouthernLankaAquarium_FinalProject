@@ -17,6 +17,5 @@ public class Order extends cartTm {
     private Date date ;
     private Date handOverDate;
     private int Qty;
-
     private String CusId;
 }

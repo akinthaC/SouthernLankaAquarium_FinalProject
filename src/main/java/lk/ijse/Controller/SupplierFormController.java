@@ -100,11 +100,16 @@ public class SupplierFormController {
 
     private String generateNextOrderId(String currentId) {
         if(currentId != null) {
-            String[] split = currentId.split("0");  //" ", "2"
+
+            String[] split = currentId.split("[sS]+");
+
             int idNum = Integer.parseInt(split[1]);
-            return "S0" + ++idNum;
+
+            return "S" + String.format("%03d", ++idNum);
+
         }
-        return "S01";
+
+        return "S001";
     }
 
     private void loadAllCustomers() {

@@ -9,29 +9,37 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
+import lk.ijse.Db.DbConnection;
 import lk.ijse.model.*;
 
 import lk.ijse.model.tm.cartTm;
 import lk.ijse.repository.*;
 import lk.ijse.utill.Regex;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
+import javax.swing.table.DefaultTableModel;
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 
 public class OrderFormController {
 
+    public AnchorPane mainPane;
     @FXML
     private JFXButton brnAddTOCart;
 
@@ -104,6 +112,10 @@ public class OrderFormController {
 
     @FXML
     private Label lblWholeSalePrice;
+
+    @FXML
+    private Label lblNetTotal;
+
 
     @FXML
     private TableView<cartTm> tblPlaceOrder;
@@ -230,12 +242,27 @@ public class OrderFormController {
 
     private String generateNextOrderId(String currentId) {
         if(currentId != null) {
-            String[] split = currentId.split("0");
+
+            String[] split = currentId.split("[oOrR]+");
+
             int idNum = Integer.parseInt(split[1]);
-            return "OR0" + ++idNum;
+
+            return "OR" + String.format("%03d", ++idNum);
+
         }
-        return "OR01";
+
+        return "OR001";
     }
+    private void clearFields() {
+        cmbFishId.getSelectionModel().clearSelection();
+        cmbAccessorieId.getSelectionModel().clearSelection();
+        lblName.setText("");
+        lblQtyOnHand.setText("");
+        lblWholeSalePrice.setText("");
+        lblNormalPrice.setText("");
+        txtQty.setText("0");
+    }
+
 
     private void setTime() {
         Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
@@ -257,8 +284,9 @@ public class OrderFormController {
         LocalDate now = LocalDate.now();
         lblDate.setText(String.valueOf(now));
         txtDate.setText(String.valueOf(now));
+        txtHandOverDate.setText(String.valueOf(now));
     }
-
+ 
     @FXML
     void brnAddTOCartOnAction(ActionEvent event) {
         String code = txtId.getText();
@@ -304,12 +332,15 @@ public class OrderFormController {
                 obList.remove(selectedIndex);
 
                 tblPlaceOrder.refresh();
+
                // calculateNetTotal();
             }
         });
 
+
         for (int i = 0; i < tblPlaceOrder.getItems().size(); i++) {
             if(code.equals(colId.getCellData(i))) {
+
 
                 cartTm tm = obList.get(i);
                 qty += tm.getQty();
@@ -319,6 +350,7 @@ public class OrderFormController {
                 tm.setTotal(total);
 
                 tblPlaceOrder.refresh();
+                clearFields();
 
                 //calculateNetTotal();
                 return;
@@ -329,17 +361,27 @@ public class OrderFormController {
         obList.add(cartTm);
 
         tblPlaceOrder.setItems(obList);
+        calculateNetTotal();
+        clearFields();
+
 
 
 
     }
+    private void calculateNetTotal() {
+        int netTotal = 0;
+        for (int i = 0; i < tblPlaceOrder.getItems().size(); i++) {
+            netTotal += (double) colTotal.getCellData(i);
+        }
+        lblNetTotal.setText(String.valueOf(netTotal));
+    }
 
     @FXML
-    void btnPlaceOrderOnAction(ActionEvent event) {
+    void btnPlaceOrderOnAction(ActionEvent event) throws IOException {
         String orderId = txtId.getText();
         Date date = Date.valueOf(txtDate.getText());
         Date handOverDate = Date.valueOf(txtHandOverDate.getText());
-        int qty = (int) Double.parseDouble(txtQty.getText());
+        int qty = Integer.parseInt(txtQty.getText());
         String status = cmbStatus.getValue();
         String cusId = cmbCusId.getValue();
         String description = lblName.getText();
@@ -347,6 +389,7 @@ public class OrderFormController {
         String fishId = null;
         String accessoriesId= null;
         char s1='F';
+
 
 
         Order order = new Order(orderId, date, handOverDate, qty, cusId);
@@ -388,11 +431,28 @@ public class OrderFormController {
 
         try {
             boolean isPlaced = PlaceOrderRepo.orders(pl);
-            txtQty.setText("");
             if (isPlaced) {
+                 new Alert(Alert.AlertType.CONFIRMATION, "Order Placed!").show();
+                if (lblType.getText().equals("normal")) {
+                    btnPrintBill();
+                }else {
+                    btnPrintBillWholeSale();
+                }
 
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/order_form.fxml"));
+                AnchorPane contentPane = loader.load();
+
+                // Add the loaded content to the main pane
+                mainPane.getChildren().clear();
+                mainPane.getChildren().add(contentPane);
+                //AnimationUtil.popUpAnimation(mainPane, contentPane);
+                 
+            } else {
+                new Alert(Alert.AlertType.WARNING, "Order Placed Unsuccessfully!").show();
             }
         } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        } catch (JRException e) {
             throw new RuntimeException(e);
         }
 
@@ -428,6 +488,7 @@ public class OrderFormController {
                 lblNormalPrice.setText(String.valueOf(accessories.getNormalPrice()));
                 lblWholeSalePrice.setText(String.valueOf(accessories.getWholesaleprice()));
                 cmbFishId.getSelectionModel().clearSelection();
+
             }
 
         } catch (SQLException e) {
@@ -514,6 +575,42 @@ public class OrderFormController {
 
 
 
+    }
+    public void btnPrintBill() throws JRException, SQLException {
+        JasperDesign jasperDesign = JRXmlLoader.load("src/main/resources/Report/CustomerBill.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+
+        Map<String,Object> data = new HashMap<>();
+        data.put("customerId",cmbCusId.getValue());
+        data.put("Net Total",lblNetTotal.getText());
+        data.put("OrderId",txtId.getText());
+        data.put("Date",txtDate.getText());
+        data.put("Time",lblTime.getText());
+
+        JasperPrint jasperPrint =
+                JasperFillManager.fillReport(jasperReport, data, DbConnection.getInstance().getConnection());
+        JasperViewer.viewReport(jasperPrint,false);
+
+    }
+    public void btnPrintBillWholeSale() throws JRException, SQLException {
+        JasperDesign jasperDesign = JRXmlLoader.load("src/main/resources/Report/WholeSaleCustomerBill.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+
+        Map<String,Object> data = new HashMap<>();
+        data.put("customerId",cmbCusId.getValue());
+        data.put("Net Total",lblNetTotal.getText());
+        data.put("OrderId",txtId.getText());
+        data.put("Date",txtDate.getText());
+        data.put("Time",lblTime.getText());
+
+        JasperPrint jasperPrint =
+                JasperFillManager.fillReport(jasperReport, data, DbConnection.getInstance().getConnection());
+        JasperViewer.viewReport(jasperPrint,false);
+
+    }
+
+    public String getTotal(){
+        return "5000";
     }
 
     public void txtIdOnKeyReleased(KeyEvent keyEvent) {

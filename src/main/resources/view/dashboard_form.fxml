@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
@@ -7,7 +10,7 @@
 
 <AnchorPane opacity="0.98" prefHeight="733.0" prefWidth="918.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.DashboardFormController">
    <children>
-      <AnchorPane layoutX="107.0" layoutY="66.0" prefHeight="160.0" prefWidth="196.0" style="-fx-background-radius: 11 11 11 11; -fx-background-color: #1abc9c;">
+      <AnchorPane layoutX="47.0" layoutY="66.0" prefHeight="160.0" prefWidth="196.0" style="-fx-background-radius: 11 11 11 11; -fx-background-color: #1abc9c;">
          <children>
             <Label layoutX="39.0" layoutY="21.0" text="Today sales">
                <font>
@@ -21,7 +24,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="373.0" layoutY="66.0" prefHeight="160.0" prefWidth="196.0" style="-fx-background-radius: 11 11 11 11; -fx-background-color: #1abc9c;">
+      <AnchorPane layoutX="365.0" layoutY="66.0" prefHeight="160.0" prefWidth="196.0" style="-fx-background-radius: 11 11 11 11; -fx-background-color: #1abc9c;">
          <children>
             <Label layoutX="35.0" layoutY="14.0" text="Popular fish">
                <font>
@@ -40,7 +43,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="635.0" layoutY="66.0" prefHeight="160.0" prefWidth="196.0" style="-fx-background-radius: 11 11 11 11; -fx-background-color: #1abc9c;">
+      <AnchorPane layoutX="671.0" layoutY="66.0" prefHeight="160.0" prefWidth="196.0" style="-fx-background-radius: 11 11 11 11; -fx-background-color: #1abc9c;">
          <children>
             <Label layoutX="17.0" layoutY="14.0" text="Employee count">
                <font>
@@ -71,7 +74,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label fx:id="lblDate" layoutX="814.0" layoutY="3.0" text="2024/04/07" textFill="WHITE">
+            <Label fx:id="lblDate" layoutX="814.0" layoutY="3.0" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
@@ -93,7 +96,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lblDate" layoutX="813.0" layoutY="3.0" text="2024/04/07" textFill="WHITE">
+      <Label fx:id="lblDate" layoutX="813.0" layoutY="3.0" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
@@ -109,5 +112,23 @@
          </font>
       </Label>
       <Line endX="264.7625732421875" endY="-1.0" layoutX="661.0" layoutY="48.0" startX="-661.0" startY="-1.0" stroke="#d71111" strokeWidth="2.0" />
+      <AnchorPane layoutX="41.0" layoutY="251.0" prefHeight="284.0" prefWidth="468.0">
+         <children>
+            <Label layoutX="1.0" text="Sales:">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <LineChart fx:id="LineChart" layoutX="4.0" layoutY="22.0" prefHeight="280.0" prefWidth="456.0">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </LineChart>
+         </children>
+      </AnchorPane>
+      <Line endX="812.0" layoutX="114.0" layoutY="233.0" startX="-114.0" />
    </children>
 </AnchorPane>

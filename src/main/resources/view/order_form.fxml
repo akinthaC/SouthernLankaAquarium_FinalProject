@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane opacity="0.94" prefHeight="733.0" prefWidth="918.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10; -fx-border-radius: 10 10 10 10;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.OrderFormController">
+<AnchorPane fx:id="mainPane" opacity="0.94" prefHeight="733.0" prefWidth="918.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10; -fx-border-radius: 10 10 10 10;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.OrderFormController">
    <children>
       <TextField fx:id="txtId" layoutX="44.0" layoutY="81.0" onAction="#searchBy" onKeyReleased="#txtIdOnKeyReleased" prefHeight="30.0" prefWidth="317.0" promptText="Order Id" />
       <Label layoutX="29.0" layoutY="63.0" prefHeight="16.0" prefWidth="94.0" text="Id:">
@@ -203,6 +203,21 @@
       <Label fx:id="lblType" layoutX="816.0" layoutY="227.0" prefHeight="16.0" prefWidth="102.0">
          <font>
             <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="34.0" layoutY="645.0" text="Net Total">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="58.0" layoutY="671.0" text="RS:">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblNetTotal" layoutX="107.0" layoutY="671.0" prefHeight="26.0" prefWidth="94.0" textFill="#c31717">
+         <font>
+            <Font size="22.0" />
          </font>
       </Label>
    </children>

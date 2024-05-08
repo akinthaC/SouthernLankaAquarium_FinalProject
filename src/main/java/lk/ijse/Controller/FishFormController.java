@@ -137,11 +137,16 @@ public class FishFormController {
 
     private String generateNextOrderId(String currentId) {
         if(currentId != null) {
-            String[] split = currentId.split("0");  //" ", "2"
+
+            String[] split = currentId.split("[fF]+");
+
             int idNum = Integer.parseInt(split[1]);
-            return "F0" + ++idNum;
+
+            return "F" + String.format("%03d", ++idNum);
+
         }
-        return "F01";
+
+        return "F001";
     }
 
     private void loadAllFish() throws SQLException {

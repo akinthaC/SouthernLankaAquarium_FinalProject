@@ -4,18 +4,24 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.chart.Chart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
 import lk.ijse.Db.DbConnection;
 import lk.ijse.repository.DashBoardRepo;
+import javafx.scene.chart.LineChart;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ResourceBundle;
 
-public class DashboardFormController {
+public class DashboardFormController{
 
     @FXML
     private Label lblDate;
@@ -31,6 +37,8 @@ public class DashboardFormController {
 
     @FXML
     private Label lblTime;
+    @FXML
+    private LineChart<?, ?> LineChart;
 
     public void initialize() throws IOException, SQLException {
         setDate();
@@ -38,6 +46,7 @@ public class DashboardFormController {
         getTodaySaleCOunt();
         getMostSaleFishWeekly();
         getEmployeeCount();
+        LineChar();
 
     }
 
@@ -83,5 +92,20 @@ public class DashboardFormController {
         lblDate.setText(String.valueOf(now));
 
     }
+
+    private void LineChar(){
+        XYChart.Series series = new XYChart.Series<>();
+        series.getData().add(new XYChart.Data("Monday",8)) ;
+        series.getData().add(new XYChart.Data("TuesDay",10)) ;
+        series.getData().add(new XYChart.Data("WendsDay",20)) ;
+        series.getData().add(new XYChart.Data("ThursDay",5)) ;
+        series.getData().add(new XYChart.Data("Friday",5)) ;
+        series.getData().add(new XYChart.Data("Saturday",9)) ;
+        series.getData().add(new XYChart.Data("Sunday",8)) ;
+        LineChart.getData().addAll(series);
+
+
+
+        }
 
 }

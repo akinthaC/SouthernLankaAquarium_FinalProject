@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class mainFormController implements Initializable {
+public class mainFormController  {
 
     @FXML
     private JFXButton btnAccessories;
@@ -63,37 +63,44 @@ public class mainFormController implements Initializable {
 
 
 
-    private static final String TEXT_TO_TYPE = "Welcome To The Aquarium \n Management System \n\n ";
-    private static final String TEXT_TO_TYPE1 = "(you can manage this by using this buttons) ";
-    private static final int SPEED = 200; // milliseconds per character
+//    private static final String TEXT_TO_TYPE = "Welcome To The Aquarium \n Management System \n\n ";
+//    private static final String TEXT_TO_TYPE1 = "(you can manage this by using this buttons) ";
+//    private static final int SPEED = 200; // milliseconds per character
+//
+//    private int index;
+//
+//
+//    private int index1;
+//    private int index2;
+//
+//    @Override
+//    public void initialize(URL url, ResourceBundle resourceBundle) {
+//        index = 0;
+//
+//        Timeline timeline = new Timeline(
+//                new KeyFrame(Duration.millis(SPEED), event -> {
+//                    if (index < TEXT_TO_TYPE.length() + TEXT_TO_TYPE1.length()) {
+//                        if (index < TEXT_TO_TYPE.length()) {
+//                            lblWelcome.setText(TEXT_TO_TYPE.substring(0, index + 1));
+//                        }
+//                        if (index >= TEXT_TO_TYPE.length()) {
+//                            lblWelcome1.setText(TEXT_TO_TYPE1.substring(0, index - TEXT_TO_TYPE.length() + 1));
+//                        }
+//                        index++;
+//                    }
+//                })
+//        );
+//        timeline.setCycleCount(TEXT_TO_TYPE.length() + TEXT_TO_TYPE1.length());
+//        timeline.play();
+//    }
 
-    private int index;
-
-
-    private int index1;
-    private int index2;
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        index = 0;
-
-        Timeline timeline = new Timeline(
-                new KeyFrame(Duration.millis(SPEED), event -> {
-                    if (index < TEXT_TO_TYPE.length() + TEXT_TO_TYPE1.length()) {
-                        if (index < TEXT_TO_TYPE.length()) {
-                            lblWelcome.setText(TEXT_TO_TYPE.substring(0, index + 1));
-                        }
-                        if (index >= TEXT_TO_TYPE.length()) {
-                            lblWelcome1.setText(TEXT_TO_TYPE1.substring(0, index - TEXT_TO_TYPE.length() + 1));
-                        }
-                        index++;
-                    }
-                })
-        );
-        timeline.setCycleCount(TEXT_TO_TYPE.length() + TEXT_TO_TYPE1.length());
-        timeline.play();
+    public void initialize() throws IOException {
+        dashBoard();
     }
 
+    private void dashBoard() throws IOException {
+        loadFormWithAtractiveAnimation("/view/dashboard_form.fxml");
+    }
 
     private void loadFormWithAtractiveAnimation(String formPath) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(formPath));
@@ -181,4 +188,10 @@ public class mainFormController implements Initializable {
     void btnSupplierOnAction(ActionEvent event) throws IOException {
         loadFormWithAtractiveAnimation("/view/supplier_form.fxml");
     }
+    void btnSupplierOnAction() throws IOException {
+        loadFormWithAtractiveAnimation("/view/payment_form.fxml");
+    }
+
+
+
 }

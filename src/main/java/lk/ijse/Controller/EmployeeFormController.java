@@ -100,11 +100,16 @@ public class EmployeeFormController {
 
     private String generateNextOrderId(String currentId) {
         if(currentId != null) {
-            String[] split = currentId.split("0");  //" ", "2"
+
+            String[] split = currentId.split("[eE]+");
+
             int idNum = Integer.parseInt(split[1]);
-            return "E0" + ++idNum;
+
+            return "E" + String.format("%03d", ++idNum);
+
         }
-        return "E01";
+
+        return "E001";
     }
 
     private void loadAllCustomers() {

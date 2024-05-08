@@ -13,7 +13,7 @@ public class PlaceOrderRepo {
 
     public static boolean orders(PlaceOrder pl) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
-        connection.setAutoCommit(true);
+        connection.setAutoCommit(false);
 
         try {
             boolean isOrderSaved =OrderRepo.save(pl.getOrder());
@@ -41,23 +41,25 @@ public class PlaceOrderRepo {
                         }
                     }
                     if (isSave ) {
+                        boolean isSave1 = false;
                         for (OrderDetail od : pl.getOdlist()) {
-                            boolean isSave1 = orderEmployeeRepo.save(od.getOrdId(),od.getEmpId());
+                            isSave1 = orderEmployeeRepo.save(od.getOrdId(),od.getEmpId());
                         }
-
+                        if (isSave1) {
+                            connection.commit();
+                            return true;
+                        }
                     }
-
-
-                    }
-
-
-
+                }
             }
-            // boolean isQtyUpdated = OrderRepo.update(pl.getOdlist());
+            connection.rollback();
+            return false;
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            connection.rollback();
+            return false;
+        } finally {
+            connection.setAutoCommit(true);
         }
-        return false;
     }
 
 }

@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.2.final using JasperReports Library version 6.21.2-8434a0bd7c3bbc37cbf916f2968d35e4b165821a  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SouthernLankaBill1" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3ff26395-85de-4b29-92ed-0e416bdc3966">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (5)"/>
+	<parameter name="OrderId" class="java.lang.String"/>
+	<parameter name="Net Total" class="java.lang.String"/>
+	<parameter name="customerId" class="java.lang.String"/>
+	<parameter name="Time" class="java.lang.String"/>
+	<parameter name="Date" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+    fo.orderId,
+    f.fishId,
+    f.name AS fishName,
+    fo.qty AS fishQty,
+    f.normalPrice AS fishPrice,
+    (fo.qty * f.normalPrice) AS fishTotalAmount
+FROM fish_order fo
+JOIN fish f ON fo.fishId = f.fishId
+WHERE fo.orderId = $P{OrderId}
+
+UNION
+
+SELECT
+    ao.orderId,
+    a.accId,
+    a.name AS accName,
+    ao.qty AS accQty,
+    a.normalPrice AS accPrice,
+    (ao.qty * a.normalPrice) AS accTotalAmount
+FROM accessories_order ao
+JOIN accessories a ON ao.accId = a.accId
+WHERE ao.orderId = $P{OrderId};]]>
+	</queryString>
+	<field name="orderId" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="orderId"/>
+		<property name="com.jaspersoft.studio.field.label" value="orderId"/>
+	</field>
+	<field name="fishId" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="fishId"/>
+		<property name="com.jaspersoft.studio.field.label" value="fishId"/>
+	</field>
+	<field name="fishName" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="fishName"/>
+		<property name="com.jaspersoft.studio.field.label" value="fishName"/>
+	</field>
+	<field name="fishQty" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="fishQty"/>
+		<property name="com.jaspersoft.studio.field.label" value="fishQty"/>
+	</field>
+	<field name="fishPrice" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="fishPrice"/>
+		<property name="com.jaspersoft.studio.field.label" value="fishPrice"/>
+	</field>
+	<field name="fishTotalAmount" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="fishTotalAmount"/>
+		<property name="com.jaspersoft.studio.field.label" value="fishTotalAmount"/>
+	</field>
+	<group name="orderId">
+		<groupExpression><![CDATA[$F{orderId}]]></groupExpression>
+	</group>
+	<group name="fishId">
+		<groupExpression><![CDATA[$F{fishId}]]></groupExpression>
+	</group>
+	<group name="fishName">
+		<groupExpression><![CDATA[$F{fishName}]]></groupExpression>
+	</group>
+	<group name="fishQty">
+		<groupExpression><![CDATA[$F{fishQty}]]></groupExpression>
+	</group>
+	<group name="fishPrice">
+		<groupExpression><![CDATA[$F{fishPrice}]]></groupExpression>
+	</group>
+	<group name="fishTotalAmount">
+		<groupExpression><![CDATA[$F{fishTotalAmount}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="181" splitType="Stretch">
+			<textField>
+				<reportElement x="87" y="128" width="100" height="20" uuid="e6fc6724-f795-42a0-9393-089bf6023dc6"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{OrderId}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-11" y="129" width="70" height="20" uuid="93b91e3e-b402-4fcc-b69b-fbd1db6f51fb"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Order Id:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="167" y="0" width="220" height="40" uuid="d588847a-f9a9-4461-9c20-db3e630ec364"/>
+				<textElement textAlignment="Center">
+					<font fontName="DialogInput" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Southern Lanka Aquarium]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="209" y="40" width="144" height="20" uuid="872846c0-929a-4261-a0d3-ecd11cd3642a"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pituwala road Elpitiya.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="173" y="56" width="218" height="20" uuid="5c04a676-0e64-4de3-b1e6-92aab1c75739"/>
+				<textElement textAlignment="Center">
+					<font fontName="Courier 10 Pitch" size="10"/>
+				</textElement>
+				<text><![CDATA[Tel :- 0772558964 , 0719771548]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-20" y="78" width="595" height="1" uuid="ecfd5ff2-8a76-4bbb-81b3-131225eb4d92"/>
+			</line>
+			<staticText>
+				<reportElement x="-11" y="149" width="94" height="20" uuid="092f8c82-f659-4193-8f8b-d8d0875f8702"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Customer Id:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="88" y="148" width="100" height="24" uuid="adfef3ca-2ce3-4927-9212-77ca576d58b2"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{customerId}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="431" y="0" width="55" height="20" uuid="44875463-5b2d-4aab-8f49-3dbd67403f34"/>
+				<textElement>
+					<font fontName="C059" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="431" y="20" width="55" height="20" uuid="d6232762-0382-449f-abc2-bd8441dc506b"/>
+				<textElement>
+					<font fontName="C059" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Time:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="488" y="20" width="84" height="20" uuid="d9261ef5-4683-478f-8594-17ab3b256c1f"/>
+				<textFieldExpression><![CDATA[$P{Time}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="488" y="0" width="84" height="20" uuid="4e1e794d-a94c-4229-b86d-2bb38718368a"/>
+				<textFieldExpression><![CDATA[$P{Date}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="122" y="0" width="44" height="70" uuid="5563d2d3-f064-441a-9ff1-96e02f6d5e95"/>
+				<imageExpression><![CDATA["/home/akintha/Downloads/950760edb35388b32070f02f4c8a452f.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement x="-11" y="23" width="575" height="1" uuid="5c24b400-b004-44c6-b019-6c3e280a1e7b"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="44" splitType="Stretch">
+			<staticText>
+				<reportElement x="-9" y="-4" width="92" height="30" uuid="f0ea727b-8471-4778-a9b4-5c6e499ba08f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5b056436-86e5-4bfb-a1bc-e267111be6c4"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="115" y="-5" width="92" height="30" uuid="991005d8-951c-473a-a58c-574df8295f1a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b949f169-9e88-4069-a431-c90c18ce278b"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Description]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="230" y="-6" width="92" height="30" uuid="4a38ffde-cbf0-4034-91c1-e5466419c4ae">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8d4cca64-a0f4-4319-82e4-2f6b5608f10c"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Quantity]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="354" y="-5" width="92" height="30" uuid="5e3712e3-d04e-4a6b-afa4-4c25ca51e6ae">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5a94beed-b9fa-435b-a3b6-5bd59618bf10"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Unit Price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="464" y="-6" width="80" height="30" uuid="931a6f2b-8fe9-487d-8554-ff6f521601ef">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ed74ef6f-4ae2-4f56-a727-0b0f43325700"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Amount]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-11" y="26" width="575" height="1" uuid="ff680e27-1bfc-4b7e-b156-11f665a355c6"/>
+			</line>
+			<line>
+				<reportElement x="100" y="-13" width="1" height="39" uuid="075319db-121e-40bc-832b-0677a88752d3"/>
+			</line>
+			<line>
+				<reportElement x="220" y="-13" width="1" height="39" uuid="d6c5801e-b752-4f6f-a4f2-89ea980c4435"/>
+			</line>
+			<line>
+				<reportElement x="340" y="-13" width="1" height="39" uuid="3f4a96f6-82d4-4a85-987a-41a77a30220d"/>
+			</line>
+			<line>
+				<reportElement x="457" y="-13" width="1" height="39" uuid="8ed7ee07-6611-472d-a371-a20140bc9dba"/>
+			</line>
+			<line>
+				<reportElement x="-11" y="-13" width="1" height="39" uuid="6ada1e70-344a-41bb-8694-875176dce8b6"/>
+			</line>
+			<line>
+				<reportElement x="564" y="-13" width="1" height="39" uuid="845f62f6-d141-4f33-b450-9c2c8f121bc1"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="29" splitType="Stretch">
+			<textField>
+				<reportElement x="26" y="0" width="64" height="20" uuid="c5fb3df2-3e81-4246-a781-59525a740226">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5b056436-86e5-4bfb-a1bc-e267111be6c4"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{fishId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="126" y="0" width="80" height="20" uuid="a7fff744-9974-488a-aa74-1760eaa0a8c9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b949f169-9e88-4069-a431-c90c18ce278b"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{fishName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="264" y="0" width="70" height="20" uuid="a037a596-590d-4464-a46c-6552fc3c5bbd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8d4cca64-a0f4-4319-82e4-2f6b5608f10c"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{fishQty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="372" y="0" width="78" height="20" uuid="5e3541f0-ef66-4d2f-8dba-e0c381f0af49">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5a94beed-b9fa-435b-a3b6-5bd59618bf10"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{fishPrice}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="482" y="0" width="70" height="20" uuid="f4033c1f-7c7a-4cdd-a8e4-7f1ae97c5b71">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ed74ef6f-4ae2-4f56-a727-0b0f43325700"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{fishTotalAmount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="148" splitType="Stretch">
+			<staticText>
+				<reportElement x="379" y="-144" width="85" height="30" uuid="7d6a5e08-49f3-43bc-8e9e-299fcb261208"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Net Total :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="470" y="-145" width="120" height="30" uuid="69545634-a704-4800-9057-597bb59c9248"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Net Total}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="136" y="0" width="50" height="50" uuid="56f26ac7-f072-45ea-86b7-751bdc987749"/>
+				<imageExpression><![CDATA["/home/akintha/Downloads/lovely-gracious-gold-fish-isolated-close-up-ultra-hd-astonishing-arts.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="370" y="-9" width="50" height="50" uuid="796e4534-3aca-4275-b62b-1daafa280d01"/>
+				<imageExpression><![CDATA["/home/akintha/Downloads/360_F_553920491_OtvBv2oB9lgHNRIXrrp122dsaJE5DWym.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="201" y="-10" width="161" height="70" uuid="8aba2412-28fc-4282-9ddc-ae89c700599f"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[THANK YOU & COME AGAIN..]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="62" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

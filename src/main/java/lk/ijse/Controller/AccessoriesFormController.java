@@ -130,11 +130,16 @@ public class AccessoriesFormController {
 
     private String generateNextOrderId(String currentId) {
         if(currentId != null) {
-            String[] split = currentId.split("0");  //" ", "2"
+
+            String[] split = currentId.split("[aA]+");
+
             int idNum = Integer.parseInt(split[1]);
-            return "A0" + ++idNum;
+
+            return "A" + String.format("%03d", ++idNum);
+
         }
-        return "A01";
+
+        return "A001";
     }
 
     private void loadAllCustomers() {

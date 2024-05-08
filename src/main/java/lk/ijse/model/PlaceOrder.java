@@ -14,6 +14,5 @@ import java.util.List;
 public class PlaceOrder {
 
   private Order order;
-  //  private List<Order> odlist1;
-    private List<OrderDetail> odlist;
+  private List<OrderDetail> odlist;
 }

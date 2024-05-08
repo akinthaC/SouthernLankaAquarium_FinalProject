@@ -135,11 +135,16 @@ public class CustomerFormController {
 
     private String generateNextOrderId(String currentId) {
         if(currentId != null) {
-            String[] split = currentId.split("0");  //" ", "2"
+
+            String[] split = currentId.split("[cC]+");
+
             int idNum = Integer.parseInt(split[1]);
-            return "C0" + ++idNum;
+
+            return "C" + String.format("%03d", ++idNum);
+
         }
-        return "O1";
+
+        return "C001";
     }
 
     private void loadAllCustomers() {
