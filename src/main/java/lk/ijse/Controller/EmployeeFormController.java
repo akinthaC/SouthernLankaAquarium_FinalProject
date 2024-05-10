@@ -176,6 +176,9 @@ public class EmployeeFormController {
             if(isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Employee deleted!").show();
                 clearFields();
+                setCellValueFactory();
+                loadAllCustomers();
+                getCurrentOrderId();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -190,13 +193,26 @@ public class EmployeeFormController {
         String NIC = txtEmpNIC.getText();
         String address = txtEmpAddress.getText();
 
+        try {
+            if(id.isEmpty() || name.isEmpty() || contact.isEmpty() || NIC.isEmpty() || address.isEmpty() ) {
+                new Alert(Alert.AlertType.INFORMATION, "Please fill all fields!").show();
+                return;
+            }
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK).show();
+        }
+
+
         Employee employee = new Employee(id,name,contact,NIC,address);
 
         try {
             boolean isSaved = EmployeeRepo.save(employee);
             if (isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "employee saved!").show();
+                setCellValueFactory();
+                loadAllCustomers();
                 clearFields();
+                getCurrentOrderId();
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -220,6 +236,9 @@ public class EmployeeFormController {
             if(isUpdate) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Employee updated!").show();
                 clearFields();
+                setCellValueFactory();
+                loadAllCustomers();
+                getCurrentOrderId();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

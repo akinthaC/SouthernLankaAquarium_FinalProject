@@ -199,6 +199,15 @@ public class AddNewQtyController {
         System.out.println(fishId + qty);
         double amount= Double.parseDouble(txtpurchasedAmount.getText());
 
+        try {
+            if(supId.isEmpty() || fishId.isEmpty() ) {
+                new Alert(Alert.AlertType.INFORMATION, "Please fill all fields!").show();
+                return;
+            }
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK).show();
+        }
+
         SupFish supFish = new SupFish(fishId, supId, date, qty,amount);
 
         try {

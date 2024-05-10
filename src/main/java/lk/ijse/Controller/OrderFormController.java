@@ -158,6 +158,8 @@ public class OrderFormController {
 
     }
 
+
+
     private void getStatus() {
 
         ObservableList<String> obList = FXCollections.observableArrayList();
@@ -297,6 +299,23 @@ public class OrderFormController {
         String description=lblName.getText();
         double price;
         String id;
+
+        try {
+            if(code.isEmpty() || status.isEmpty() || description.isEmpty() ) {
+                new Alert(Alert.AlertType.INFORMATION, "Please fill all fields!").show();
+                return;
+            }
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK).show();
+        }
+
+        if (isValid()){
+
+        }else {
+            new Alert(Alert.AlertType.ERROR ,"Please check fields data").show();
+            return;
+        }
+
 
         if (lblType.getText().equals("normal")) {
              price = Double.parseDouble(lblNormalPrice.getText());
@@ -609,9 +628,8 @@ public class OrderFormController {
 
     }
 
-    public String getTotal(){
-        return "5000";
-    }
+
+
 
     public void txtIdOnKeyReleased(KeyEvent keyEvent) {
         Regex.setTextColor(lk.ijse.utill.TextField.ID,txtId);
@@ -627,5 +645,12 @@ public class OrderFormController {
 
     public void txtIqtyOnKeyReleased(KeyEvent keyEvent) {
         Regex.setTextColor(lk.ijse.utill.TextField.QTY,txtQty);
+    }
+
+    public boolean isValid(){
+        if (!Regex.setTextColor(lk.ijse.utill.TextField.DATE,txtDate)) return false;
+        if(!Regex.setTextColor(lk.ijse.utill.TextField.DATE,txtHandOverDate)) return false;
+        if(!Regex.setTextColor(lk.ijse.utill.TextField.QTY,txtQty)) return false;
+        return true;
     }
 }

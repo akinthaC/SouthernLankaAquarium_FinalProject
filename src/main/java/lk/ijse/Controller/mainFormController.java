@@ -96,10 +96,40 @@ public class mainFormController  {
 
     public void initialize() throws IOException {
         dashBoard();
+        addHoverAnimation(btnAccessories);
+        addHoverAnimation(btnDashboard);
+        addHoverAnimation(btnCustomer);
+        addHoverAnimation(btnFish);
+        addHoverAnimation(btnEmployee);
+        addHoverAnimation(btnOrders);
+        addHoverAnimation(btnSupplier);
+        addHoverAnimation(btnReport);
+        addHoverAnimation(btnPayment);
     }
 
     private void dashBoard() throws IOException {
         loadFormWithAtractiveAnimation("/view/dashboard_form.fxml");
+    }
+    private void addHoverAnimation(JFXButton button) {
+        ScaleTransition scaleIn = new ScaleTransition(Duration.millis(100), button);
+        scaleIn.setFromX(1.0);
+        scaleIn.setFromY(1.0);
+        scaleIn.setToX(1.1);
+        scaleIn.setToY(1.1);
+
+        ScaleTransition scaleOut = new ScaleTransition(Duration.millis(100), button);
+        scaleOut.setFromX(1.1);
+        scaleOut.setFromY(1.1);
+        scaleOut.setToX(1.0);
+        scaleOut.setToY(1.0);
+
+        button.setOnMouseEntered(event -> {
+            scaleIn.play();
+        });
+
+        button.setOnMouseExited(event -> {
+            scaleOut.play();
+        });
     }
 
     private void loadFormWithAtractiveAnimation(String formPath) throws IOException {
@@ -168,6 +198,7 @@ public class mainFormController  {
         stage.setTitle("Login Form");
         stage.show();
     }
+
 
     @FXML
     void btnOrdersOnAction(ActionEvent event) throws IOException {

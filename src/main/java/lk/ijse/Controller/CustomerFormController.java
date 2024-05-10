@@ -211,6 +211,10 @@ public class CustomerFormController {
             boolean isDeleted = CustomerRepo.delete(id);
             if(isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "customer deleted!").show();
+                setCellValueFactory();
+                loadAllCustomers();
+                clearFields();
+                getCurrentOrderId();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -227,6 +231,15 @@ public class CustomerFormController {
         String address = txtAddress.getText();
         String type = (String) cmbType.getValue();
 
+        try {
+            if(id.isEmpty() || name.isEmpty() || contact.isEmpty() || NIC.isEmpty() || address.isEmpty() || type.isEmpty()) {
+                new Alert(Alert.AlertType.INFORMATION, "Please fill all fields!").show();
+                return;
+            }
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK).show();
+        }
+
         Customer customer = new Customer(id, name, contact, NIC, address, type);
 
 
@@ -234,7 +247,10 @@ public class CustomerFormController {
             boolean isSaved = CustomerRepo.save(customer);
             if (isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Coustomer saved!!!.").show();
+                setCellValueFactory();
+                loadAllCustomers();
                 clearFields();
+                getCurrentOrderId();
             }
         } catch (SQLException e) {
            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -257,6 +273,9 @@ public class CustomerFormController {
             if(isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
                 clearFields();
+                setCellValueFactory();
+                loadAllCustomers();
+                getCurrentOrderId();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

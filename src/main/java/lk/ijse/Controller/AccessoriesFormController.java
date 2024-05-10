@@ -233,7 +233,7 @@ public class AccessoriesFormController {
 
     private void clearFields() {
         txtAccessorieId.setText("");
-        cmbSupplier.getItems().clear();
+        cmbSupplier.getSelectionModel().clearSelection();
         txtAccessoriesName.setText("");
         txtQtyOnHand.setText("");
         txtNormalPrice.setText("");
@@ -248,6 +248,15 @@ public class AccessoriesFormController {
         String qty = txtQtyOnHand.getText();
         String normalPrice = txtNormalPrice.getText();
         String wholeSalePrice = txtWholeSalePrice.getText();
+
+        try {
+            if(id.isEmpty() || name.isEmpty() || supid.isEmpty() || qty.isEmpty() || normalPrice.isEmpty() || wholeSalePrice.isEmpty()) {
+                new Alert(Alert.AlertType.INFORMATION, "Please fill all fields!").show();
+                return;
+            }
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK).show();
+        }
 
 
       Accessories accessories = new Accessories(id,supid, name, qty,normalPrice,wholeSalePrice);
@@ -300,8 +309,9 @@ public class AccessoriesFormController {
         String id = cmbSupplier.getValue();
         try {
             Supplier supplier = SupplierRepo.searchById(id);
-
-            lblSupName.setText(supplier.getName());
+            if(supplier!=null) {
+                lblSupName.setText(supplier.getName());
+            }
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

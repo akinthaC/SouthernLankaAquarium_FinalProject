@@ -269,6 +269,15 @@ public class FishFormController {
         Date date = Date.valueOf(LocalDate.now());
         double amount= Double.parseDouble(txtpurchasedAmount.getText());
 
+        try {
+            if(id.isEmpty() || name.isEmpty() || qtyOnHand.isEmpty() || supId.isEmpty() ) {
+                new Alert(Alert.AlertType.INFORMATION, "Please fill all fields!").show();
+                return;
+            }
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK).show();
+        }
+
         SupFish supFish = new SupFish(id, supId, date, Qty,amount);
         Fish fish = new Fish(id, name, qtyOnHand,normalPrice,wholeSalePrice);
 

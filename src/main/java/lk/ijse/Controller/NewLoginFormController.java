@@ -1,19 +1,14 @@
 package lk.ijse.Controller;
 
 import com.jfoenix.controls.JFXButton;
-import javafx.animation.FadeTransition;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
+import javafx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -242,11 +237,40 @@ public class NewLoginFormController implements Initializable {
         String userName=txtUserName.getText();
         String password=txtPassword.getText();
 
-        try {
-            checkCredential(userName, password);
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+
+        if (!isValid()){
+            if (userName.isEmpty() || password.isEmpty()) {
+                new Alert(Alert.AlertType.ERROR, "please fill all.....", ButtonType.OK).show();
+                return;
+            }
+            new Alert(Alert.AlertType.ERROR, "Check Username and Password Text fields again", ButtonType.OK).show();
+
+        }else {
+
+
+            try {
+                checkCredential(userName, password);
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }
         }
+        ScaleTransition stUsername = new ScaleTransition(Duration.seconds(0.2), txtUserName);
+        stUsername.setFromX(1);
+        stUsername.setToX(1.2);
+        stUsername.setFromY(1);
+        stUsername.setToY(1.2);
+        stUsername.setAutoReverse(true);
+        stUsername.setCycleCount(2);
+        stUsername.play();
+
+        ScaleTransition stPassword = new ScaleTransition(Duration.seconds(0.2), txtPassword);
+        stPassword.setFromX(1);
+        stPassword.setToX(1.2);
+        stPassword.setFromY(1);
+        stPassword.setToY(1.2);
+        stPassword.setAutoReverse(true);
+        stPassword.setCycleCount(2);
+        stPassword.play();
     }
 
     private void checkCredential(String userName, String password) throws SQLException, IOException {
@@ -289,16 +313,48 @@ public class NewLoginFormController implements Initializable {
     }
 
     private void navigateToTheDashboard() throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/main_form.fxml"));
+        PauseTransition delay = new PauseTransition(Duration.seconds(1)); // 1 second delay
+        delay.setOnFinished(e -> {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/LoadingPage.fxml"));
+                AnchorPane loadingPage = loader.load();
 
-        Scene scene = new Scene(rootNode);
+                Scene scene = new Scene(loadingPage);
 
-        Stage stage = (Stage) this.rootNode.getScene().getWindow();
-        stage.setScene(scene);
-        stage.centerOnScreen();
-        stage.setTitle("Dashboard Form");
+                Stage stage = (Stage) this.rootNode.getScene().getWindow();
+                stage.setScene(scene);
+                stage.centerOnScreen();
+                stage.setTitle("Loading");
+
+                PauseTransition innerDelay = new PauseTransition(Duration.seconds(2)); // Inner delay
+                innerDelay.setOnFinished(innerEvent -> {
+                    try {
+                        FXMLLoader mainFormLoader = new FXMLLoader(getClass().getResource("/view/main_form.fxml"));
+                        AnchorPane mainForm = mainFormLoader.load();
+
+                        Scene mainScene = new Scene(mainForm);
+
+                        stage.setScene(mainScene);
+                        stage.centerOnScreen();
+                        stage.setTitle("Dashboard Form");
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                });
+               innerDelay.play();
+
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+        delay.play();
     }
 
+        public boolean isValid(){
+        if (!Regex.setTextColor(lk.ijse.utill.TextField.USERNAME,txtUserName)) return false;
+        if(! Regex.setTextColor(lk.ijse.utill.TextField.PASSWORD,txtPassword)) return false;
+        return true;
+    }
 
     public void txtLoginUserNameOnKeyReleased(KeyEvent keyEvent) {
         Regex.setTextColor(lk.ijse.utill.TextField.USERNAME,txtUserName);
