@@ -62,4 +62,17 @@ public class UserRepo {
         return pstm.executeUpdate() > 0;
 
     }
+
+    public static boolean update1(String email, String userName) throws SQLException {
+        String sql = "UPDATE user SET email    = ? WHERE userName = ?";
+
+
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
+
+        pstm.setString(1, email);
+        pstm.setString(2, userName);
+
+        return pstm.executeUpdate() > 0;
+    }
 }

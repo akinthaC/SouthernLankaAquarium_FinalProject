@@ -1,15 +1,12 @@
 package lk.ijse.Controller;
 
 import com.jfoenix.controls.JFXButton;
-import javafx.animation.Interpolator;
+import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -23,15 +20,28 @@ import lk.ijse.utill.Regex;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
-public class ForgetPasswordForm3Controller {
+public class ChangePasswordController {
 
+    public Label lblUserName;
     public Label lblText;
     @FXML
-    private JFXButton btnBack;
+    private AnchorPane MainPain;
 
     @FXML
     private JFXButton btnSave;
+
+    @FXML
+    private Label lblDate;
+
+    @FXML
+    private Label lblTime;
+
+    @FXML
+    private AnchorPane mainPain;
 
     @FXML
     private PasswordField txtConformPassword;
@@ -44,45 +54,62 @@ public class ForgetPasswordForm3Controller {
 
     @FXML
     private TextField txtPassword1;
-
     public void initialize(){
         txtPassword1.setVisible(false);
         txtConformPassword1.setVisible(false);
+        lblUserName.setText(NewLoginFormController.userName1);
+        setDate();
+        setTime();
     }
-    @FXML
-    void btnBackOnAction(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/NEW.fxml"));
-        Scene scene = btnBack.getScene();
-        root.translateXProperty().set(scene.getWidth());
 
-        AnchorPane parentContainer = (AnchorPane) scene.getRoot();
+    private void setTime() {
+        Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
 
-        // Remove the existing content
-        parentContainer.getChildren().clear();
+            LocalTime currentTime = LocalTime.now();
 
-        // Add the new content
-        parentContainer.getChildren().add(root);
+            DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
+            String formattedTime = currentTime.format(timeFormatter);
 
-        Timeline timeline = new Timeline();
-        KeyValue keyValue = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_BOTH);
-        KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.5), keyValue);
-        timeline.getKeyFrames().add(keyFrame);
-        timeline.play();
+            lblTime.setText(formattedTime);
+        }), new KeyFrame(Duration.seconds(1)));
+
+        clock.setCycleCount(Animation.INDEFINITE);
+
+        clock.play();
+    }
+
+    private void setDate() {
+        LocalDate now = LocalDate.now();
+        lblDate.setText(String.valueOf(now));
+
 
     }
+
+
 
     @FXML
     void btnSaveOnAction(ActionEvent event) throws SQLException {
+
         String password = txtPassword.getText();
         String reEnterPassword = txtConformPassword.getText();
-        String userName = ForgetPasswordForm1Controller.userName;
+        String userName = NewLoginFormController.userName1;
 
-        if (password.equalsIgnoreCase(reEnterPassword)){
-            boolean isUpdated= UserRepo.update(password,userName);
+        try {
+
+        if (password.equalsIgnoreCase(reEnterPassword)) {
+            System.out.println("userName + password+reEnterPassword = " + userName + password + reEnterPassword);
+
+            boolean isUpdated = UserRepo.update(password, userName);
             if (isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Password Updated!!").show();
+            } else {
+                new Alert(Alert.AlertType.CONFIRMATION, "Password not Updated!!").show();
             }
         }
+        } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+
 
     }
 

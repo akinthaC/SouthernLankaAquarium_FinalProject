@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="MainPain" opacity="0.98" prefHeight="708.0" prefWidth="927.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.ChangeEmailController">
+   <children>
+      <AnchorPane layoutX="-1.0" prefHeight="46.0" prefWidth="928.0" style="-fx-background-color: #1e272e;">
+         <children>
+            <Label layoutX="770.0" layoutY="22.0" prefHeight="18.0" prefWidth="46.0" text="Time:" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblDate" layoutX="814.0" layoutY="3.0" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="770.0" layoutY="3.0" prefHeight="18.0" prefWidth="46.0" text="Date:" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblTime" layoutX="814.0" layoutY="22.0" prefHeight="18.0" prefWidth="102.0" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label layoutX="769.0" layoutY="22.0" prefHeight="18.0" prefWidth="46.0" text="Time:" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblDate" layoutX="813.0" layoutY="3.0" prefHeight="18.0" prefWidth="102.0" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="769.0" layoutY="3.0" prefHeight="18.0" prefWidth="46.0" text="Date:" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="368.0" layoutY="-11.0" prefHeight="68.0" prefWidth="251.0" text="Settings FORM" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Line endX="264.7625732421875" endY="-1.0" layoutX="661.0" layoutY="48.0" startX="-661.0" startY="-1.0" stroke="#d71111" strokeWidth="2.0" />
+      <AnchorPane fx:id="mainPain" layoutX="-1.0" layoutY="665.0" opacity="0.87" prefHeight="68.0" prefWidth="928.0" style="-fx-background-color: #487eb0;" />
+      <Label layoutX="46.0" layoutY="89.0" text="Change Email:">
+         <font>
+            <Font name="System Bold Italic" size="23.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtEmail" layoutX="135.0" layoutY="247.0" onKeyReleased="#txtNewEmailOnKeyReleased" prefHeight="48.0" prefWidth="363.0" promptText="Enter New Email">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <Label layoutX="82.0" layoutY="215.0" prefHeight="20.0" prefWidth="136.0" text="New Email:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnChangeEmail" buttonType="RAISED" layoutX="238.0" layoutY="465.0" onAction="#btnChangeEmailOnAction" prefHeight="46.0" prefWidth="261.0" style="-fx-background-color: #218c74; -fx-background-radius: 20 20 20 20;" text="CHANGE Email">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </JFXButton>
+      <TextField fx:id="txtConformEmail" layoutX="165.0" layoutY="359.0" onKeyReleased="#txtConformEmailOnKeyReleased" prefHeight="48.0" prefWidth="363.0" promptText="Re-Enter Email">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <Label layoutX="80.0" layoutY="328.0" prefHeight="20.0" prefWidth="170.0" text="Conform Email:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Line endX="-77.0" endY="524.0" layoutX="668.0" layoutY="138.0" startX="-78.0" startY="-90.0" strokeWidth="2.0">
+         <stroke>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.23983004689216614" green="0.09265350550413132" blue="0.5131579041481018" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </stroke>
+      </Line>
+      <Label layoutX="82.0" layoutY="139.0" prefHeight="20.0" prefWidth="115.0" text="User Name:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblUserName" layoutX="109.0" layoutY="159.0" prefHeight="29.0" prefWidth="149.0">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblText" layoutX="166.0" layoutY="409.0" prefHeight="29.0" prefWidth="219.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="617.0" fitWidth="335.0" layoutX="592.0" layoutY="48.0" opacity="0.92">
+         <image>
+            <Image url="@../image/undraw_Envelope_re_f5j4.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

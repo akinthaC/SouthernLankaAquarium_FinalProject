@@ -62,6 +62,7 @@ public class LoginFormController  {
         if(resultSet.next()) {
             String dbPw = resultSet.getString("password");
 
+
             if(password.equals(dbPw)) {
                 navigateToTheDashboard();
                 System.out.println("navigate");

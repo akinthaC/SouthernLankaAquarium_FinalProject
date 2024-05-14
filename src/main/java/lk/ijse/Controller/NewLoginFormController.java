@@ -105,6 +105,9 @@ public class NewLoginFormController implements Initializable {
     @FXML
     private TextField txtUserName;
 
+    public static String userName1;
+    public static String gmail1;
+
     private static final String TEXT_TO_TYPE = "Welcome To The System..";
     private static final int SPEED = 300; // milliseconds per character
 
@@ -237,6 +240,7 @@ public class NewLoginFormController implements Initializable {
     void btnLoginOnAction(ActionEvent event) throws IOException {
         String userName=txtUserName.getText();
         String password=txtPassword.getText();
+        userName1=userName;
 
 
         if (!isValid()){
@@ -275,7 +279,7 @@ public class NewLoginFormController implements Initializable {
     }
 
     private void checkCredential(String userName, String password) throws SQLException, IOException {
-        String sql = "SELECT userName, password FROM user WHERE userName = ?";
+        String sql = "SELECT userName, password,email FROM user WHERE userName = ?";
 
         Connection connection = DbConnection.getInstance().getConnection();
         PreparedStatement pstm = connection.prepareStatement(sql);
@@ -284,6 +288,8 @@ public class NewLoginFormController implements Initializable {
         ResultSet resultSet = pstm.executeQuery();
         if(resultSet.next()) {
             String dbPw = resultSet.getString("password");
+            String gmail =resultSet.getString("email");
+            gmail1 =gmail;
 
             if(password.equals(dbPw)) {
                 navigateToTheDashboard();

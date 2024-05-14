@@ -21,6 +21,8 @@ import java.util.ResourceBundle;
 
 public class mainFormController  {
 
+    public Label lblName;
+    public Label lblGmail;
     @FXML
     private JFXButton btnAccessories;
 
@@ -105,6 +107,8 @@ public class mainFormController  {
         addHoverAnimation(btnSupplier);
         addHoverAnimation(btnReport);
         addHoverAnimation(btnPayment);
+        lblGmail.setText(NewLoginFormController.gmail1);
+        lblName.setText("Hi.."+NewLoginFormController.userName1);
     }
 
     private void dashBoard() throws IOException {

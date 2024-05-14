@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainPain1" onMouseReleased="#SettingOnMouseRelesed" prefHeight="72.0" prefWidth="928.0" style="-fx-background-color: #1e272e;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <JFXButton fx:id="btnPassword" buttonType="RAISED" layoutX="732.0" layoutY="19.0" onAction="#btnPasswordOnAction" prefHeight="42.0" prefWidth="173.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 20 20 20 20;" text="Change Password">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="813.0" layoutY="3.0" prefHeight="22.0" prefWidth="11.0" text="^" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnChangeEmail" buttonType="RAISED" layoutX="502.0" layoutY="20.0" onAction="#btnChangeEmailOnAction" prefHeight="42.0" prefWidth="173.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 20 20 20 20;" text="Change E-mail">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="583.0" layoutY="4.0" prefHeight="22.0" prefWidth="11.0" text="^" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnChangeTheme" buttonType="RAISED" layoutX="259.0" layoutY="20.0" onAction="#btnChangeThemeOnAction" prefHeight="42.0" prefWidth="173.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 20 20 20 20;" text="Change Theme">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="340.0" layoutY="4.0" prefHeight="22.0" prefWidth="11.0" text="^" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnReports" buttonType="RAISED" layoutX="31.0" layoutY="20.0" onAction="#btnReportsOnAction" prefHeight="42.0" prefWidth="173.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 20 20 20 20;" text="Reports">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="112.0" layoutY="4.0" prefHeight="22.0" prefWidth="11.0" text="^" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
