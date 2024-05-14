@@ -34,6 +34,9 @@ import java.util.List;
 
 public class PaymentFormController {
 
+    public TableColumn colAmountTOPat;
+    public TableColumn colStatus;
+    public JFXComboBox cmbType;
     @FXML
     private JFXButton btnClear;
 
@@ -91,8 +94,6 @@ public class PaymentFormController {
     @FXML
     private TextField txtTotal;
 
-    @FXML
-    private TextField txtType;
 
     public void initialize() throws IOException {
         setDate();
@@ -101,6 +102,21 @@ public class PaymentFormController {
         loadAllCustomers();
         getCurrentOrderId();
         getOrderIds();
+        getPayType();
+
+    }
+
+    private void getPayType() {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+
+
+        List<String> idList = PaymentRepo.getType();
+
+        for(String value : idList) {
+            obList.add(value);
+        }
+
+        cmbType.setItems(obList);
 
     }
 
@@ -159,7 +175,9 @@ public class PaymentFormController {
                       payment.getDate(),
                       payment.getTotal(),
                       payment.getAdvance(),
-                      payment.getType()
+                      payment.getType(),
+                      payment.getAmountToPaid(),
+                      payment.getStatus()
                 );
 
                 obList.add(tm);
@@ -179,6 +197,8 @@ public class PaymentFormController {
         colTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
         colAdvance.setCellValueFactory(new PropertyValueFactory<>("advance"));
         colType.setCellValueFactory(new PropertyValueFactory<>("type"));
+        colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+        colAmountTOPat.setCellValueFactory(new PropertyValueFactory<>("amountToPaid"));
 
 
     }
@@ -214,7 +234,7 @@ public class PaymentFormController {
         txtDate.setText("");
         txtTotal.setText("");
         txtAdvance.setText("");
-        txtType.setText("");
+        cmbType.getSelectionModel().clearSelection();
 
     }
 
@@ -244,10 +264,19 @@ public class PaymentFormController {
         String date = txtDate.getText();
         double  total = Double.parseDouble(txtTotal.getText());
         double  advance = Double.parseDouble(txtAdvance.getText());
-        String type = txtType.getText();
+        String type = (String) cmbType.getValue();
+        double AmountToPaid = total-advance;
+        System.out.println(AmountToPaid+"aaaaaaaa");
+        String Status;
+
+        if (AmountToPaid == 0){
+            Status ="Successes";
+        }else {
+            Status="Pending";
+        }
 
 
-        Payment payment = new Payment(id, ordid, date, total, advance, type);
+        Payment payment = new Payment(id, ordid, date, total, advance, type,AmountToPaid,Status);
 
 
         try {
@@ -272,7 +301,8 @@ public class PaymentFormController {
         txtDate.setText("");
         txtTotal.setText("");
         txtAdvance.setText("");
-        txtType.setText("");
+        cmbType.getSelectionModel().clearSelection();
+
     }
 
     @FXML
@@ -282,10 +312,18 @@ public class PaymentFormController {
         String date = txtDate.getText();
         double  total = Double.parseDouble(txtTotal.getText());
         double  advance = Double.parseDouble(txtAdvance.getText());
-        String type = txtType.getText();
+        String type = (String) cmbType.getValue();
+        double AmountToPaid = total-advance;
+
+        String Status;
+        if (AmountToPaid == 0){
+            Status ="Successes";
+        }else {
+            Status="Pending";
+        }
 
 
-        Payment payment = new Payment(id, ordid, date, total, advance, type);
+        Payment payment = new Payment(id, ordid, date, total, advance, type,AmountToPaid,Status);
 
         try {
             boolean isUpdated = PaymentRepo.update(payment);
@@ -320,7 +358,7 @@ public class PaymentFormController {
             txtDate.setText(payment.getDate());
             txtTotal.setText(String.valueOf(payment.getTotal()));
             txtAdvance.setText(String.valueOf(payment.getAdvance()));
-            txtType.setText(payment.getType());
+            cmbType.setValue(payment.getType());
 
         } else {
             new Alert(Alert.AlertType.INFORMATION, "Payment info not found!").show();
@@ -342,5 +380,8 @@ public class PaymentFormController {
 
     public void txtAdvanceOnKeyReleased(KeyEvent keyEvent) {
         Regex.setTextColor(lk.ijse.utill.TextField.AMOUNT,txtAdvance);
+    }
+
+    public void cmbTypeOnAction(ActionEvent actionEvent) {
     }
 }

@@ -79,6 +79,7 @@ public class LoginFormController  {
     @FXML
     void hyperlinkFrogetPasswordOnAction(ActionEvent event) {
 
+
     }
 
     private void navigateToTheDashboard() throws IOException {

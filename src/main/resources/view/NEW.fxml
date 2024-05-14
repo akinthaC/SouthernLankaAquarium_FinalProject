@@ -20,9 +20,9 @@
       </ImageView>
       <AnchorPane layoutX="466.0" opacity="0.82" prefHeight="713.0" prefWidth="539.0" style="-fx-background-color: #ecf0f1;">
          <children>
-            <Label layoutX="203.0" layoutY="510.0" text="|" />
+            <Label layoutX="214.0" layoutY="510.0" text="|" />
             <Label layoutX="366.0" layoutY="509.0" text="|" />
-            <TextField fx:id="txtUserName" layoutX="112.0" layoutY="193.0" onKeyReleased="#txtLoginUserNameOnKeyReleased" prefHeight="48.0" prefWidth="353.0" promptText="UserName">
+            <TextField fx:id="txtUserName" layoutX="112.0" layoutY="193.0" onKeyReleased="#txtLoginUserNameOnKeyReleased" prefHeight="48.0" prefWidth="374.0" promptText="UserName" style="-fx-background-radius: 10 10 10 10;">
                <font>
                   <Font size="15.0" />
                </font>
@@ -42,19 +42,19 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <JFXButton fx:id="btnLogin" layoutX="201.0" layoutY="370.0" onAction="#btnLoginOnAction" prefHeight="41.0" prefWidth="152.0" style="-fx-background-color: #7f8c8d;" text="LOGIN">
+            <JFXButton fx:id="btnLogin" layoutX="181.0" layoutY="383.0" onAction="#btnLoginOnAction" prefHeight="41.0" prefWidth="237.0" style="-fx-background-color: #7f8c8d; -fx-background-radius: 10 10 10 10;" text="LOGIN">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>
             </JFXButton>
-            <Hyperlink layoutX="214.0" layoutY="506.0" onAction="#hyperlinkFrogetPasswordOnAction" prefHeight="27.0" prefWidth="143.0" text="Frogot Password?">
+            <Hyperlink fx:id="hyperPassword" layoutX="221.0" layoutY="506.0" onAction="#hyperlinkFrogetPasswordOnAction" prefHeight="27.0" prefWidth="143.0" text="Frogot Password?">
                <font>
                   <Font size="15.0" />
                </font>
             </Hyperlink>
             <Line endX="75.0" layoutX="478.0" layoutY="519.0" opacity="0.77" startX="-108.0" strokeWidth="0.5" />
-            <Line endX="239.0" layoutX="-40.0" layoutY="519.0" opacity="0.77" startX="44.0" strokeWidth="0.5" />
-            <PasswordField fx:id="txtPassword" layoutX="112.0" layoutY="278.0" onKeyReleased="#txtLoginPasswordOnKeyReleased" prefHeight="48.0" prefWidth="353.0" promptText="Password">
+            <Line endX="255.0" layoutX="-40.0" layoutY="519.0" opacity="0.77" startX="44.0" strokeWidth="0.5" />
+            <PasswordField fx:id="txtPassword" layoutX="112.0" layoutY="283.0" onKeyReleased="#txtLoginPasswordOnKeyReleased" prefHeight="48.0" prefWidth="374.0" promptText="Password" style="-fx-background-radius: 10 10 10 10;">
                <font>
                   <Font size="15.0" />
                </font>

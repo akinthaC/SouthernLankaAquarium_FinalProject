@@ -3,12 +3,7 @@ package lk.ijse;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.stage.Stage;
-import lk.ijse.Db.DbConnection;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 
 public class Launcher extends Application {
     public static void main(String[] args) {

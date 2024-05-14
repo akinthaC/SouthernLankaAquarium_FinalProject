@@ -1,5 +1,7 @@
 package lk.ijse.repository;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import lk.ijse.Db.DbConnection;
 import lk.ijse.model.Accessories;
 import lk.ijse.model.Payment;
@@ -13,7 +15,7 @@ import java.util.List;
 
 public class PaymentRepo {
     public static boolean save(Payment payment) throws SQLException {
-        String sql = "INSERT INTO payment VALUES(?,?,?,?,?,?) ";
+        String sql = "INSERT INTO payment VALUES(?,?,?,?,?,?,?,?) ";
 
         Connection connection = DbConnection.getInstance().getConnection();
         PreparedStatement pstm = connection.prepareStatement(sql);
@@ -24,13 +26,15 @@ public class PaymentRepo {
         pstm.setObject(4, payment.getTotal());
         pstm.setObject(5, payment.getAdvance());
         pstm.setObject(6, payment.getType());
+        pstm.setObject(7, payment.getStatus());
+        pstm.setObject(8, payment.getAmountToPaid());
 
         return pstm.executeUpdate() > 0;
 
     }
 
     public static boolean update(Payment payment) throws SQLException {
-        String sql = "UPDATE payment SET orderId=?, date= ?, totalAmounr = ?, advance = ?, paytype = ? WHERE payId = ?";
+        String sql = "UPDATE payment SET orderId=?, date= ?, totalAmounr = ?, advance = ?, paytype = ? ,status =? , amountToBePaid =? WHERE payId = ?";
 
         Connection connection =DbConnection.getInstance().getConnection();
         PreparedStatement pstm = connection.prepareStatement(sql);
@@ -42,7 +46,9 @@ public class PaymentRepo {
         pstm.setObject(3, payment.getTotal());
         pstm.setObject(4, payment.getAdvance());
         pstm.setObject(5, payment.getType());
-        pstm.setObject(6, payment.getId());
+        pstm.setObject(8, payment.getId());
+        pstm.setObject(6, payment.getStatus());
+        pstm.setObject(7, payment.getAmountToPaid());
 
         return pstm.executeUpdate() > 0;
     }
@@ -76,9 +82,11 @@ public class PaymentRepo {
             double total = Double.parseDouble(resultSet.getString(4));
             double advance = Double.parseDouble(resultSet.getString(5));
             String type = resultSet.getString(6);
+            String status = resultSet.getString(7);
+            double amountToPay = Double.parseDouble(resultSet.getString(8));
 
 
-            Payment payment= new Payment(payid,ordid,date,total,advance,type);
+            Payment payment= new Payment(payid,ordid,date,total,advance,type,amountToPay,status);
             paymentList.add(payment);
         }
         return paymentList;
@@ -117,10 +125,11 @@ public class PaymentRepo {
             double total = Double.parseDouble(resultSet.getString(4));
             double advance = Double.parseDouble(resultSet.getString(5));
             String type = resultSet.getString(6);
+            String status = resultSet.getString(7);
+            double amountToPay = Double.parseDouble(resultSet.getString(8));
 
-            ;
 
-            Payment payment= new Payment(payid,ordid,date,total,advance,type);
+            Payment payment= new Payment(payid,ordid,date,total,advance,type,amountToPay,status);
 
             return payment;
         }
@@ -141,5 +150,14 @@ public class PaymentRepo {
             idList.add(id);
         }
         return idList;
+    }
+
+    public static List<String> getType() {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+
+        obList.add("Cash");
+        obList.add("Card");
+
+        return obList;
     }
 }

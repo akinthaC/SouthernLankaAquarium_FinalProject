@@ -15,4 +15,6 @@ public class Payment {
     private double total;
     private double advance;
     private String type;
+    private double amountToPaid;
+    private String status;
 }

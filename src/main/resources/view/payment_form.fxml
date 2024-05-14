@@ -50,7 +50,6 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtType" layoutX="47.0" layoutY="220.0" prefHeight="30.0" prefWidth="317.0" promptText="Type" />
       <Label layoutX="29.0" layoutY="199.0" prefHeight="18.0" prefWidth="120.0" text="type:">
          <font>
             <Font size="14.0" />
@@ -94,12 +93,14 @@
       </JFXButton>
       <TableView fx:id="tblPayment" layoutX="9.0" layoutY="345.0" prefHeight="356.0" prefWidth="910.0">
          <columns>
-            <TableColumn fx:id="colPaymentId" prefWidth="142.0" text="Payment Id" />
-            <TableColumn fx:id="colDate" prefWidth="182.0" text="Date" />
-            <TableColumn fx:id="colTotal" prefWidth="145.0" text="Total" />
-            <TableColumn fx:id="colAdvance" prefWidth="164.0" text="Advance" />
-            <TableColumn fx:id="colType" prefWidth="150.0" text="type" />
-            <TableColumn fx:id="colOrdId" prefWidth="123.0" text="Order Id" />
+            <TableColumn fx:id="colPaymentId" prefWidth="99.0" text="Payment Id" />
+            <TableColumn fx:id="colDate" prefWidth="91.0" text="Date" />
+            <TableColumn fx:id="colTotal" prefWidth="113.0" text="Total" />
+            <TableColumn fx:id="colAdvance" prefWidth="124.0" text="Advance" />
+            <TableColumn fx:id="colAmountTOPat" prefWidth="186.0" text="Amount To Be pay" />
+            <TableColumn fx:id="colType" prefWidth="91.0" text="type" />
+            <TableColumn fx:id="colOrdId" prefWidth="104.0" text="Order Id" />
+            <TableColumn fx:id="colStatus" prefWidth="101.0" text="Status" />
          </columns>
       </TableView>
       <AnchorPane prefHeight="46.0" prefWidth="928.0" style="-fx-background-color: #1e272e;">
@@ -138,15 +139,6 @@
          </font>
       </Label>
       <JFXComboBox fx:id="cmpOrderId" layoutX="482.0" layoutY="225.0" onAction="#cmpOrderIdOnAction" prefHeight="24.0" prefWidth="147.0" />
-      <Label layoutX="684.0" layoutY="208.0" prefHeight="18.0" prefWidth="112.0" text="Discription">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblDiscription" layoutX="704.0" layoutY="229.0" prefHeight="24.0" prefWidth="102.0">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
+      <JFXComboBox fx:id="cmbType" layoutX="44.0" layoutY="229.0" onAction="#cmbTypeOnAction" prefHeight="24.0" prefWidth="147.0" />
    </children>
 </AnchorPane>

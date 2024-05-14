@@ -27,6 +27,7 @@ import java.util.ResourceBundle;
 
 public class NewLoginFormController implements Initializable {
 
+    public Hyperlink hyperPassword;
     @FXML
     private Label AA;
 
@@ -300,15 +301,24 @@ public class NewLoginFormController implements Initializable {
 
     @FXML
     void hyperlinkFrogetPasswordOnAction(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/reset_password.fxml"));
-        Parent rootNode = loader.load();
+        Parent root = FXMLLoader.load(getClass().getResource("/view/forgetPasswordForm1.fxml"));
+        Scene scene = hyperPassword.getScene();
+        root.translateXProperty().set(scene.getWidth());
 
-        Stage stage = new Stage();
-        stage.setScene(new Scene(rootNode));
-        stage.centerOnScreen();
-        stage.setTitle("Forget Password");
+        AnchorPane parentContainer = (AnchorPane) scene.getRoot();
 
-        stage.show();
+        // Remove the existing content
+        parentContainer.getChildren().clear();
+
+        // Add the new content
+        parentContainer.getChildren().add(root);
+
+        Timeline timeline = new Timeline();
+        KeyValue keyValue = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_BOTH);
+        KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.5), keyValue);
+        timeline.getKeyFrames().add(keyFrame);
+        timeline.play();
+
 
     }
 
