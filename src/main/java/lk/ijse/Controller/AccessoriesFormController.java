@@ -9,18 +9,29 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import lk.ijse.model.Accessories;
+import lk.ijse.model.SupAcc;
+import lk.ijse.model.SupFish;
 import lk.ijse.model.Supplier;
 import lk.ijse.model.tm.AccessoriesTm;
+import lk.ijse.model.tm.SupAccTm;
+import lk.ijse.model.tm.SupFishTm;
 import lk.ijse.repository.AccessoriesRepo;
+import lk.ijse.repository.SupAccRepo;
+import lk.ijse.repository.SupFishRepo;
 import lk.ijse.repository.SupplierRepo;
 import lk.ijse.utill.Regex;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -28,7 +39,16 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class AccessoriesFormController {
-
+    @FXML
+    public TableView <SupAccTm> tblAccSup;
+    @FXML
+    public TableColumn <?, ?>colFishId2;
+    @FXML
+    public TableColumn <?, ?>colQty;
+    @FXML
+    public TextField purchasedAmount;
+    @FXML
+    public JFXButton btnAdd;
     @FXML
     private JFXButton btnClear;
 
@@ -95,9 +115,12 @@ public class AccessoriesFormController {
         setCellValueFactory();
         loadAllCustomers();
         getCurrentOrderId();
-        getSupplierIds();
+       // getSupplierIds();
+        cmbSupplier.setEditable(true);
 
     }
+
+
 
     private void getSupplierIds() {
         ObservableList<String> obList = FXCollections.observableArrayList();
@@ -144,13 +167,13 @@ public class AccessoriesFormController {
 
     private void loadAllCustomers() {
         ObservableList<AccessoriesTm> obList = FXCollections.observableArrayList();
+        ObservableList<SupAccTm> obList2 = FXCollections.observableArrayList();
 
         try {
             List<Accessories> accessoriesList = AccessoriesRepo.getAll();
             for (Accessories accessories : accessoriesList) {
                 AccessoriesTm tm = new AccessoriesTm(
                         accessories.getId(),
-                        accessories.getSupid(),
                         accessories.getName(),
                         accessories.getQty(),
                         accessories.getNormalPrice(),
@@ -159,6 +182,22 @@ public class AccessoriesFormController {
 
                 obList.add(tm);
             }
+            List<SupAcc> supAcc = SupAccRepo.getAll();
+            for (SupAcc supAcc1 : supAcc) {
+
+                SupAccTm tm1 = new SupAccTm(
+                        supAcc1.getAccId(),
+                        supAcc1.getSupId(),
+                        supAcc1.getDate(),
+                        supAcc1.getQty(),
+                        supAcc1.getAmount()
+                );
+                obList2.add(tm1);
+
+            }
+
+
+            tblAccSup.setItems(obList2);
 
             tblAccessories.setItems(obList);
         } catch (SQLException e) {
@@ -169,11 +208,14 @@ public class AccessoriesFormController {
 
     private void setCellValueFactory() {
         colAccessoriesId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        colSupId.setCellValueFactory(new PropertyValueFactory<>("supid"));
         colAccessoriesName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colQtyOnHand.setCellValueFactory(new PropertyValueFactory<>("Qty"));
         colNoramalPrice.setCellValueFactory(new PropertyValueFactory<>("normalPrice"));
         colWholeSalePrice.setCellValueFactory(new PropertyValueFactory<>("wholesaleprice"));
+
+        colSupId.setCellValueFactory(new PropertyValueFactory<>("supId"));
+        colFishId2.setCellValueFactory(new PropertyValueFactory<>("AccId"));
+        colQty.setCellValueFactory(new PropertyValueFactory<>("Qty"));
 
 
     }
@@ -241,16 +283,21 @@ public class AccessoriesFormController {
     }
 
     @FXML
-    void btnSaveOnAction(ActionEvent event) {
+    void btnSaveOnAction(ActionEvent event) throws SQLException {
         String id=txtAccessorieId.getText();
         String name = txtAccessoriesName.getText();
-        String supid = cmbSupplier.getValue();
         String qty = txtQtyOnHand.getText();
         String normalPrice = txtNormalPrice.getText();
         String wholeSalePrice = txtWholeSalePrice.getText();
 
+        String supId=SupplierRepo.getId(cmbSupplier.getValue());
+        System.out.println("supId = " + supId);
+        int Qty= Integer.parseInt(txtQtyOnHand.getText());
+        Date date = Date.valueOf(LocalDate.now());
+        double amount= Double.parseDouble(purchasedAmount.getText());
+
         try {
-            if(id.isEmpty() || name.isEmpty() || supid.isEmpty() || qty.isEmpty() || normalPrice.isEmpty() || wholeSalePrice.isEmpty()) {
+            if(id.isEmpty() || name.isEmpty() || name.isEmpty() || qty.isEmpty() || normalPrice.isEmpty() || wholeSalePrice.isEmpty() || supId.isEmpty()) {
                 new Alert(Alert.AlertType.INFORMATION, "Please fill all fields!").show();
                 return;
             }
@@ -259,17 +306,23 @@ public class AccessoriesFormController {
         }
 
 
-      Accessories accessories = new Accessories(id,supid, name, qty,normalPrice,wholeSalePrice);
+
+      Accessories accessories = new Accessories(id,name, qty,normalPrice,wholeSalePrice);
+        SupAcc supAcc = new SupAcc(id, supId, date, Qty, amount);
 
 
         try {
             boolean isSaved = AccessoriesRepo.save(accessories);
             if (isSaved) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Accessories saved!!!.").show();
-                clearFields();
-                setCellValueFactory();
-                loadAllCustomers();
-                getCurrentOrderId();
+                boolean isSaved1 = SupAccRepo.save(supAcc);
+                if (isSaved1) {
+                    clearFields();
+                    setCellValueFactory();
+                    loadAllCustomers();
+                    getCurrentOrderId();
+                    new Alert(Alert.AlertType.CONFIRMATION, "Accessories saved!!!.").show();
+
+                }
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -281,13 +334,21 @@ public class AccessoriesFormController {
     void btnUpdateOnAction(ActionEvent event) {
         String id=txtAccessorieId.getText();
         String name = txtAccessoriesName.getText();
-        String supid = cmbSupplier.getValue();
         String qty = txtQtyOnHand.getText();
         String normalPrice = txtNormalPrice.getText();
         String wholeSalePrice = txtWholeSalePrice.getText();
 
+        try {
+            if(id.isEmpty() || name.isEmpty() || name.isEmpty() || qty.isEmpty() || normalPrice.isEmpty() || wholeSalePrice.isEmpty()) {
+                new Alert(Alert.AlertType.INFORMATION, "Please fill all fields!").show();
+                return;
+            }
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK).show();
+        }
 
-        Accessories accessories = new Accessories(id,supid, name, qty,normalPrice,wholeSalePrice);
+
+        Accessories accessories = new Accessories(id, name, qty,normalPrice,wholeSalePrice);
 
         try {
             boolean isUpdated = AccessoriesRepo.update(accessories);
@@ -306,16 +367,6 @@ public class AccessoriesFormController {
 
     @FXML
     void cmbSupplierOnAction(ActionEvent event) {
-        String id = cmbSupplier.getValue();
-        try {
-            Supplier supplier = SupplierRepo.searchById(id);
-            if(supplier!=null) {
-                lblSupName.setText(supplier.getName());
-            }
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
 
     }
 
@@ -326,7 +377,6 @@ public class AccessoriesFormController {
         Accessories accessories = AccessoriesRepo.searchById(id);
         if (accessories != null) {
             txtAccessorieId.setText(accessories.getId());
-            cmbSupplier.setValue(accessories.getSupid());
             txtAccessoriesName.setText(accessories.getName());
             txtQtyOnHand.setText(accessories.getQty());
             txtNormalPrice.setText(accessories.getNormalPrice());
@@ -334,6 +384,40 @@ public class AccessoriesFormController {
 
         } else {
             new Alert(Alert.AlertType.INFORMATION, "Accessories not found!").show();
+        }
+
+    }
+
+
+    @FXML
+    void filterSupplierDe(KeyEvent event) {
+        ObservableList<String> filterData = FXCollections.observableArrayList();
+        String enterText = cmbSupplier.getEditor().getText();
+
+        try {
+
+            List<String> idList = SupplierRepo.searchNIC();
+
+            for (String NIC : idList){
+                if (NIC.contains(enterText)){
+                    filterData.add(NIC);
+                }
+            }
+            cmbSupplier.setItems(filterData);
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        String NIC = cmbSupplier.getValue();
+        try {
+            Supplier supplier = SupplierRepo.searchByNIC(NIC);
+            if(supplier!=null) {
+                lblSupName.setText(supplier.getName());
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
 
     }
@@ -356,5 +440,22 @@ public class AccessoriesFormController {
 
     public void txtIdWholeSalePriceKeyReleased(KeyEvent keyEvent) {
         Regex.setTextColor(lk.ijse.utill.TextField.AMOUNT,txtWholeSalePrice);
+    }
+
+    public void btnAddOnAction(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/addNewQtyAccessories.fxml"));
+        Parent rootNode = loader.load();
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(rootNode));
+        stage.centerOnScreen();
+        stage.setTitle("AddNewQty Form");
+
+        stage.show();
+    }
+
+    public void txtPurchaseAmountOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.utill.TextField.AMOUNT,purchasedAmount);
+
     }
 }

@@ -107,6 +107,7 @@ public class mainFormController  {
         addHoverAnimation(btnSupplier);
         addHoverAnimation(btnReport);
         addHoverAnimation(btnPayment);
+        addHoverAnimation(btnLogOut);
         lblGmail.setText(NewLoginFormController.gmail1);
         lblName.setText("Hi.."+NewLoginFormController.userName1);
     }

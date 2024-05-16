@@ -13,7 +13,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -79,6 +81,15 @@ public class ForgetPasswordForm1Controller {
         Object selectedItem1 = cmbserName.getSelectionModel().getSelectedItem();
         String Username = (String) selectedItem1;
         userName =Username;
+
+        try {
+            if(Username.isEmpty()) {
+                new Alert(Alert.AlertType.INFORMATION, "Please fill all fields!").show();
+                return;
+            }
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK).show();
+        }
 
         if (Username!=null){
             Random random = new Random();

@@ -8,7 +8,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class FishRepo {
 
@@ -173,4 +175,24 @@ public class FishRepo {
 
 
     }
+
+    public static Map<String, Integer> GetFishDetail() {
+        Map<String, Integer> FishDetail = new HashMap<>();
+
+        String sql = "SELECT name, qtyOnHand FROM fish;";
+
+        try (PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
+             ResultSet resultSet = pstm.executeQuery()) {
+
+            while (resultSet.next()) {
+                String name = resultSet.getString("name");
+                int qtyOnHand = (int) resultSet.getDouble("qtyOnHand");
+                FishDetail.put(name, qtyOnHand);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return FishDetail;
+    }
+
 }

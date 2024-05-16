@@ -20,7 +20,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btnSave" buttonType="RAISED" layoutX="345.0" layoutY="283.0" onAction="#btnSaveOnAction" prefHeight="30.0" prefWidth="94.0" style="-fx-background-color: #27ae60;" text="Save">
+      <JFXButton fx:id="btnSave" buttonType="RAISED" layoutX="334.0" layoutY="359.0" onAction="#btnSaveOnAction" prefHeight="30.0" prefWidth="94.0" style="-fx-background-color: #27ae60;" text="Save">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -32,8 +32,8 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <TextField fx:id="txtAccessoriesName" layoutX="494.0" layoutY="77.0" onKeyReleased="#txtNameOnKeyReleased" prefHeight="30.0" prefWidth="317.0" promptText="Accessorie Name" />
-      <Label layoutX="474.0" layoutY="58.0" prefHeight="16.0" prefWidth="94.0" text="Name:">
+      <TextField fx:id="txtAccessoriesName" layoutX="479.0" layoutY="78.0" onKeyReleased="#txtNameOnKeyReleased" prefHeight="30.0" prefWidth="317.0" promptText="Accessorie Name" />
+      <Label layoutX="459.0" layoutY="58.0" prefHeight="16.0" prefWidth="94.0" text="Name:">
          <font>
             <Font size="14.0" />
          </font>
@@ -44,8 +44,8 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtNormalPrice" layoutX="494.0" layoutY="143.0" onKeyReleased="#txtNormalPriceOnKeyReleased" prefHeight="30.0" prefWidth="317.0" promptText="Normal Price" />
-      <Label layoutX="474.0" layoutY="124.0" prefHeight="18.0" prefWidth="112.0" text="Normal price:">
+      <TextField fx:id="txtNormalPrice" layoutX="479.0" layoutY="146.0" onKeyReleased="#txtNormalPriceOnKeyReleased" prefHeight="30.0" prefWidth="317.0" promptText="Normal Price" />
+      <Label layoutX="459.0" layoutY="124.0" prefHeight="18.0" prefWidth="112.0" text="Normal price:">
          <font>
             <Font size="14.0" />
          </font>
@@ -56,7 +56,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btnClear" buttonType="RAISED" layoutX="721.0" layoutY="283.0" onAction="#btnClearOnAction" prefHeight="20.0" prefWidth="94.0" style="-fx-background-color: #3498db;" text="Clear">
+      <JFXButton fx:id="btnClear" buttonType="RAISED" layoutX="710.0" layoutY="359.0" onAction="#btnClearOnAction" prefHeight="20.0" prefWidth="94.0" style="-fx-background-color: #3498db;" text="Clear">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -68,7 +68,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="btnUpdate" buttonType="RAISED" layoutX="465.0" layoutY="283.0" onAction="#btnUpdateOnAction" prefHeight="28.0" prefWidth="102.0" style="-fx-background-color: #7f8c8d;" text="Update">
+      <JFXButton fx:id="btnUpdate" buttonType="RAISED" layoutX="454.0" layoutY="359.0" onAction="#btnUpdateOnAction" prefHeight="28.0" prefWidth="102.0" style="-fx-background-color: #7f8c8d;" text="Update">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -80,7 +80,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="btnDelete" buttonType="RAISED" layoutX="599.0" layoutY="283.0" onAction="#btnDeleteOnAction" prefHeight="20.0" prefWidth="94.0" style="-fx-background-color: #e74c3c;" text="Delete">
+      <JFXButton fx:id="btnDelete" buttonType="RAISED" layoutX="588.0" layoutY="359.0" onAction="#btnDeleteOnAction" prefHeight="20.0" prefWidth="94.0" style="-fx-background-color: #e74c3c;" text="Delete">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -92,14 +92,13 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <TableView fx:id="tblAccessories" layoutX="11.0" layoutY="339.0" prefHeight="362.0" prefWidth="908.0">
+      <TableView fx:id="tblAccessories" layoutX="15.0" layoutY="419.0" prefHeight="268.0" prefWidth="642.0">
          <columns>
-            <TableColumn fx:id="colAccessoriesId" prefWidth="142.0" text="Accessories Id" />
-            <TableColumn fx:id="colAccessoriesName" prefWidth="182.0" text="Accessories Name" />
-            <TableColumn fx:id="colQtyOnHand" prefWidth="145.0" text="Qty OnHand" />
-            <TableColumn fx:id="colNoramalPrice" prefWidth="164.0" text="Normal Price" />
-            <TableColumn fx:id="colWholeSalePrice" prefWidth="150.0" text="WholeSale Price" />
-            <TableColumn fx:id="colSupId" prefWidth="123.0" text="Supplier Id" />
+            <TableColumn fx:id="colAccessoriesId" prefWidth="137.0" text="Accessories Id" />
+            <TableColumn fx:id="colAccessoriesName" prefWidth="140.0" text="Accessories Name" />
+            <TableColumn fx:id="colQtyOnHand" prefWidth="116.0" text="Qty OnHand" />
+            <TableColumn fx:id="colNoramalPrice" prefWidth="112.0" text="Normal Price" />
+            <TableColumn fx:id="colWholeSalePrice" prefWidth="136.0" text="WholeSale Price" />
          </columns>
       </TableView>
       <AnchorPane prefHeight="46.0" prefWidth="928.0" style="-fx-background-color: #1e272e;">
@@ -132,17 +131,43 @@
          </font>
       </Label>
       <Line endX="264.7625732421875" endY="-1.0" layoutX="661.0" layoutY="47.0" startX="-661.0" startY="-1.0" stroke="#d71111" strokeWidth="1.75" />
-      <Label layoutX="473.0" layoutY="204.0" prefHeight="16.0" prefWidth="94.0" text="Supliier Id:">
+      <Label layoutX="458.0" layoutY="204.0" prefHeight="16.0" prefWidth="94.0" text="Supliier NIC:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <JFXComboBox fx:id="cmbSupplier" layoutX="487.0" layoutY="221.0" onAction="#cmbSupplierOnAction" prefHeight="24.0" prefWidth="147.0" />
-      <Label layoutX="689.0" layoutY="204.0" prefHeight="18.0" prefWidth="112.0" text="Supliier Name:">
+      <JFXComboBox fx:id="cmbSupplier" layoutX="467.0" layoutY="223.0" onAction="#cmbSupplierOnAction" onKeyReleased="#filterSupplierDe" prefHeight="24.0" prefWidth="148.0" />
+      <Label layoutX="620.0" layoutY="204.0" prefHeight="18.0" prefWidth="112.0" text="Supliier Name:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lblSupName" layoutX="709.0" layoutY="225.0" prefHeight="24.0" prefWidth="102.0" />
+      <Label fx:id="lblSupName" layoutX="634.0" layoutY="225.0" prefHeight="24.0" prefWidth="102.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <TableView fx:id="tblAccSup" layoutX="680.0" layoutY="419.0" prefHeight="268.0" prefWidth="227.0">
+         <columns>
+            <TableColumn fx:id="colSupId" prefWidth="75.0" text="SupId" />
+            <TableColumn fx:id="colFishId2" prefWidth="75.0" text="FishId" />
+            <TableColumn fx:id="colQty" prefWidth="75.0" text="Qty" />
+         </columns>
+      </TableView>
+      <AnchorPane layoutX="716.0" layoutY="272.0" opacity="0.81" prefHeight="40.0" prefWidth="196.0" style="-fx-background-color: #ffeaa7;">
+         <children>
+            <Label layoutX="1.0" layoutY="26.0" prefHeight="18.0" prefWidth="195.0" text="(Click Here to add new qty)">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="btnAdd" layoutX="59.0" layoutY="2.0" onAction="#btnAddOnAction" prefHeight="24.0" prefWidth="81.0" style="-fx-background-color: #00b894;" text="Add" />
+         </children>
+      </AnchorPane>
+      <TextField fx:id="purchasedAmount" layoutX="764.0" layoutY="225.0" onKeyReleased="#txtPurchaseAmountOnKeyReleased" prefHeight="28.0" prefWidth="127.0" promptText="Amount" />
+      <Label layoutX="750.0" layoutY="203.0" prefHeight="18.0" prefWidth="156.0" text="purchase Amount :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -9,9 +9,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import lk.ijse.model.Accessories;
 import lk.ijse.model.Order;
@@ -99,12 +103,13 @@ public class PaymentFormController {
         setDate();
         setTime();
         setCellValueFactory();
-        loadAllCustomers();
+        loadAllPayment();
         getCurrentOrderId();
         getOrderIds();
         getPayType();
 
     }
+
 
     private void getPayType() {
         ObservableList<String> obList = FXCollections.observableArrayList();
@@ -163,7 +168,7 @@ public class PaymentFormController {
         return "P001";
     }
 
-    private void loadAllCustomers() {
+    private void loadAllPayment() {
         ObservableList<PaymentTm> obList = FXCollections.observableArrayList();
 
         try {
@@ -248,7 +253,7 @@ public class PaymentFormController {
                 new Alert(Alert.AlertType.CONFIRMATION, "payment information deleted!").show();
                 clearFields();
                 setCellValueFactory();
-                loadAllCustomers();
+               loadAllPayment();
                 getCurrentOrderId();
             }
         } catch (SQLException e) {
@@ -266,13 +271,22 @@ public class PaymentFormController {
         double  advance = Double.parseDouble(txtAdvance.getText());
         String type = (String) cmbType.getValue();
         double AmountToPaid = total-advance;
-        System.out.println(AmountToPaid+"aaaaaaaa");
         String Status;
+
 
         if (AmountToPaid == 0){
             Status ="Successes";
         }else {
             Status="Pending";
+        }
+
+        try {
+            if(id.isEmpty() || ordid.isEmpty() || date.isEmpty() || type.isEmpty()  ) {
+                new Alert(Alert.AlertType.INFORMATION, "Please fill all fields!").show();
+                return;
+            }
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK).show();
         }
 
 
@@ -285,7 +299,7 @@ public class PaymentFormController {
                 new Alert(Alert.AlertType.CONFIRMATION, "payment Successfully !!!.").show();
                 clearFields();
                 setCellValueFactory();
-                loadAllCustomers();
+                loadAllPayment();
                 getCurrentOrderId();
             }
         } catch (SQLException e) {
@@ -331,7 +345,7 @@ public class PaymentFormController {
                 new Alert(Alert.AlertType.CONFIRMATION, "payment updated!").show();
                 clearFields();
                 setCellValueFactory();
-                loadAllCustomers();
+                loadAllPayment();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -383,5 +397,21 @@ public class PaymentFormController {
     }
 
     public void cmbTypeOnAction(ActionEvent actionEvent) {
+    }
+
+    public void btnAddOnAction(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/addPayment.fxml"));
+        Parent rootNode = loader.load();
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(rootNode));
+        stage.centerOnScreen();
+        stage.setTitle("AddNewQty Form");
+
+        stage.show();
+        loadAllPayment();
+        setCellValueFactory();
+
+
     }
 }

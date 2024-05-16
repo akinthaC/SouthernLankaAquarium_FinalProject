@@ -243,22 +243,16 @@ public class NewLoginFormController implements Initializable {
         userName1=userName;
 
 
-        if (!isValid()){
-            if (userName.isEmpty() || password.isEmpty()) {
-                new Alert(Alert.AlertType.ERROR, "please fill all.....", ButtonType.OK).show();
+
+        try {
+            if(password.isEmpty() || userName.isEmpty() ) {
+                new Alert(Alert.AlertType.INFORMATION, "Please fill all fields!").show();
                 return;
             }
-            new Alert(Alert.AlertType.ERROR, "Check Username and Password Text fields again", ButtonType.OK).show();
-
-        }else {
-
-
-            try {
-                checkCredential(userName, password);
-            } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-            }
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK).show();
         }
+
         ScaleTransition stUsername = new ScaleTransition(Duration.seconds(0.2), txtUserName);
         stUsername.setFromX(1);
         stUsername.setToX(1.2);
@@ -366,18 +360,13 @@ public class NewLoginFormController implements Initializable {
         delay.play();
     }
 
-        public boolean isValid(){
-        if (!Regex.setTextColor(lk.ijse.utill.TextField.USERNAME,txtUserName)) return false;
-        if(! Regex.setTextColor(lk.ijse.utill.TextField.PASSWORD,txtPassword)) return false;
-        return true;
-    }
+
 
     public void txtLoginUserNameOnKeyReleased(KeyEvent keyEvent) {
-        Regex.setTextColor(lk.ijse.utill.TextField.USERNAME,txtUserName);
 
     }
 
     public void txtLoginPasswordOnKeyReleased(KeyEvent keyEvent) {
-        Regex.setTextColor(lk.ijse.utill.TextField.PASSWORD,txtPassword);
+
     }
 }

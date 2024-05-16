@@ -10,11 +10,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
 
@@ -123,8 +121,15 @@ public class ForgetPasswordForm2Controller {
         String Otp6 = otp6.getText();
 
         String setOtp=Otp1+Otp2+Otp3+Otp4+Otp5+Otp6;
-        System.out.println("setOtp = " + setOtp);
-        System.out.println("setOtp = " + lblOtp);
+
+        try {
+            if(setOtp.isEmpty()) {
+                new Alert(Alert.AlertType.INFORMATION, "Please fill all fields!").show();
+                return;
+            }
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK).show();
+        }
 
         if (lblOtp.getText().equalsIgnoreCase(setOtp)){
             lblStatus.setStyle("-fx-text-fill: Green");

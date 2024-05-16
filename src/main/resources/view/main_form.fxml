@@ -73,9 +73,39 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <ImageView fitHeight="38.0" fitWidth="32.0" layoutX="21.0" layoutY="494.0">
+            <Label fx:id="lblName" alignment="CENTER" layoutX="14.0" layoutY="41.0" prefHeight="20.0" prefWidth="197.0" text="Hi. ">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblGmail" alignment="CENTER" layoutX="5.0" layoutY="57.0" prefHeight="31.0" prefWidth="213.0">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="47.0" fitWidth="57.0" layoutX="81.0">
+               <image>
+                  <Image url="@../image/icons8-avatar-64.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="47.0" fitWidth="38.0" layoutX="17.0" layoutY="102.0">
+               <image>
+                  <Image url="@../image/icons8-dashboard-50.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="38.0" fitWidth="32.0" layoutX="24.0" layoutY="494.0">
                <image>
                   <Image url="@../image/icons8-supplier-64.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="38.0" fitWidth="32.0" layoutX="23.0" layoutY="554.0">
+               <image>
+                  <Image url="@../image/icons8-payment-50.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="47.0" fitWidth="38.0" layoutX="20.0" layoutY="360.0">
+               <image>
+                  <Image url="@../image/icons8-box-64.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="21.0" layoutY="430.0">
@@ -83,54 +113,24 @@
                   <Image url="@../image/icons8-employee-80.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="18.0" layoutY="300.0">
-               <image>
-                  <Image url="@../image/icons8-accessories-50.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="18.0" layoutY="237.0">
+            <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="17.0" layoutY="236.0">
                <image>
                   <Image url="@../image/icons8-fish-50.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="17.0" layoutY="171.0">
+            <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="16.0" layoutY="301.0">
+               <image>
+                  <Image url="@../image/icons8-accessories-50.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="19.0" layoutY="173.0">
                <image>
                   <Image url="@../image/icons8-customer-50.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="47.0" fitWidth="38.0" layoutX="14.0" layoutY="102.0">
-               <image>
-                  <Image url="@../image/icons8-dashboard-50.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="47.0" fitWidth="38.0" layoutX="21.0" layoutY="359.0">
-               <image>
-                  <Image url="@../image/icons8-box-64.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="38.0" fitWidth="32.0" layoutX="20.0" layoutY="556.0">
-               <image>
-                  <Image url="@../image/icons8-payment-50.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="38.0" fitWidth="32.0" layoutX="17.0" layoutY="621.0">
+            <ImageView fitHeight="38.0" fitWidth="32.0" layoutX="23.0" layoutY="619.0">
                <image>
                   <Image url="@../image/icons8-report-50.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="lblName" alignment="CENTER" layoutX="14.0" layoutY="39.0" prefHeight="20.0" prefWidth="197.0" text="Hi. ">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
-            <Label fx:id="lblGmail" alignment="CENTER" layoutX="4.0" layoutY="54.0" prefHeight="20.0" prefWidth="216.0">
-               <font>
-                  <Font name="System Bold" size="11.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="47.0" fitWidth="57.0" layoutX="81.0" layoutY="-2.0">
-               <image>
-                  <Image url="@../image/icons8-avatar-64.png" />
                </image>
             </ImageView>
          </children>

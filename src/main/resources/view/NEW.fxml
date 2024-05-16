@@ -20,9 +20,9 @@
       </ImageView>
       <AnchorPane layoutX="466.0" opacity="0.82" prefHeight="713.0" prefWidth="539.0" style="-fx-background-color: #ecf0f1;">
          <children>
-            <Label layoutX="214.0" layoutY="510.0" text="|" />
-            <Label layoutX="366.0" layoutY="509.0" text="|" />
-            <TextField fx:id="txtUserName" layoutX="112.0" layoutY="193.0" onKeyReleased="#txtLoginUserNameOnKeyReleased" prefHeight="48.0" prefWidth="374.0" promptText="UserName" style="-fx-background-radius: 10 10 10 10;">
+            <Label layoutX="209.0" layoutY="571.0" text="|" />
+            <Label layoutX="366.0" layoutY="570.0" text="|" />
+            <TextField fx:id="txtUserName" layoutX="104.0" layoutY="213.0" onKeyReleased="#txtLoginUserNameOnKeyReleased" prefHeight="48.0" prefWidth="374.0" promptText="UserName" style="-fx-background-radius: 10 10 10 10;">
                <font>
                   <Font size="15.0" />
                </font>
@@ -32,33 +32,43 @@
                   <Font name="System Bold" size="25.0" />
                </font>
             </Label>
-            <Label layoutX="84.0" layoutY="163.0" prefHeight="16.0" prefWidth="94.0" text="UserName:">
+            <Label layoutX="76.0" layoutY="183.0" prefHeight="16.0" prefWidth="94.0" text="UserName:">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label layoutX="84.0" layoutY="258.0" prefHeight="16.0" prefWidth="94.0" text="Password:">
+            <Label layoutX="76.0" layoutY="278.0" prefHeight="16.0" prefWidth="94.0" text="Password:">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <JFXButton fx:id="btnLogin" layoutX="181.0" layoutY="383.0" onAction="#btnLoginOnAction" prefHeight="41.0" prefWidth="237.0" style="-fx-background-color: #7f8c8d; -fx-background-radius: 10 10 10 10;" text="LOGIN">
+            <JFXButton fx:id="btnLogin" layoutX="163.0" layoutY="403.0" onAction="#btnLoginOnAction" prefHeight="41.0" prefWidth="237.0" style="-fx-background-color: #7f8c8d; -fx-background-radius: 10 10 10 10;" text="LOGIN">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>
             </JFXButton>
-            <Hyperlink fx:id="hyperPassword" layoutX="221.0" layoutY="506.0" onAction="#hyperlinkFrogetPasswordOnAction" prefHeight="27.0" prefWidth="143.0" text="Frogot Password?">
+            <Hyperlink fx:id="hyperPassword" layoutX="218.0" layoutY="566.0" onAction="#hyperlinkFrogetPasswordOnAction" prefHeight="27.0" prefWidth="165.0" text="Frogot Password">
                <font>
-                  <Font size="15.0" />
+                  <Font name="System Italic" size="15.0" />
                </font>
             </Hyperlink>
-            <Line endX="75.0" layoutX="478.0" layoutY="519.0" opacity="0.77" startX="-108.0" strokeWidth="0.5" />
-            <Line endX="255.0" layoutX="-40.0" layoutY="519.0" opacity="0.77" startX="44.0" strokeWidth="0.5" />
-            <PasswordField fx:id="txtPassword" layoutX="112.0" layoutY="283.0" onKeyReleased="#txtLoginPasswordOnKeyReleased" prefHeight="48.0" prefWidth="374.0" promptText="Password" style="-fx-background-radius: 10 10 10 10;">
+            <Line endX="75.0" layoutX="478.0" layoutY="580.0" opacity="0.77" startX="-108.0" strokeWidth="0.5" />
+            <Line endX="247.0" layoutX="-39.0" layoutY="580.0" opacity="0.77" startX="44.0" strokeWidth="0.5" />
+            <PasswordField fx:id="txtPassword" layoutX="104.0" layoutY="303.0" onKeyReleased="#txtLoginPasswordOnKeyReleased" prefHeight="48.0" prefWidth="374.0" promptText="Password" style="-fx-background-radius: 10 10 10 10;">
                <font>
                   <Font size="15.0" />
                </font>
             </PasswordField>
+            <Label layoutX="184.0" layoutY="528.0" prefHeight="18.0" prefWidth="244.0" text="Do yo want to change password? " textFill="#000000d7">
+               <font>
+                  <Font name="System Italic" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="207.0" layoutY="547.0" text="(Click Froget Password)" textFill="#000000d7">
+               <font>
+                  <Font name="System Italic" size="14.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
       <Label fx:id="SS" layoutX="17.0" layoutY="273.0" prefHeight="56.0" prefWidth="45.0" text="S" textFill="WHITE">

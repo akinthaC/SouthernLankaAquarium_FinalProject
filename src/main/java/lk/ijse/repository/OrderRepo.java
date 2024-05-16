@@ -8,7 +8,9 @@ import lk.ijse.model.OrderDetail;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class OrderRepo {
     public static boolean save(Order order) throws SQLException {
@@ -67,5 +69,24 @@ public class OrderRepo {
         }
         return idList;
 
+    }
+
+    public static Map<String, Integer> getOrderCountByDay() {
+        Map<String, Integer> OrderCOuntByDay = new HashMap<>();
+
+        String sql = "SELECT date, COUNT(*) AS order_count FROM orders GROUP BY date ORDER BY date ASC;";
+
+        try (PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
+             ResultSet resultSet = pstm.executeQuery()) {
+
+            while (resultSet.next()) {
+                String date = resultSet.getString("date");
+                int orderCount = (int) resultSet.getDouble("order_count");
+                OrderCOuntByDay.put(date, orderCount);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return OrderCOuntByDay;
     }
 }

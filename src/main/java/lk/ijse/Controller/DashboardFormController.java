@@ -2,6 +2,8 @@ package lk.ijse.Controller;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,8 +12,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.Chart;
+import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -21,6 +25,8 @@ import javafx.util.Duration;
 import lk.ijse.Db.DbConnection;
 import lk.ijse.repository.DashBoardRepo;
 import javafx.scene.chart.LineChart;
+import lk.ijse.repository.FishRepo;
+import lk.ijse.repository.OrderRepo;
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,10 +34,15 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class DashboardFormController {
 
+    public ImageView wishImageView;
+    public Label lblGreetings;
     @FXML
     private JFXButton btnChangeEmail;
 
@@ -65,17 +76,81 @@ public class DashboardFormController {
     @FXML
     private LineChart<?, ?> LineChart;
 
+    @FXML
+    private PieChart pieChart;
+
     public void initialize() throws IOException, SQLException {
+        LineChart();
         setDate();
         setTime();
         getTodaySaleCOunt();
         getMostSaleFishWeekly();
         getEmployeeCount();
-        LineChar();
         mainPain1.setVisible(false);
+        setGreeting();
+        pieChart();
+        animateLabelTyping();
+    }
+
+    private void pieChart() {
+        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
+
+        Map<String, Integer> FishDetail = FishRepo.GetFishDetail();
+
+        for (Map.Entry<String, Integer> entry : FishDetail.entrySet()) {
+            pieChartData.add(new PieChart.Data(entry.getKey(), entry.getValue()));
+        }
+
+        pieChart.setData(pieChartData);
 
 
     }
+
+    private void LineChart() {
+        XYChart.Series series = new XYChart.Series();
+
+        Map<String, Integer> stocksByDay = OrderRepo.getOrderCountByDay();
+
+        for (Map.Entry<String, Integer> entry : stocksByDay.entrySet()) {
+            series.getData().add(new XYChart.Data(entry.getKey(), entry.getValue()));
+        }
+
+        LineChart.getData().add(series);
+        LineChart.lookup(".chart-plot-background").setStyle("-fx-background-color: transparent;");
+    }
+
+
+    public void setGreeting() {
+        Calendar c = Calendar.getInstance();
+        c.setTime(new java.util.Date());
+        int hours = c.get(Calendar.HOUR_OF_DAY);
+
+        // Set image and label based on the time of the day
+        if (hours >= 0 && hours < 12) {
+            lblGreetings.setText("Good Morning !!!");
+            wishImageView.setImage(new Image(DashboardFormController.class.getResourceAsStream("/image/morning.png")));
+        } else if (hours >= 12 && hours < 18) {
+            lblGreetings.setText("Good Afternoon !!!");
+            wishImageView.setImage(new Image(DashboardFormController.class.getResourceAsStream("/image/afternoon.png")));
+        } else if (hours >= 18 && hours < 22) {
+            lblGreetings.setText("Good Evening !!!");
+            wishImageView.setImage(new Image(DashboardFormController.class.getResourceAsStream("/image/afternoon.png")));
+        } else {
+            lblGreetings.setText("Good Night !!!");
+            wishImageView.setImage(new Image(DashboardFormController.class.getResourceAsStream("/image/night.png")));
+        }
+    }
+
+    private void animateLabelTyping() {
+        lblGreetings.setOpacity(0); // Start with the label completely transparent
+
+        FadeTransition fadeIn = new FadeTransition(Duration.millis(4000), lblGreetings); // Set the duration of the fade-in effect
+        fadeIn.setFromValue(0); // Fade from completely transparent
+        fadeIn.setToValue(1); // Fade to completely opaque
+
+        fadeIn.play();
+    }
+
 
     private void getEmployeeCount() throws SQLException {
         String count = DashBoardRepo.getEmployeeCount();

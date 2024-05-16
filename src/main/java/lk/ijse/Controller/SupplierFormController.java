@@ -195,6 +195,15 @@ public class SupplierFormController {
         String NIC = txtSupNIC.getText();
         String address = txtSupAddress.getText();
 
+        try {
+            if(id.isEmpty() || name.isEmpty() || contact.isEmpty() || NIC.isEmpty() || address.isEmpty()) {
+                new Alert(Alert.AlertType.INFORMATION, "Please fill all fields!").show();
+                return;
+            }
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK).show();
+        }
+
 
         Supplier supplier = new Supplier(id, name, contact, NIC, address);
 
@@ -231,6 +240,15 @@ public class SupplierFormController {
         String contact = txtSupContact.getText();
         String NIC = txtSupNIC.getText();
         String address = txtSupAddress.getText();
+
+        try {
+            if(id.isEmpty() || name.isEmpty() || contact.isEmpty() || NIC.isEmpty() || address.isEmpty()) {
+                new Alert(Alert.AlertType.INFORMATION, "Please fill all fields!").show();
+                return;
+            }
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK).show();
+        }
 
 
         Supplier supplier = new Supplier(id, name, contact, NIC, address );

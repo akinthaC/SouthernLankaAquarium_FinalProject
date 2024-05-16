@@ -5,14 +5,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@Data
+import java.sql.Date;
+
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 @ToString
-public class AccessoriesTm{
-    private String id;
-    private String name ;
-    private String Qty;
-    private String normalPrice;
-    private String wholesaleprice;
+public class SupAccTm {
+    private String AccId;
+    private String supId;
+    private Date date ;
+    private int Qty;
+    private double amount;
+
 }

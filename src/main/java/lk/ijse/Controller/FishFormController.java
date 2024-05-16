@@ -11,7 +11,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -26,7 +25,6 @@ import lk.ijse.model.Supplier;
 import lk.ijse.model.tm.FishTm;
 import lk.ijse.model.tm.SupFishTm;
 import lk.ijse.repository.FishRepo;
-import lk.ijse.repository.OrderRepo;
 import lk.ijse.repository.SupFishRepo;
 import lk.ijse.repository.SupplierRepo;
 import lk.ijse.utill.Regex;
@@ -269,6 +267,7 @@ public class FishFormController {
         Date date = Date.valueOf(LocalDate.now());
         double amount= Double.parseDouble(txtpurchasedAmount.getText());
 
+
         try {
             if(id.isEmpty() || name.isEmpty() || qtyOnHand.isEmpty() || supId.isEmpty() ) {
                 new Alert(Alert.AlertType.INFORMATION, "Please fill all fields!").show();
@@ -368,7 +367,7 @@ public class FishFormController {
 
 
     public void btnAddOnAction(ActionEvent actionEvent) throws IOException {
-       FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/addNewQty.fxml"));
+       FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/addNewQtyFish.fxml"));
         Parent rootNode = loader.load();
 
         Stage stage = new Stage();

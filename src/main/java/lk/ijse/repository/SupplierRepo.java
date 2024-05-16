@@ -3,6 +3,7 @@ package lk.ijse.repository;
 import lk.ijse.Db.DbConnection;
 import lk.ijse.model.Employee;
 import lk.ijse.model.Supplier;
+import lk.ijse.model.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -142,6 +143,45 @@ public class SupplierRepo {
             String supID = resultSet.getString(1);
             return supID;
         }
+        return null;
+    }
+
+    public static List<String> searchNIC() throws SQLException {
+        String sql = "SELECT NIC   FROM supplier";
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
+
+        List<String> idList = new ArrayList<>();
+
+        ResultSet resultSet = pstm.executeQuery();
+        while (resultSet.next()) {
+            String Nic = resultSet.getString(1);
+            idList.add(Nic);
+        }
+        return idList;
+    }
+
+    public static Supplier searchByNIC(String nic) throws SQLException {
+        String sql = "SELECT * FROM supplier WHERE NIC = ?";
+
+        Connection connection = DbConnection.getInstance().getConnection();
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setObject(1, nic);
+
+        ResultSet resultSet = pstm.executeQuery();
+        if (resultSet.next()) {
+            String supId = resultSet.getString(1);
+            String SupName = resultSet.getString(2);
+            String Contact = resultSet.getString(3);
+            String Nic = resultSet.getString(3);
+            String address = resultSet.getString(3);
+
+            Supplier supplier =new Supplier(supId, SupName,Contact,Nic,address);
+
+
+            return supplier;
+        }
+
         return null;
     }
 }

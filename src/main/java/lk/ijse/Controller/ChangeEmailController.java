@@ -7,6 +7,7 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
@@ -81,6 +82,15 @@ public class ChangeEmailController {
         String email = txtEmail.getText();
         String reEnterEmail = txtConformEmail.getText();
         String userName = NewLoginFormController.userName1;
+        try {
+            if(email.isEmpty() || reEnterEmail.isEmpty()  ) {
+                new Alert(Alert.AlertType.INFORMATION, "Please fill all fields!").show();
+                return;
+            }
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK).show();
+        }
+
 
         try {
 

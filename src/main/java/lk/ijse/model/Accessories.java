@@ -11,7 +11,6 @@ import lombok.ToString;
 @ToString
 public class Accessories {
     private String id;
-    private String supid;
     private String name ;
     private String Qty;
     private String normalPrice;

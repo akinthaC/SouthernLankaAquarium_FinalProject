@@ -207,6 +207,7 @@ public class CustomerFormController {
     void btnDeleteOnAction(ActionEvent event) {
         String id = txtId.getText();
 
+
         try {
             boolean isDeleted = CustomerRepo.delete(id);
             if(isDeleted) {
@@ -265,6 +266,15 @@ public class CustomerFormController {
         String NIC = txtNIC.getText();
         String address = txtAddress.getText();
         String type = (String) cmbType.getValue();
+
+        try {
+            if(id.isEmpty() || name.isEmpty() || contact.isEmpty() || NIC.isEmpty() || address.isEmpty() || type.isEmpty()) {
+                new Alert(Alert.AlertType.INFORMATION, "Please fill all fields!").show();
+                return;
+            }
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK).show();
+        }
 
         Customer customer = new Customer(id, name, contact, NIC, address, type);
 

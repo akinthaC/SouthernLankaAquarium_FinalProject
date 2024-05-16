@@ -3,7 +3,6 @@ package lk.ijse.repository;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import lk.ijse.Db.DbConnection;
-import lk.ijse.model.Accessories;
 import lk.ijse.model.Payment;
 
 import java.sql.Connection;
@@ -159,5 +158,64 @@ public class PaymentRepo {
         obList.add("Card");
 
         return obList;
+    }
+
+    public static Payment searchByOrId(String id) throws SQLException {
+        String sql = "SELECT * FROM payment WHERE orderId = ?";
+
+        Connection connection = DbConnection.getInstance().getConnection();
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setObject(1, id);
+
+        ResultSet resultSet = pstm.executeQuery();
+        if (resultSet.next()) {
+            String payid = resultSet.getString(1);
+            String ordid = resultSet.getString(2);
+            String date = resultSet.getString(3);
+            double total = Double.parseDouble(resultSet.getString(4));
+            double advance = Double.parseDouble(resultSet.getString(5));
+            String type = resultSet.getString(6);
+            String status = resultSet.getString(7);
+            double amountToPay = Double.parseDouble(resultSet.getString(8));
+
+
+            Payment payment= new Payment(payid,ordid,date,total,advance,type,amountToPay,status);
+
+            return payment;
+        }
+
+        return null;
+    }
+
+    public static List<String> getOrIds() throws SQLException {
+        String sql = "SELECT orderId FROM payment";
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
+
+        List<String> idList = new ArrayList<>();
+
+        ResultSet resultSet = pstm.executeQuery();
+        while (resultSet.next()) {
+            String id = resultSet.getString(1);
+            idList.add(id);
+        }
+        return idList;
+    }
+
+    public static boolean update1(String id, double advance1, double amountToPaid, String status) throws SQLException {
+        String sql = "UPDATE payment SET  advance = ?,status =? , amountToBePaid =? WHERE payId = ?";
+
+        Connection connection =DbConnection.getInstance().getConnection();
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+
+
+        pstm.setObject(1, advance1);
+        pstm.setObject(2,status);
+        pstm.setObject(3, amountToPaid);
+        pstm.setObject(4, id);
+
+
+        return pstm.executeUpdate() > 0;
     }
 }
