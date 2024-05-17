@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane opacity="0.94" prefHeight="733.0" prefWidth="918.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10 10 10 10; -fx-border-radius: 10 10 10 10;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.ReportFormController">
+   <children>
+      <AnchorPane prefHeight="46.0" prefWidth="928.0" style="-fx-background-color: #1e272e;" />
+      <Label layoutX="369.0" layoutY="-11.0" prefHeight="68.0" prefWidth="251.0" text="Reports FORM" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Line endX="264.7625732421875" endY="-1.0" layoutX="661.0" layoutY="47.0" startX="-661.0" startY="-1.0" stroke="#d71111" strokeWidth="1.75" />
+      <Label fx:id="lblTime" layoutX="815.0" layoutY="23.0" text="4.50" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="771.0" layoutY="23.0" prefHeight="18.0" prefWidth="46.0" text="Time:" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblDate" layoutX="815.0" layoutY="4.0" text="2024/04/07" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="771.0" layoutY="4.0" prefHeight="18.0" prefWidth="46.0" text="Date:" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="42.0" layoutY="93.0" prefHeight="16.0" prefWidth="100.0" text="Profits:">
+         <font>
+            <Font name="System Bold Italic" size="19.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="46.0" layoutY="129.0" prefHeight="135.0" prefWidth="265.0" style="-fx-background-color: #bdc3c7;">
+         <children>
+            <JFXButton fx:id="btn7Profit" buttonType="RAISED" layoutX="53.0" layoutY="14.0" onAction="#btn7ProfitONAction" prefHeight="60.0" prefWidth="147.0" style="-fx-background-color: #3498db;" text="profit">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="8.0" layoutY="94.0" text="(Click Here to Get Last 7Days Profit)" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="345.0" layoutY="129.0" prefHeight="135.0" prefWidth="190.0" style="-fx-background-color: #bdc3c7;">
+         <children>
+            <JFXButton fx:id="btnAstimate" buttonType="RAISED" layoutX="59.0" layoutY="14.0" onAction="#btnAstimateONAction" prefHeight="60.0" prefWidth="147.0" style="-fx-background-color: #3498db;" text="Astimate profit">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </JFXButton>
+            <Label layoutY="91.0" text="(Click Here to Get Astimate Profit 7days)" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="640.0" layoutY="129.0" prefHeight="135.0" prefWidth="265.0" style="-fx-background-color: #bdc3c7;">
+         <children>
+            <JFXButton fx:id="btnYearProfit" buttonType="RAISED" layoutX="66.0" layoutY="14.0" onAction="#btnYearProfitONAction" prefHeight="60.0" prefWidth="147.0" style="-fx-background-color: #3498db;" text="Year profit">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="29.0" layoutY="90.0" text="(Click Here to Get last year profit)" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="35.0" layoutY="441.0" prefHeight="16.0" prefWidth="100.0" text="Details:">
+         <font>
+            <Font name="System Bold Italic" size="19.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="46.0" layoutY="488.0" prefHeight="135.0" prefWidth="265.0" style="-fx-background-color: #bdc3c7;">
+         <children>
+            <JFXButton fx:id="btnCustomer" buttonType="RAISED" layoutX="53.0" layoutY="14.0" onAction="#btnCustomerOnAction" prefHeight="60.0" prefWidth="147.0" style="-fx-background-color: #3498db;" text="Customer">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="8.0" layoutY="94.0" text="(Click Here to Get Customer details))" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="345.0" layoutY="488.0" prefHeight="135.0" prefWidth="265.0" style="-fx-background-color: #bdc3c7;">
+         <children>
+            <JFXButton fx:id="btnEmployee" buttonType="RAISED" layoutX="53.0" layoutY="14.0" onAction="#btnEmployeeOnAction" prefHeight="60.0" prefWidth="147.0" style="-fx-background-color: #3498db;" text="Employee">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="13.0" layoutY="93.0" text="(Click Here to Get Employee Details)" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="640.0" layoutY="488.0" prefHeight="135.0" prefWidth="265.0" style="-fx-background-color: #bdc3c7;">
+         <children>
+            <JFXButton fx:id="btnOredrs" buttonType="RAISED" layoutX="53.0" layoutY="14.0" onAction="#btnOredrsOnAction" prefHeight="60.0" prefWidth="147.0" style="-fx-background-color: #3498db;" text="Orders">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="27.0" layoutY="96.0" text="(Click Here to Get Order Details)" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="46.0" layoutY="290.0" prefHeight="135.0" prefWidth="265.0" style="-fx-background-color: #bdc3c7;">
+         <children>
+            <JFXButton fx:id="btnTodayProfit" buttonType="RAISED" layoutX="53.0" layoutY="14.0" onAction="#btnTodayProfitONAction" prefHeight="60.0" prefWidth="147.0" style="-fx-background-color: #3498db;" text="Today profit">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="26.0" layoutY="94.0" text="(Click Here to Get Today Profit)" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

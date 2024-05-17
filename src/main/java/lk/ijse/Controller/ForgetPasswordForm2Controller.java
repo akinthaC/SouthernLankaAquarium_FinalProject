@@ -15,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
+import javafx.application.Platform;
 
 import java.io.IOException;
 
@@ -52,6 +53,26 @@ public class ForgetPasswordForm2Controller {
 
 
     public void initialize(){
+        Platform.runLater(() -> otp1.requestFocus());
+
+        otp1.setOnKeyReleased(event -> handleKeyEvent(otp1, otp2, null));
+        otp2.setOnKeyReleased(event -> handleKeyEvent(otp2, otp3, otp1));
+        otp3.setOnKeyReleased(event -> handleKeyEvent(otp3, otp4, otp1));
+        otp4.setOnKeyReleased(event -> handleKeyEvent(otp4, otp5, otp1));
+        otp5.setOnKeyReleased(event -> handleKeyEvent(otp5, otp6, otp6));
+        otp6.setOnKeyReleased(event -> handleKeyEvent(otp5, null, otp6));
+    }
+
+    private void handleKeyEvent(TextField currentTextField, TextField nextTextField, TextField previousTextField) {
+        if (currentTextField.getText().length() == 1) {
+            if (nextTextField != null) {
+                nextTextField.requestFocus();
+            }
+        } else if (currentTextField.getText().isEmpty()) {
+            if (previousTextField != null) {
+                previousTextField.requestFocus();
+            }
+        }
         lblOtp.setText(String.valueOf(ForgetPasswordForm1Controller.OTP));
     }
     @FXML

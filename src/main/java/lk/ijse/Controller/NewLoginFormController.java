@@ -237,7 +237,7 @@ public class NewLoginFormController implements Initializable {
         timeline.play();
     }
     @FXML
-    void btnLoginOnAction(ActionEvent event) throws IOException {
+    void btnLoginOnAction(ActionEvent event) throws IOException, SQLException {
         String userName=txtUserName.getText();
         String password=txtPassword.getText();
         userName1=userName;
@@ -252,6 +252,8 @@ public class NewLoginFormController implements Initializable {
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK).show();
         }
+
+        checkCredential(userName,password);
 
         ScaleTransition stUsername = new ScaleTransition(Duration.seconds(0.2), txtUserName);
         stUsername.setFromX(1);

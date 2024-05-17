@@ -216,8 +216,8 @@ public class mainFormController  {
     }
 
     @FXML
-    void btnReportOnAction(ActionEvent event) {
-
+    void btnReportOnAction(ActionEvent event) throws IOException {
+        loadFormWithAtractiveAnimation("/view/RepotyForm.fxml");
     }
 
     @FXML

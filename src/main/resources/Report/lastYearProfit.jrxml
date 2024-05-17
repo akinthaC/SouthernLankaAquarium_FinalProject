@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.2.final using JasperReports Library version 6.21.2-8434a0bd7c3bbc37cbf916f2968d35e4b165821a  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AstimateProfit" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="649f368e-1293-4c7c-a43f-eae4a28ae370">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (11)"/>
+	<parameter name="data" class="java.lang.String"/>
+	<parameter name="time" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+    (fishData.totalRevenue + accessoriesData.totalRevenue) AS totalRevenue,
+    (fishData.totalCost + accessoriesData.totalCost) AS totalCost,
+    ((fishData.totalRevenue + accessoriesData.totalRevenue) - (fishData.totalCost + accessoriesData.totalCost)) AS totalProfit
+FROM
+    (
+        SELECT
+            COALESCE(SUM(fo.qty * f.normalPrice), 0) AS totalRevenue,
+            COALESCE(SUM(fo.qty * fs.purchasedAmount), 0) AS totalCost
+        FROM
+            fish_order fo
+        JOIN
+            fish f ON fo.fishId = f.fishId
+        JOIN
+            fish_supplier fs ON fo.fishId = fs.fishId
+        WHERE
+            YEAR(fo.date) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH)
+            AND MONTH(fo.date) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)
+            AND fo.status = 'Successes'
+    ) AS fishData,
+    (
+        SELECT
+            COALESCE(SUM(ao.qty * a.normalPrice), 0) AS totalRevenue,
+            COALESCE(SUM(ao.qty * ass.purchasedAmount), 0) AS totalCost
+        FROM
+            accessories_order ao
+        JOIN
+            accessories a ON ao.accId = a.accId
+        JOIN
+            accessories_supplier ass ON ao.accId = ass.accId
+        WHERE
+            YEAR(ao.date) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH)
+            AND MONTH(ao.date) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)
+            AND ao.status = 'Successes'
+    ) AS accessoriesData;]]>
+	</queryString>
+	<field name="totalRevenue" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="totalRevenue"/>
+		<property name="com.jaspersoft.studio.field.label" value="totalRevenue"/>
+	</field>
+	<field name="totalCost" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="totalCost"/>
+		<property name="com.jaspersoft.studio.field.label" value="totalCost"/>
+	</field>
+	<field name="totalProfit" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="totalProfit"/>
+		<property name="com.jaspersoft.studio.field.label" value="totalProfit"/>
+	</field>
+	<group name="totalRevenue">
+		<groupExpression><![CDATA[$F{totalRevenue}]]></groupExpression>
+	</group>
+	<group name="totalCost">
+		<groupExpression><![CDATA[$F{totalCost}]]></groupExpression>
+	</group>
+	<group name="totalProfit">
+		<groupExpression><![CDATA[$F{totalProfit}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="105" splitType="Stretch">
+			<staticText>
+				<reportElement x="167" y="0" width="220" height="40" uuid="4967509c-d918-4ffc-b7f8-35c5f86fba5c"/>
+				<textElement textAlignment="Center">
+					<font fontName="DialogInput" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Southern Lanka Aquarium]]></text>
+			</staticText>
+			<image>
+				<reportElement x="122" y="0" width="44" height="70" uuid="1fe444f9-7f0b-4e2d-a1c1-3e2e910621c0"/>
+				<imageExpression><![CDATA["/home/akintha/Downloads/950760edb35388b32070f02f4c8a452f.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="173" y="56" width="218" height="20" uuid="6d59000d-7ecb-4864-8368-d48d137c650d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Courier 10 Pitch" size="10"/>
+				</textElement>
+				<text><![CDATA[Tel :- 0772558964 , 0719771548]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="209" y="40" width="144" height="20" uuid="6ee8d1f1-bc4b-45e1-bdc6-38d5a1582da1"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pituwala road Elpitiya.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="10" width="55" height="20" uuid="11f55246-d3cc-47b4-8df8-450b64fea2ee"/>
+				<textElement>
+					<font fontName="C059" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="30" width="55" height="20" uuid="326a0a1f-5d31-4b48-9a23-ec0fadf9a8c4"/>
+				<textElement>
+					<font fontName="C059" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Time:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="486" y="8" width="84" height="22" uuid="e989762f-3a66-4daa-b66c-c85e8a792a1a"/>
+				<textFieldExpression><![CDATA[$P{data}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="485" y="30" width="85" height="24" uuid="2d036915-975f-4923-a877-d5b2dd2ad6fe"/>
+				<textFieldExpression><![CDATA[$P{time}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="69" splitType="Stretch">
+			<staticText>
+				<reportElement x="58" y="11" width="130" height="30" uuid="edfff9fe-af65-4484-ba22-1ea0db2fdff7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3d0c8a72-a63c-49b4-adb5-e229da6139d3"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[totalRevenue]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="212" y="11" width="145" height="30" uuid="b95e3d83-d232-40dc-b861-ecfe6bd79a01">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c4320743-4292-4850-aba2-5f18e2fa48d9"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[totalCost]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="384" y="11" width="140" height="30" uuid="3c57f0cb-1c10-4260-858f-47cfbc3c8568">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6e6ffebc-f208-4525-809a-5153dc26e479"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[totalProfit]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<line>
+				<reportElement x="44" y="-69" width="1" height="39" uuid="2a4f30f4-c862-49b1-9ea2-55351a5698dc"/>
+			</line>
+			<line>
+				<reportElement x="44" y="-68" width="490" height="1" uuid="fd3d1a66-01ee-4afb-b07f-1cc7320278cd"/>
+			</line>
+			<line>
+				<reportElement x="534" y="-69" width="1" height="39" uuid="50802d97-1ff7-4f3b-b96e-dc8554cae290"/>
+			</line>
+			<line>
+				<reportElement x="44" y="-29" width="490" height="1" uuid="b42b5f72-32a3-4eee-81cc-f453cadb2fab"/>
+			</line>
+			<textField>
+				<reportElement x="55" y="1" width="115" height="30" uuid="b63b7d43-a9ff-41b2-bcb3-0273f182895b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3d0c8a72-a63c-49b4-adb5-e229da6139d3"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{totalRevenue}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="216" y="3" width="115" height="30" uuid="bcd6115c-d9f9-419a-9e3b-ce0fa94c8a86">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c4320743-4292-4850-aba2-5f18e2fa48d9"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{totalCost}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="-1" width="144" height="30" uuid="81992447-0da8-4a2c-804c-57c1e33746eb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6e6ffebc-f208-4525-809a-5153dc26e479"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{totalProfit}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="200" y="56" width="161" height="40" uuid="0fd86ef4-05c8-4e00-b63c-99c72b1fc77e"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[THANK YOU ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="56" width="161" height="40" uuid="f94c08ac-e08c-4c08-a944-f8a459ce9f37"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[THANK YOU ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="417" y="17" width="89" height="1" uuid="5687b317-2c49-457e-a34b-edee1b77b3c6"/>
+			</line>
+			<line>
+				<reportElement x="417" y="20" width="89" height="1" uuid="2afb79b6-df75-44aa-9e52-50de57afc003"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
