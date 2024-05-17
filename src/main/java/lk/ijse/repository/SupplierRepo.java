@@ -106,7 +106,7 @@ public class SupplierRepo {
             String contact=resultSet.getString(3);
             String NIC = resultSet.getString(4);
             String address = resultSet.getString(5);
-            ;
+
             Supplier supplier= new Supplier(supid,name,contact,NIC,address);
 
 

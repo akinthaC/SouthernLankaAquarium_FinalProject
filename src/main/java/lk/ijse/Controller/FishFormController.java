@@ -258,14 +258,27 @@ public class FishFormController {
         String id=txtFishId.getText();
         String name = txtFishName.getText();
         String qtyOnHand = txtQtyOnHand.getText();
-        double normalPrice = Double.parseDouble(txtNormalPrice.getText());
-        double wholeSalePrice = Double.parseDouble(txtWholeSalePrice.getText());
+        double normalPrice = 0;
+        double wholeSalePrice = 0;
+        try {
+            normalPrice = Double.parseDouble(txtNormalPrice.getText());
+            wholeSalePrice = Double.parseDouble(txtWholeSalePrice.getText());
+        } catch (NumberFormatException e) {
+            new Alert(Alert.AlertType.INFORMATION, "Please fill all fields!");
+        }
 
         String supId=SupplierRepo.getId(cmbSup.getValue());
         System.out.println("supId = " + supId);
-        int Qty= Integer.parseInt(txtQtyOnHand.getText());
+        int Qty= 0;
+        double amount= 0;
+        try {
+            Qty = Integer.parseInt(txtQtyOnHand.getText());
+            amount = Double.parseDouble(txtpurchasedAmount.getText());
+        } catch (NumberFormatException e) {
+            new Alert(Alert.AlertType.INFORMATION, "Please fill all fields!");
+        }
         Date date = Date.valueOf(LocalDate.now());
-        double amount= Double.parseDouble(txtpurchasedAmount.getText());
+
 
 
         try {
@@ -306,6 +319,8 @@ public class FishFormController {
         txtQtyOnHand.setText("");
         txtNormalPrice.setText("");
         txtWholeSalePrice.setText("");
+        lblSup.setText("");
+        txtpurchasedAmount.setText("");
     }
 
     @FXML

@@ -3,6 +3,7 @@ package lk.ijse.Controller;
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
+import javafx.animation.ScaleTransition;
 import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -31,6 +32,7 @@ import java.util.Map;
 
 public class ReportFormController {
 
+    public JFXButton btnTodayProfit;
     @FXML
     private JFXButton btn7Profit;
 
@@ -57,7 +59,35 @@ public class ReportFormController {
     public void initialize() throws IOException {
         setDate();
         setTime();
+        addHoverAnimation(btn7Profit);
+        addHoverAnimation(btnCustomer);
+        addHoverAnimation(btnAstimate);
+        addHoverAnimation(btnYearProfit);
+        addHoverAnimation(btnTodayProfit);
 
+
+    }
+
+    private void addHoverAnimation(JFXButton button) {
+        ScaleTransition scaleIn = new ScaleTransition(Duration.millis(100), button);
+        scaleIn.setFromX(1.0);
+        scaleIn.setFromY(1.0);
+        scaleIn.setToX(1.1);
+        scaleIn.setToY(1.1);
+
+        ScaleTransition scaleOut = new ScaleTransition(Duration.millis(100), button);
+        scaleOut.setFromX(1.1);
+        scaleOut.setFromY(1.1);
+        scaleOut.setToX(1.0);
+        scaleOut.setToY(1.0);
+
+        button.setOnMouseEntered(event -> {
+            scaleIn.play();
+        });
+
+        button.setOnMouseExited(event -> {
+            scaleOut.play();
+        });
     }
     private void setTime() {
         Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
@@ -113,7 +143,17 @@ public class ReportFormController {
     }
 
     @FXML
-    void btnCustomerOnAction(ActionEvent event) {
+    void btnCustomerOnAction(ActionEvent event) throws JRException, SQLException {
+        JasperDesign jasperDesign = JRXmlLoader.load("src/main/resources/Report/PendingPaymentDetail.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+
+        Map<String,Object> data = new HashMap<>();
+        data.put("data",lblDate.getText());
+        data.put("time",lblTime.getText());
+
+        JasperPrint jasperPrint =
+                JasperFillManager.fillReport(jasperReport, data, DbConnection.getInstance().getConnection());
+        JasperViewer.viewReport(jasperPrint,false);
 
     }
 

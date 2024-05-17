@@ -177,6 +177,13 @@ public class AddNewQtyAccessoriesController {
 
     @FXML
     void btnClearOnAction(ActionEvent event) {
+        txtpurchasedAmount.setText("");
+        cmbAccId.getSelectionModel().clearSelection();
+        txtQtyy.setText("");
+        lblSup.setText("");
+        lblAccId.setText("");
+        cmbSup.getSelectionModel().clearSelection();
+
 
 
     }

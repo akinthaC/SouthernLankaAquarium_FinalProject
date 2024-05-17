@@ -13,7 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
 import lk.ijse.model.Supplier;
-import lk.ijse.model.SupplierTm;
+import lk.ijse.model.tm.SupplierTm;
 import lk.ijse.repository.SupplierRepo;
 import lk.ijse.utill.Regex;
 

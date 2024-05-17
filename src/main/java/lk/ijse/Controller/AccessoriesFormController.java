@@ -115,8 +115,7 @@ public class AccessoriesFormController {
         setCellValueFactory();
         loadAllCustomers();
         getCurrentOrderId();
-       // getSupplierIds();
-        cmbSupplier.setEditable(true);
+        getSupplierIds();
 
     }
 
@@ -275,11 +274,13 @@ public class AccessoriesFormController {
 
     private void clearFields() {
         txtAccessorieId.setText("");
-        cmbSupplier.getSelectionModel().clearSelection();
+       // cmbSupplier.getSelectionModel().clearSelection();
         txtAccessoriesName.setText("");
         txtQtyOnHand.setText("");
         txtNormalPrice.setText("");
         txtWholeSalePrice.setText("");
+        lblSupName.setText("");
+        purchasedAmount.setText("");
     }
 
     @FXML
@@ -367,6 +368,16 @@ public class AccessoriesFormController {
 
     @FXML
     void cmbSupplierOnAction(ActionEvent event) {
+        String id = cmbSupplier.getValue();
+        try {
+            Supplier supplier = SupplierRepo.searchById(id);
+
+            lblSupName.setText(supplier.getName());
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
 
     }
 
@@ -391,34 +402,6 @@ public class AccessoriesFormController {
 
     @FXML
     void filterSupplierDe(KeyEvent event) {
-        ObservableList<String> filterData = FXCollections.observableArrayList();
-        String enterText = cmbSupplier.getEditor().getText();
-
-        try {
-
-            List<String> idList = SupplierRepo.searchNIC();
-
-            for (String NIC : idList){
-                if (NIC.contains(enterText)){
-                    filterData.add(NIC);
-                }
-            }
-            cmbSupplier.setItems(filterData);
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-
-        String NIC = cmbSupplier.getValue();
-        try {
-            Supplier supplier = SupplierRepo.searchByNIC(NIC);
-            if(supplier!=null) {
-                lblSupName.setText(supplier.getName());
-            }
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
 
     }
 

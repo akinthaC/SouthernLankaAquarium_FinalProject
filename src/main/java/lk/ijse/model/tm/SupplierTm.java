@@ -1,4 +1,4 @@
-package lk.ijse.model;
+package lk.ijse.model.tm;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

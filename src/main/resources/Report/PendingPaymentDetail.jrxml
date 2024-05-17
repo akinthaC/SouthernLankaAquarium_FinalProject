@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.2.final using JasperReports Library version 6.21.2-8434a0bd7c3bbc37cbf916f2968d35e4b165821a  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="pendingPayment" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dab1641d-406e-4a54-b451-77a01070765e">
+    <property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (13)"/>
+    <parameter name="date" class="java.lang.String"/>
+    <parameter name="time" class="java.lang.String"/>
+    <queryString language="SQL">
+        <![CDATA[select orderId,date,totalAmounr As TotalAmount,advance,amountTOBepaid from payment where status="pending"]]>
+    </queryString>
+    <field name="orderId" class="java.lang.String">
+        <property name="com.jaspersoft.studio.field.name" value="orderId"/>
+        <property name="com.jaspersoft.studio.field.label" value="orderId"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="payment"/>
+    </field>
+    <field name="date" class="java.sql.Date">
+        <property name="com.jaspersoft.studio.field.name" value="date"/>
+        <property name="com.jaspersoft.studio.field.label" value="date"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="payment"/>
+    </field>
+    <field name="TotalAmount" class="java.math.BigDecimal">
+        <property name="com.jaspersoft.studio.field.name" value="totalAmounr"/>
+        <property name="com.jaspersoft.studio.field.label" value="TotalAmount"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="payment"/>
+    </field>
+    <field name="advance" class="java.math.BigDecimal">
+        <property name="com.jaspersoft.studio.field.name" value="advance"/>
+        <property name="com.jaspersoft.studio.field.label" value="advance"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="payment"/>
+    </field>
+    <field name="amountTOBepaid" class="java.math.BigDecimal">
+        <property name="com.jaspersoft.studio.field.name" value="amountToBePaid"/>
+        <property name="com.jaspersoft.studio.field.label" value="amountTOBepaid"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="payment"/>
+    </field>
+    <group name="orderId">
+        <groupExpression><![CDATA[$F{orderId}]]></groupExpression>
+    </group>
+    <group name="date">
+        <groupExpression><![CDATA[$F{date}]]></groupExpression>
+    </group>
+    <group name="TotalAmount">
+        <groupExpression><![CDATA[$F{TotalAmount}]]></groupExpression>
+    </group>
+    <group name="advance">
+        <groupExpression><![CDATA[$F{advance}]]></groupExpression>
+    </group>
+    <group name="amountTOBepaid">
+        <groupExpression><![CDATA[$F{amountTOBepaid}]]></groupExpression>
+    </group>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="146" splitType="Stretch">
+            <staticText>
+                <reportElement x="167" y="0" width="220" height="40" uuid="c61758d0-8978-49fb-a09f-ef207f27169d"/>
+                <textElement textAlignment="Center">
+                    <font fontName="DialogInput" size="16" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Southern Lanka Aquarium]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="209" y="40" width="144" height="20" uuid="8e088a4e-55bf-4d97-8d87-0cb6a9beed16"/>
+                <textElement textAlignment="Center">
+                    <font size="9" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Pituwala road Elpitiya.]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="173" y="56" width="218" height="20" uuid="20489541-159a-4117-9f10-7a3c0ef9b37b"/>
+                <textElement textAlignment="Center">
+                    <font fontName="Courier 10 Pitch" size="10"/>
+                </textElement>
+                <text><![CDATA[Tel :- 0772558964 , 0719771548]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="167" y="0" width="220" height="40" uuid="f0cb800c-ec2f-4590-9515-46084f03c368"/>
+                <textElement textAlignment="Center">
+                    <font fontName="DialogInput" size="16" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Southern Lanka Aquarium]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="209" y="40" width="144" height="20" uuid="4f6d9422-a8c9-4b0b-998d-16d08002fbea"/>
+                <textElement textAlignment="Center">
+                    <font size="9" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Pituwala road Elpitiya.]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="173" y="56" width="218" height="20" uuid="59cc3d64-91dc-402b-ba42-982803d4e349"/>
+                <textElement textAlignment="Center">
+                    <font fontName="Courier 10 Pitch" size="10"/>
+                </textElement>
+                <text><![CDATA[Tel :- 0772558964 , 0719771548]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="167" y="0" width="220" height="40" uuid="f32c72d3-1407-4733-9eba-cbf140b13bed"/>
+                <textElement textAlignment="Center">
+                    <font fontName="DialogInput" size="16" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Southern Lanka Aquarium]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="209" y="40" width="144" height="20" uuid="9b2ca193-c283-4fd5-b089-10dcc5debbc0"/>
+                <textElement textAlignment="Center">
+                    <font size="9" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Pituwala road Elpitiya.]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="173" y="56" width="218" height="20" uuid="90e54873-1972-4647-8da1-c61c80054fd6"/>
+                <textElement textAlignment="Center">
+                    <font fontName="Courier 10 Pitch" size="10"/>
+                </textElement>
+                <text><![CDATA[Tel :- 0772558964 , 0719771548]]></text>
+            </staticText>
+            <image>
+                <reportElement x="122" y="0" width="44" height="70" uuid="728ec8a0-ed7d-40eb-aa1d-0aca12af9c8f"/>
+                <imageExpression><![CDATA["/home/akintha/Downloads/950760edb35388b32070f02f4c8a452f.jpg"]]></imageExpression>
+            </image>
+            <staticText>
+                <reportElement x="-10" y="118" width="249" height="20" uuid="1019238d-20fa-4d74-93cd-02e0e4ac3c2f"/>
+                <textElement textAlignment="Left">
+                    <font fontName="Gayathri Thin" size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[pending PaymentDetail;]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="430" y="10" width="55" height="20" uuid="2e0feb9c-55ff-46b8-84b4-bf837f80e734"/>
+                <textElement>
+                    <font fontName="C059" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Date:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="430" y="30" width="55" height="20" uuid="3b5fb6cc-dcf4-4e26-b858-559b8858d0c8"/>
+                <textElement>
+                    <font fontName="C059" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Time:]]></text>
+            </staticText>
+            <line>
+                <reportElement x="-10" y="135" width="150" height="1" uuid="75c7a5e6-0eec-4343-ae82-0ab0ce967dfb"/>
+            </line>
+            <textField>
+                <reportElement x="480" y="28" width="90" height="22" uuid="d3d180ee-6534-4ae9-90c0-0f0a53089883"/>
+                <textFieldExpression><![CDATA[$P{time}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="480" y="8" width="97" height="22" uuid="5590ee3f-e537-4aa9-8cd9-1ac6481a0aa5"/>
+                <textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+    <pageHeader>
+        <band height="51" splitType="Stretch">
+            <line>
+                <reportElement x="-12" y="45" width="576" height="1" uuid="665f88ef-10bb-450e-91b7-6219f3dfbee8"/>
+            </line>
+        </band>
+    </pageHeader>
+    <columnHeader>
+        <band height="50" splitType="Stretch">
+            <staticText>
+                <reportElement x="5" y="2" width="96" height="30" uuid="006a03b0-94ed-4d57-a795-6560b484ceb2">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="13bf8f1a-812e-4083-92c1-b9837b6f7b40"/>
+                </reportElement>
+                <textElement textAlignment="Center">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[orderId]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="116" y="2" width="96" height="30" uuid="3ea751b4-cb2f-495d-a4b5-cb09fb8744ad">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3434aa1f-3b47-4566-9a76-ef6f3491d10e"/>
+                </reportElement>
+                <textElement textAlignment="Center">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[date]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="227" y="2" width="96" height="30" uuid="72f02b6d-0d37-4b9d-8458-1f32d3ff610c">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="feaee44e-f5f2-4b54-856f-80259a572c8b"/>
+                </reportElement>
+                <textElement textAlignment="Center">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[TotalAmount]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="338" y="2" width="96" height="30" uuid="377dd108-36aa-4b6f-a268-f2836589652c">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c4b905d1-238e-486d-8702-8a001c25067c"/>
+                </reportElement>
+                <textElement textAlignment="Center">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[advance]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="449" y="1" width="109" height="30" uuid="ed007aa6-056d-40f0-a6d9-73281da3e9d2">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b806d893-bfbd-4a8e-a507-38da0cb04936"/>
+                </reportElement>
+                <textElement textAlignment="Center">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[amountTOBepaid]]></text>
+            </staticText>
+            <line>
+                <reportElement x="-11" y="34" width="576" height="1" uuid="5366386a-02bd-4c82-8228-b2d387241fde"/>
+            </line>
+            <line>
+                <reportElement x="564" y="-7" width="1" height="42" uuid="8ff287d1-8130-4e8a-9f81-d5fcfb964f6d"/>
+            </line>
+            <line>
+                <reportElement x="-11" y="-7" width="1" height="42" uuid="f9a5f015-3f49-4eb4-b933-23b9840eaaff"/>
+            </line>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="125" splitType="Stretch">
+            <textField>
+                <reportElement x="5" y="0" width="96" height="30" uuid="c432b06d-6b40-41ef-92f5-0ec6418473da">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="13bf8f1a-812e-4083-92c1-b9837b6f7b40"/>
+                </reportElement>
+                <textElement textAlignment="Center"/>
+                <textFieldExpression><![CDATA[$F{orderId}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="116" y="0" width="96" height="30" uuid="a7d6aaa1-6019-403c-8093-fd991762a4b0">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3434aa1f-3b47-4566-9a76-ef6f3491d10e"/>
+                </reportElement>
+                <textElement textAlignment="Center"/>
+                <textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="227" y="0" width="96" height="30" uuid="adf0095a-5931-4444-b31f-9bbf5f1307f2">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="feaee44e-f5f2-4b54-856f-80259a572c8b"/>
+                </reportElement>
+                <textElement textAlignment="Center"/>
+                <textFieldExpression><![CDATA[$F{TotalAmount}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="338" y="0" width="96" height="30" uuid="05228e29-7fc4-4e9c-bd95-707877dc6e13">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c4b905d1-238e-486d-8702-8a001c25067c"/>
+                </reportElement>
+                <textElement textAlignment="Center"/>
+                <textFieldExpression><![CDATA[$F{advance}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="449" y="0" width="96" height="30" uuid="cab605d1-fa13-48ea-86ac-412086ef1615">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b806d893-bfbd-4a8e-a507-38da0cb04936"/>
+                </reportElement>
+                <textElement textAlignment="Center"/>
+                <textFieldExpression><![CDATA[$F{amountTOBepaid}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <columnFooter>
+        <band height="45" splitType="Stretch"/>
+    </columnFooter>
+    <pageFooter>
+        <band height="54" splitType="Stretch"/>
+    </pageFooter>
+    <summary>
+        <band height="42" splitType="Stretch"/>
+    </summary>
+</jasperReport>

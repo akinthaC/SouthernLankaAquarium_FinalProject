@@ -240,7 +240,8 @@ public class DashboardFormController {
     }
 
     @FXML
-    void btnReportsOnAction(ActionEvent event) {
+    void btnReportsOnAction(ActionEvent event) throws IOException {
+        loadFormWithAtractiveAnimation("/view/RepotyForm.fxml");
     }
 
     @FXML

@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class mainFormController  {
+public class mainFormController implements Initializable  {
 
     public Label lblName;
     public Label lblGmail;
@@ -96,8 +96,15 @@ public class mainFormController  {
 //        timeline.play();
 //    }
 
-    public void initialize() throws IOException {
-        dashBoard();
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            dashBoard();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         addHoverAnimation(btnAccessories);
         addHoverAnimation(btnDashboard);
         addHoverAnimation(btnCustomer);
@@ -110,6 +117,7 @@ public class mainFormController  {
         addHoverAnimation(btnLogOut);
         lblGmail.setText(NewLoginFormController.gmail1);
         lblName.setText("Hi.."+NewLoginFormController.userName1);
+
     }
 
     private void dashBoard() throws IOException {

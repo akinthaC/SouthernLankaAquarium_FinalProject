@@ -187,6 +187,11 @@ public class AddNewQtyController {
 
     @FXML
     void btnClearOnAction(ActionEvent event) {
+        txtpurchasedAmount.setText("");
+        txtQtyy.setText("");
+        lblSup.setText("");
+        lblFishId.setText("");
+        cmbFishId.setValue("");
 
     }
 

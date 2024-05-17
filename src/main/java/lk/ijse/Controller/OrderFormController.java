@@ -294,7 +294,12 @@ public class OrderFormController {
         String code = txtId.getText();
         Date date = Date.valueOf(txtDate.getText());
         Date handOverDate = Date.valueOf(txtHandOverDate.getText());
-        int qty = Integer.parseInt(txtQty.getText());
+        int qty = 0;
+        try {
+            qty = Integer.parseInt(txtQty.getText());
+        } catch (NumberFormatException e) {
+            new Alert(Alert.AlertType.INFORMATION, "Please fill all fields!");
+        }
         String status = cmbStatus.getValue();
         String description=lblName.getText();
         double price;
@@ -352,7 +357,7 @@ public class OrderFormController {
 
                 tblPlaceOrder.refresh();
 
-               // calculateNetTotal();
+               calculateNetTotal();
             }
         });
 
@@ -371,7 +376,7 @@ public class OrderFormController {
                 tblPlaceOrder.refresh();
                 clearFields();
 
-                //calculateNetTotal();
+                calculateNetTotal();
                 return;
             }
         }
@@ -400,10 +405,14 @@ public class OrderFormController {
         String orderId = txtId.getText();
         Date date = Date.valueOf(txtDate.getText());
         Date handOverDate = Date.valueOf(txtHandOverDate.getText());
-        int qty = Integer.parseInt(txtQty.getText());
-        String status = cmbStatus.getValue();
+        int qty = 0;
+        try {
+            qty = Integer.parseInt(txtQty.getText());
+        } catch (NumberFormatException e) {
+            new Alert(Alert.AlertType.INFORMATION, "Please fill all fields!");
+        }
+
         String cusId = cmbCusId.getValue();
-        String description = lblName.getText();
         String empId = cmbEmployeeId.getValue();
         String fishId = null;
         String accessoriesId= null;
@@ -456,6 +465,7 @@ public class OrderFormController {
                     btnPrintBill();
                 }else {
                     btnPrintBillWholeSale();
+
                 }
 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/order_form.fxml"));
